@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Word Diet International Gospel Church (WDIGC)</title>
+  <meta name="description" content="Discover the history, beliefs, mandate, and mission of Word Diet International Gospel Church (WDIGC), founded by Apostle Omotosho Tope Joseph." />
+  <link rel="icon" type="image/png" href="img/WDIGCPNG.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --obsidian: #0b0f19;
+      --obsidian-dark: #070910;
+      --champagne: #c5a368;
+      --champagne-light: #d6b880;
+      --champagne-dark: #a8854c;
+      --white: #ffffff;
+      --alabaster: #f9f9fb;
+      --soft: #f3f3f6;
+      --ink: #111520;
+      --muted: #646b7c;
+      --muted-light: #a6a9b0;
+      --line: #e2e4e8;
+      --charcoal: #171d2b;
+      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --radius: 8px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+      --font: 'Outfit', sans-serif;
+      --heading: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--alabaster);
+      color: var(--ink);
+      font-family: var(--font);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    /* Navbar styling matches index.html exactly */
+    #navbar {
+      background: var(--obsidian);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      transition: all var(--transition);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    #navbar.is-scrolled {
+      padding: 14px 24px;
+      background: var(--obsidian-dark);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--heading);
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links-wrap {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links-wrap a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links-wrap a:hover,
+    .nav-links-wrap a.active {
+      color: var(--champagne);
+    }
+
+    /* Resources Dropdown menu styles */
+    .nav-dropdown-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color var(--transition);
+      padding-bottom: 4px;
+    }
+
+    .nav-dropdown-trigger:hover,
+    .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
+      color: var(--champagne);
+    }
+
+    .dropdown-chevron {
+      transition: transform var(--transition);
+    }
+
+    .nav-dropdown-wrapper:hover .dropdown-chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--white);
+      min-width: 220px;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      padding: 12px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition);
+      z-index: 150;
+      border: 1px solid var(--line);
+    }
+
+    .nav-dropdown-wrapper:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: var(--obsidian) !important;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all var(--transition);
+      text-align: left;
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: var(--soft);
+      color: var(--champagne-dark) !important;
+      padding-left: 24px;
+    }
+
+    /* Mobile Dropdown styles */
+    .mobile-dropdown-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .mobile-dropdown-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: var(--heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      transition: color var(--transition);
+      padding: 0;
+      outline: none;
+    }
+
+    .mobile-dropdown-btn:hover,
+    .mobile-dropdown-btn.active {
+      color: var(--champagne);
+    }
+
+    .mobile-dropdown-btn svg {
+      transition: transform var(--transition);
+    }
+
+    .mobile-dropdown-btn.active svg {
+      transform: rotate(180deg);
+    }
+
+    .mobile-dropdown-content {
+      display: none;
+      flex-direction: column;
+      padding-left: 20px;
+      margin-top: 16px;
+      border-left: 2px solid rgba(197, 163, 104, 0.3);
+    }
+
+    .mobile-dropdown-content.open {
+      display: flex;
+    }
+
+    .mobile-dropdown-content a {
+      font-size: 1.05rem !important;
+      margin-bottom: 16px !important;
+      font-weight: 500 !important;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font);
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-gold {
+      background: var(--champagne);
+      color: var(--obsidian);
+    }
+
+    .btn-gold:hover {
+      background: var(--champagne-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      background: var(--soft);
+      border-color: var(--champagne);
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      height: 20px;
+      justify-content: space-between;
+      width: 26px;
+    }
+
+    .hamburger span {
+      background: var(--white);
+      height: 2px;
+      transition: all var(--transition);
+      width: 100%;
+    }
+
+    /* Mobile Nav styles matches index.html exactly */
+    .mobile-nav {
+      background: rgba(5, 7, 12, 0.6);
+      backdrop-filter: blur(12px);
+      display: flex;
+      height: 100vh;
+      justify-content: flex-end;
+      left: 0;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      transition: all 0.4s ease;
+      visibility: hidden;
+      width: 100vw;
+      z-index: 200;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-panel {
+      background: var(--obsidian-dark);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-width: 320px;
+      padding: 40px 30px;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+    }
+
+    .mobile-nav.open .mobile-nav-panel {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-top {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
+      width: 100%;
+    }
+
+    .mobile-nav-close {
+      background: transparent;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .mobile-nav a {
+      color: rgba(255, 255, 255, 0.7);
+      font-family: var(--heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      transition: color var(--transition);
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      color: var(--champagne);
+    }
+
+    /* Shared Sections Kickers & Titles */
+    .section-kicker {
+      align-items: center;
+      color: var(--champagne-dark);
+      display: inline-flex;
+      font-size: 0.8rem;
+      font-weight: 700;
+      gap: 12px;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--champagne);
+    }
+
+    .section-title {
+      color: var(--ink);
+      font-family: var(--heading);
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      max-width: 720px;
+    }
+
+    /* Hero Section */
+    .about-hero {
+      background: linear-gradient(135deg, var(--obsidian-dark), var(--obsidian));
+      color: var(--white);
+      padding: 180px 0 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .about-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(197, 163, 104, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .about-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-hero .section-kicker {
+      justify-content: center;
+      color: var(--champagne);
+    }
+
+    .about-hero h1 {
+      font-family: var(--heading);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .about-hero p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Motto and Mandate banner block */
+    .motto-mandate-grid {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: -50px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .mm-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mm-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 5px;
+      background: var(--champagne);
+    }
+
+    .mm-label {
+      color: var(--champagne-dark);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .mm-text {
+      color: var(--ink);
+      font-family: var(--heading);
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .mm-citation {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    /* Editorial History section styling */
+    .history-inner {
+      display: grid;
+      gap: 64px;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+    }
+
+    .history-img-wrap {
+      border-radius: var(--radius-lg);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+      position: relative;
+      background: var(--white);
+      padding: 12px;
+      border: 1px solid var(--line);
+    }
+
+    .history-img-wrap img {
+      aspect-ratio: 4 / 5;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      display: block;
+      width: 100%;
+    }
+
+    .history-img-wrap::after {
+      content: "";
+      position: absolute;
+      top: 24px; left: 24px; right: -24px; bottom: -24px;
+      border: 2px solid var(--champagne);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .history-text h2 {
+      margin-bottom: 24px;
+    }
+
+    .history-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Core Doctrines & Beliefs section */
+    .beliefs-section {
+      background: var(--alabaster);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .beliefs-grid {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 48px;
+    }
+
+    .belief-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      box-shadow: var(--shadow-soft);
+      transition: all var(--transition);
+    }
+
+    .belief-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--champagne);
+    }
+
+    .belief-card h3 {
+      font-family: var(--heading);
+      font-size: 1.35rem;
+      color: var(--ink);
+      font-weight: 700;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .belief-card h3::before {
+      content: "⚓";
+      font-size: 1.2rem;
+    }
+
+    .belief-card.evangelism h3::before {
+      content: "📢";
+    }
+
+    .belief-card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    /* Mission Pillars Grid */
+    .mission-section {
+      background: var(--white);
+    }
+
+    .mission-section .section-head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .mission-section .section-kicker {
+      justify-content: center;
+    }
+
+    .mission-grid {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mission-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .mission-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; bottom: 0; width: 4px;
+      background: var(--line);
+      transition: all var(--transition);
+    }
+
+    .mission-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: var(--champagne);
+    }
+
+    .mission-card:hover::before {
+      background: var(--champagne);
+      width: 6px;
+    }
+
+    .mission-num {
+      color: var(--champagne);
+      display: block;
+      font-family: var(--heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      opacity: 0.8;
+    }
+
+    .mission-card p {
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    /* 12 Pillars Monthly Focus dashboard styling */
+    .focus-section {
+      background: var(--alabaster);
+      border-top: 1px solid var(--line);
+    }
+
+    .focus-section .section-head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .focus-section .section-kicker {
+      justify-content: center;
+    }
+
+    .focus-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .focus-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+    }
+
+    .focus-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--champagne);
+    }
+
+    .focus-month-badge {
+      background: rgba(197, 163, 104, 0.1);
+      color: var(--champagne-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      align-self: flex-start;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .focus-card h3 {
+      font-family: var(--heading);
+      font-size: 1.45rem;
+      color: var(--ink);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .focus-scripture {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      border-left: 2px solid var(--champagne);
+      padding-left: 12px;
+      margin-top: 16px;
+    }
+
+    /* Modal giving box exactly matches index.html */
+    .modal-overlay {
+      background: rgba(5, 7, 12, 0.85);
+      backdrop-filter: blur(12px);
+      display: none;
+      inset: 0;
+      padding: 20px;
+      position: fixed;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--charcoal);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+      max-width: 500px;
+      padding: 40px;
+      position: relative;
+      width: 100%;
+      animation: modalFadeUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @keyframes modalFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-close {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      color: var(--white);
+      cursor: pointer;
+      font-size: 1.5rem;
+      height: 40px;
+      line-height: 1;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .modal-close:hover {
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-color: var(--champagne);
+      transform: rotate(90deg);
+    }
+
+    .modal-title {
+      color: var(--champagne);
+      font-family: var(--heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+
+    .bank-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .bank-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: all var(--transition);
+      position: relative;
+    }
+
+    .bank-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--champagne);
+    }
+
+    .bank-card-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      align-items: center;
+    }
+
+    .bank-name {
+      color: var(--champagne);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .bank-acc {
+      color: var(--white);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .bank-holder {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.8rem;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .copy-btn {
+      background: var(--champagne);
+      border-radius: var(--radius);
+      color: var(--obsidian);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background: var(--champagne-light);
+      transform: translateY(-2px);
+    }
+
+    .copy-btn.copied {
+      background: #10b981;
+      color: var(--white);
+    }
+
+    /* Footer styling exactly matches index.html */
+    footer {
+      background: var(--obsidian-dark);
+      color: var(--white);
+      padding: 80px 0 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 48px;
+      grid-template-columns: 1.2fr 1fr 1fr;
+    }
+
+    .footer-brand p,
+    .footer-contact p,
+    .footer-social p,
+    .footer-line {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .footer-brand p {
+      margin-top: 20px;
+    }
+
+    .footer-grid h4 {
+      font-family: var(--heading);
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+      color: var(--champagne);
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.93rem;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--champagne);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-btn {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      color: var(--white);
+      display: inline-flex;
+      height: 38px;
+      justify-content: center;
+      transition: all var(--transition);
+      width: 38px;
+    }
+
+    .social-btn:hover {
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-color: var(--champagne);
+      transform: translateY(-3px);
+    }
+
+    .footer-divider {
+      background: rgba(255, 255, 255, 0.05);
+      height: 1px;
+      margin: 60px 0 32px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Back To Top exactly matches index.html */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition);
+      z-index: 1000;
+    }
+
+    #backToTop.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #backToTop:hover {
+      transform: translateY(-4px);
+      background: var(--champagne-light);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 980px) {
+      .nav-links-wrap,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: inline-flex;
+      }
+
+      .motto-mandate-grid,
+      .history-inner,
+      .beliefs-grid,
+      .mission-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .focus-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mm-card,
+      .belief-card,
+      .mission-card {
+        padding: 32px;
+      }
+
+      .history-img-wrap {
+        max-width: 450px;
+        margin: 0 auto;
+      }
+
+      .history-img-wrap::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .about-hero {
+        padding: 120px 0 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav id="navbar" aria-label="Primary navigation">
+    <a href="index.html" class="nav-brand" aria-label="Word Diet International Gospel Church home">
+      <span class="brand-icon">
+        <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+      </span>
+      <span>WDIGC</span>
+    </a>
+
+    <div class="nav-links-wrap">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <div class="nav-dropdown-wrapper">
+        <a href="#" class="nav-dropdown-trigger" onclick="return false;">
+          Resources
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="events.html">Events</a>
+          <a href="testimonies.html">Testimonies</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="locate.html">Locate Church</a>
+          <a href="forms.html">Forms</a>
+        </div>
+      </div>
+      <a href="giving.html">Donate Now</a>
+      <a href="ministries.html">Ministries</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="events.html" class="btn btn-gold nav-cta">Join Us</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-controls="mobileNav"
+        aria-expanded="false" onclick="openMobileNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Panel -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-top">
+        <a href="index.html" class="nav-brand" onclick="closeMobileNav()">
+          <span class="brand-icon">
+            <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+          </span>
+          <span>WDIGC</span>
+        </a>
+        <button class="mobile-nav-close" type="button" aria-label="Close navigation"
+          onclick="closeMobileNav()">&times;</button>
+      </div>
+      <a href="index.html" onclick="closeMobileNav()">Home</a>
+      <a href="about.html" class="active" onclick="closeMobileNav()">About</a>
+      
+      <!-- Collapsible Mobile Dropdown -->
+      <div class="mobile-dropdown-wrapper">
+        <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
+          Resources
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="events.html" onclick="closeMobileNav()">Events</a>
+          <a href="testimonies.html" onclick="closeMobileNav()">Testimonies</a>
+          <a href="sermons.html" onclick="closeMobileNav()">Sermons</a>
+          <a href="locate.html" onclick="closeMobileNav()">Locate Church</a>
+          <a href="forms.html" onclick="closeMobileNav()">Forms</a>
+        </div>
+      </div>
+
+      <a href="giving.html" onclick="closeMobileNav()">Donate Now</a>
+      <a href="ministries.html" onclick="closeMobileNav()">Ministries</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <span class="section-kicker">Our Identity</span>
+        <h1>Word Diet International Gospel Church</h1>
+        <p>A prophetic global ministry mandated to raise a standard for God's people through the spoken Word of the Lord.</p>
+      </div>
+    </section>
+
+    <!-- Motto and Mandate Quote Blocks -->
+    <section class="section" style="padding: 0 0 100px 0;">
+      <div class="container">
+        <div class="motto-mandate-grid">
+          <div class="mm-card">
+            <div>
+              <span class="mm-label">Motto</span>
+              <p class="mm-text">"THE MINISTRY IS FOR THE RISING OF GOD’S PEOPLE AND FALLING OF EVIL PEOPLE"</p>
+            </div>
+            <span class="mm-citation">— Luke 2:34</span>
+          </div>
+          <div class="mm-card">
+            <div>
+              <span class="mm-label">Mandate</span>
+              <p class="mm-text">"WE HAVE A MANDATE TO RAISE A STANDARD FOR GOD’S PEOPLE THROUGH THE SPOKEN WORD OF THE LORD."</p>
+            </div>
+            <span class="mm-citation">— WDIGC Prophetic Directives</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Story / History section -->
+    <section class="section" style="background: var(--white); border-bottom: 1px solid var(--line);">
+      <div class="container">
+        <div class="history-inner">
+          <div class="history-img-wrap">
+            <img src="img/IMG_2163kk.png" alt="Apostle Omotosho Tope Joseph preaching" />
+          </div>
+          <div class="history-text">
+            <span class="section-kicker">Brief History & Background</span>
+            <h2 class="section-title">Founded by Apostle Omotosho Tope Joseph</h2>
+            <p>Word Diet International Gospel Church (WDIGC) is an evangelical, word-based and prophetic ministry founded by Apostle Omotosho Tope Joseph, popularly known as OTJ.</p>
+            <p>Prior to the founding of this global ministry, Apostle Omotosho has been actively involved in praying round the clock for Nigeria, delivering accurate prophetic revelations about various sectors of the economy, conducting intense family deliverance sessions, and preaching the pure, uncompromised gospel of salvation to all who care to listen.</p>
+            <p>All of our works have been heavily marked with tremendous tangible blessings, deep spiritual breakthroughs, and powerful testimonies from our spiritual family here at Calabar, as well as participants from other cities across Nigeria, Africa, the Caribbeans, and the entire world.</p>
+            <a href="index.html#events" class="btn btn-outline" style="margin-top: 12px;">Fellowship With Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beliefs & Core Doctrines Section -->
+    <section class="section beliefs-section">
+      <div class="container">
+        <span class="section-kicker">What We Believe</span>
+        <h2 class="section-title">Core Doctrines & Christian Faith</h2>
+        <p class="section-copy">Standing firmly on the infallible Word of God, our spiritual foundation is anchored on deep biblical principles and active faith.</p>
+        
+        <div class="beliefs-grid">
+          <div class="belief-card">
+            <h3>Core Doctrines</h3>
+            <p>Our core doctrines are based strictly on the spoken word of God from the Holy Bible. Our beliefs are completely centered on the death, burial, and resurrection of our Lord and Saviour Jesus Christ. His resurrection is the ultimate crux of our Christian faith and our source of eternal life.</p>
+          </div>
+          <div class="belief-card evangelism">
+            <h3>Access & Evangelism Mandate</h3>
+            <p>Accepting Jesus as our Lord and personal Saviour is the unique access we have to God, as long as we remain holy, chaste, and prayerful in His presence. That is why we place supreme importance on evangelism. It is our daily practice to preach the word of God, make sinners confess their sins, welcome them to the family of God, and actively depopulate the kingdom of darkness. For no man knows the day the trumpet will sound.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission pillars numbered cards -->
+    <section class="section mission-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Our Mission</span>
+          <h2 class="section-title">The Four Pillars of Our Mission</h2>
+          <p class="section-copy" style="margin: 0 auto;">WDIGC operates on clear, divine instructions to build up believers and establish the supremacy of God's kingdom globally.</p>
+        </div>
+
+        <div class="mission-grid">
+          <div class="mission-card">
+            <span class="mission-num">01</span>
+            <p>To develop God's people to take their place in life by living in the reality of God's Word with evident proofs in all areas of human endeavors.</p>
+          </div>
+          <div class="mission-card">
+            <span class="mission-num">02</span>
+            <p>To develop God's people into the realms of spirituality thereby living a life of honour to God.</p>
+          </div>
+          <div class="mission-card">
+            <span class="mission-num">03</span>
+            <p>To model God's people into realms of blessings through raw revival.</p>
+          </div>
+          <div class="mission-card">
+            <span class="mission-num">04</span>
+            <p>To deliver God's people by dismantling all satanic and ancestral foundations through God's spoken Word.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 Pillars Monthly Focus grid calendar dashboard -->
+    <section class="section focus-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Divine Alignment</span>
+          <h2 class="section-title">Monthly Focus & Objectives</h2>
+          <p class="section-copy" style="margin: 0 auto;">Every month of the year is dedicated to a specific spiritual pillar, aligning our devotion, scriptures, and kingdom results.</p>
+        </div>
+
+        <div class="focus-grid">
+          <div class="focus-card">
+            <span class="focus-month-badge">January</span>
+            <h3>Faith</h3>
+            <p class="focus-scripture">1 John 5:4; Ephesians 6:16</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">February</span>
+            <h3>The Word</h3>
+            <p class="focus-scripture">John 1:1-12; Hebrews 1:3</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">March</span>
+            <h3>Signs & Wonders</h3>
+            <p class="focus-scripture">Psalms 82:5-7; John 3:8</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">April</span>
+            <h3>The Holy Spirit</h3>
+            <p class="focus-scripture">Acts 1:1-8; Isaiah 10:27</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">May</span>
+            <h3>Prosperity</h3>
+            <p class="focus-scripture">3 John 2; Psalms 35:27; Zechariah 1:17</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">June</span>
+            <h3>Prayer</h3>
+            <p class="focus-scripture">1 John 5:14</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">July</span>
+            <h3>Healing</h3>
+            <p class="focus-scripture">Isaiah 53:3-4; Jeremiah 8:22; Matthew 8:17</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">August</span>
+            <h3>Wisdom</h3>
+            <p class="focus-scripture">Proverbs 24:3-4; Isaiah 33:6</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">September</span>
+            <h3>Success</h3>
+            <p class="focus-scripture">Joshua 1:8-10</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">October</span>
+            <h3>Vision</h3>
+            <p class="focus-scripture">Proverbs 29:18; Jeremiah 29:11</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">November</span>
+            <h3>Consecration</h3>
+            <p class="focus-scripture">Hebrews 12:14; 2 Timothy 2:19</p>
+          </div>
+          <div class="focus-card">
+            <span class="focus-month-badge">December</span>
+            <h3>Praise</h3>
+            <p class="focus-scripture">2 Chronicles 20:20-22; Psalms 67:1-7; 149:1-9</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Giving Modal -->
+  <div class="modal-overlay" id="givingModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeGivingModal()" aria-label="Close modal">&times;</button>
+      <h3 class="modal-title">Tithe & Offering</h3>
+      <p class="modal-desc">Support the work of WDIGC using our verified bank accounts. Touch a card to copy the account number.</p>
+      
+      <div class="bank-list">
+        <div class="bank-card" onclick="copyToClipboard('2038758839', this)">
+          <div class="bank-card-top">
+            <span class="bank-name">First Bank</span>
+            <button class="copy-btn" type="button">
+              Copy Account
+            </button>
+          </div>
+          <div class="bank-acc">2038758839</div>
+          <div class="bank-holder">Word Diet International Gospel Church</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <span class="brand-icon">
+              <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+            </span>
+            <span>WDIGC</span>
+          </a>
+          <p>Word Diet International Gospel Church is a prophetic global ministry mandated to raise a standard for God's people through the spoken Word of God.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="index.html#ministries">Ministries</a>
+          <a href="index.html#events">Events</a>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact & Info</h4>
+          <p>📍 98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
+          <p style="margin-top: 12px;">📞 Apostle Omotosho Tope Joseph: +234 816 575 8740</p>
+          <div class="footer-social-icons">
+            <a href="https://www.youtube.com/@Apostleomotoshotopejoseph9963" class="social-btn" target="_blank" aria-label="Youtube"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.053 0 12 0 12s0 3.947.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.495 20.455 12 20.455 12 20.455s7.505 0 9.388-.511a3.002 3.002 0 0 0 2.11-2.107C24 15.947 24 12 24 12s0-3.947-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://www.facebook.com" class="social-btn" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+            <a href="https://www.instagram.com" class="social-btn" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p class="footer-line">&copy; 2026 Word Diet International Gospel Church. All rights reserved.</p>
+        <p class="footer-line">Raises generational leaders worldwide.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    &uarr;
+  </div>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    const mobileNav = document.getElementById("mobileNav");
+    const hamburger = document.getElementById("hamburger");
+    const backToTop = document.getElementById("backToTop");
+
+    function openMobileNav() {
+      mobileNav.classList.add("open");
+      mobileNav.setAttribute("aria-hidden", "false");
+      hamburger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMobileNav() {
+      mobileNav.classList.remove("open");
+      mobileNav.setAttribute("aria-hidden", "true");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    function toggleMobileDropdown(btn) {
+      btn.classList.toggle("active");
+      const content = btn.nextElementSibling;
+      content.classList.toggle("open");
+    }
+
+    function openGivingModal() {
+      document.getElementById("givingModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeGivingModal() {
+      document.getElementById("givingModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = "Copied!";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.classList.remove("copied");
+        }, 2000);
+      });
+    }
+
+    mobileNav.addEventListener("click", function (event) {
+      if (event.target === mobileNav) {
+        closeMobileNav();
+      }
+    });
+
+    window.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && mobileNav.classList.contains("open")) {
+        closeMobileNav();
+      }
+    });
+
+    window.addEventListener("scroll", function () {
+      const scrollPos = window.scrollY;
+      navbar.classList.toggle("is-scrolled", scrollPos > 60);
+      backToTop.classList.toggle("visible", scrollPos > 300);
+    });
+  </script>
+</body>
+
+</html>

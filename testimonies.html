@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wonders & Proofs | Word Diet International Gospel Church (WDIGC)</title>
+  <meta name="description"
+    content="Feast on the raw, evident testimonies, miracles, and prophetic breakthroughs in WDIGC. Read real stories of healing, deliverance, and supernatural elevation." />
+  <link rel="icon" type="image/png" href="img/WDIGCPNG.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --obsidian: #0b0f19;
+      --obsidian-dark: #070910;
+      --champagne: #c5a368;
+      --champagne-light: #d6b880;
+      --champagne-dark: #a8854c;
+      --white: #ffffff;
+      --alabaster: #f9f9fb;
+      --soft: #f3f3f6;
+      --ink: #111520;
+      --muted: #646b7c;
+      --muted-light: #a6a9b0;
+      --line: #e2e4e8;
+      --charcoal: #171d2b;
+      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --radius: 8px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+      --font: 'Outfit', sans-serif;
+      --heading: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--alabaster);
+      color: var(--ink);
+      font-family: var(--font);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    /* Navbar styling matches index.html exactly */
+    #navbar {
+      background: var(--obsidian);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      transition: all var(--transition);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    #navbar.is-scrolled {
+      padding: 14px 24px;
+      background: var(--obsidian-dark);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--heading);
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links-wrap {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links-wrap a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links-wrap a:hover,
+    .nav-links-wrap a.active {
+      color: var(--champagne);
+    }
+
+    /* Resources Dropdown menu styles */
+    .nav-dropdown-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color var(--transition);
+      padding-bottom: 4px;
+    }
+
+    .nav-dropdown-trigger:hover,
+    .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
+      color: var(--champagne);
+    }
+
+    .dropdown-chevron {
+      transition: transform var(--transition);
+    }
+
+    .nav-dropdown-wrapper:hover .dropdown-chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--white);
+      min-width: 220px;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      padding: 12px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition);
+      z-index: 150;
+      border: 1px solid var(--line);
+    }
+
+    .nav-dropdown-wrapper:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: var(--obsidian) !important;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all var(--transition);
+      text-align: left;
+    }
+
+    .nav-dropdown-menu a:hover {
+      background: var(--soft);
+      color: var(--champagne-dark) !important;
+      padding-left: 24px;
+    }
+
+    /* Mobile Dropdown styles */
+    .mobile-dropdown-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .mobile-dropdown-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: var(--heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      transition: color var(--transition);
+      padding: 0;
+      outline: none;
+    }
+
+    .mobile-dropdown-btn:hover,
+    .mobile-dropdown-btn.active {
+      color: var(--champagne);
+    }
+
+    .mobile-dropdown-btn svg {
+      transition: transform var(--transition);
+    }
+
+    .mobile-dropdown-btn.active svg {
+      transform: rotate(180deg);
+    }
+
+    .mobile-dropdown-content {
+      display: none;
+      flex-direction: column;
+      padding-left: 20px;
+      margin-top: 16px;
+      border-left: 2px solid rgba(197, 163, 104, 0.3);
+    }
+
+    .mobile-dropdown-content.open {
+      display: flex;
+    }
+
+    .mobile-dropdown-content a {
+      font-size: 1.05rem !important;
+      margin-bottom: 16px !important;
+      font-weight: 500 !important;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font);
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-gold {
+      background: var(--champagne);
+      color: var(--obsidian);
+    }
+
+    .btn-gold:hover {
+      background: var(--champagne-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      background: var(--soft);
+      border-color: var(--champagne);
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      height: 20px;
+      justify-content: space-between;
+      width: 26px;
+    }
+
+    .hamburger span {
+      background: var(--white);
+      height: 2px;
+      transition: all var(--transition);
+      width: 100%;
+    }
+
+    /* Mobile Nav styles */
+    .mobile-nav {
+      background: rgba(5, 7, 12, 0.6);
+      backdrop-filter: blur(12px);
+      display: flex;
+      height: 100vh;
+      justify-content: flex-end;
+      left: 0;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      transition: all 0.4s ease;
+      visibility: hidden;
+      width: 100vw;
+      z-index: 200;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-panel {
+      background: var(--obsidian-dark);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-width: 320px;
+      padding: 40px 30px;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+    }
+
+    .mobile-nav.open .mobile-nav-panel {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-top {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
+      width: 100%;
+    }
+
+    .mobile-nav-close {
+      background: transparent;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .mobile-nav a {
+      color: rgba(255, 255, 255, 0.7);
+      font-family: var(--heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      transition: color var(--transition);
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      color: var(--champagne);
+    }
+
+    /* Page Hero with dark distinction */
+    .testimonies-hero {
+      background: linear-gradient(135deg, var(--obsidian-dark), var(--obsidian));
+      color: var(--white);
+      padding: 180px 0 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .testimonies-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(197, 163, 104, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .testimonies-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonies-hero .section-kicker {
+      align-items: center;
+      color: var(--champagne);
+      display: inline-flex;
+      font-size: 0.8rem;
+      font-weight: 700;
+      gap: 12px;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      justify-content: center;
+    }
+
+    .testimonies-hero h1 {
+      font-family: var(--heading);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .testimonies-hero p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Filter Dashboard panel */
+    .filter-panel {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .filter-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+      min-width: 280px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 18px 12px 42px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      background: var(--alabaster);
+      color: var(--ink);
+      transition: all var(--transition);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--champagne);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(197, 163, 104, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    /* Wrapper to hold scrollable container and arrows */
+    .category-tabs-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    .scroll-arrow {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      z-index: 15;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      transition: all var(--transition);
+      padding: 0;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .scroll-arrow:hover {
+      background: var(--soft);
+      color: var(--ink);
+      border-color: var(--champagne);
+    }
+
+    .scroll-arrow-left {
+      left: 0;
+    }
+
+    .scroll-arrow-right {
+      right: 0;
+    }
+
+    /* Modern category tabs */
+    .category-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tab-btn {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .tab-btn:hover {
+      background: var(--line);
+      color: var(--ink);
+    }
+
+    .tab-btn.active {
+      background: var(--obsidian);
+      color: var(--white);
+      border-color: var(--obsidian);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Testimonies Grid */
+    .testimonies-grid {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 40px;
+    }
+
+    /* Premium Testimony Card */
+    .testimony-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .testimony-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--line);
+      transition: background var(--transition);
+    }
+
+    .testimony-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--champagne);
+    }
+
+    .testimony-card:hover::before {
+      background: var(--champagne);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .avatar-chip {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--soft);
+      border: 2px solid var(--champagne);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--champagne-dark);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .user-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .user-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .user-location {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .category-badge {
+      background: rgba(197, 163, 104, 0.15);
+      color: var(--champagne-dark);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+    }
+
+    .scripture-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .testimony-text {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 24px;
+      flex: 1;
+      position: relative;
+    }
+
+    .testimony-text::before {
+      content: "“";
+      font-size: 3.5rem;
+      color: rgba(197, 163, 104, 0.15);
+      position: absolute;
+      top: -24px;
+      left: -10px;
+      line-height: 1;
+      font-family: serif;
+    }
+
+    .card-footer {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted-light);
+    }
+
+    .verified-chip {
+      color: #10b981;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+    }
+
+    /* Form Call to Action block */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--charcoal), var(--obsidian));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-lg);
+      padding: 60px 40px;
+      text-align: center;
+      color: var(--white);
+      margin-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(197, 163, 104, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-title {
+      font-family: var(--heading);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-desc {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 650px;
+      margin: 0 auto 30px;
+    }
+
+    /* Modal Form Lightbox */
+    .modal-overlay {
+      background: rgba(5, 7, 12, 0.85);
+      backdrop-filter: blur(16px);
+      display: none;
+      inset: 0;
+      padding: 40px 20px;
+      position: fixed;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: modalFadeUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow: hidden;
+    }
+
+    @keyframes modalFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      padding: 30px;
+      border-bottom: 1px solid var(--line);
+      background: var(--alabaster);
+    }
+
+    .modal-title-text {
+      font-family: var(--heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .modal-desc-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .modal-close {
+      background: var(--soft);
+      border-radius: 50%;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.3rem;
+      height: 36px;
+      width: 36px;
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      transition: all var(--transition);
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-color: var(--champagne);
+    }
+
+    .modal-body {
+      padding: 30px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--alabaster);
+      transition: all var(--transition);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--champagne);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(197, 163, 104, 0.15);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      min-height: 50px;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      margin-top: 10px;
+    }
+
+    .consent-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 20px 0;
+      cursor: pointer;
+    }
+
+    .consent-checkbox {
+      accent-color: var(--champagne);
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .consent-label {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.4;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Tithe / Offer Giving Modal overlays */
+    .modal-close-giving {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      color: var(--white);
+      cursor: pointer;
+      font-size: 1.5rem;
+      height: 40px;
+      line-height: 1;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .modal-close-giving:hover {
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-color: var(--champagne);
+      transform: rotate(90deg);
+    }
+
+    .giving-modal-content {
+      background: var(--charcoal);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      padding: 40px;
+    }
+
+    /* Footer matches index.html exactly */
+    footer {
+      background: var(--obsidian-dark);
+      color: var(--white);
+      padding: 80px 0 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 48px;
+      grid-template-columns: 1.2fr 1fr 1fr;
+    }
+
+    .footer-brand p,
+    .footer-contact p,
+    .footer-social p,
+    .footer-line {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .footer-brand p {
+      margin-top: 20px;
+    }
+
+    .footer-grid h4 {
+      font-family: var(--heading);
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+      color: var(--champagne);
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.93rem;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--champagne);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-btn {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      color: var(--white);
+      display: inline-flex;
+      height: 38px;
+      justify-content: center;
+      transition: all var(--transition);
+      width: 38px;
+    }
+
+    .social-btn:hover {
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-color: var(--champagne);
+      transform: translateY(-3px);
+    }
+
+    .footer-divider {
+      background: rgba(255, 255, 255, 0.05);
+      height: 1px;
+      margin: 48px 0 32px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    #backToTop {
+      background: var(--champagne);
+      bottom: 24px;
+      color: var(--obsidian);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      opacity: 0;
+      position: fixed;
+      right: 24px;
+      transition: all var(--transition);
+      visibility: hidden;
+      width: 44px;
+      height: 44px;
+      z-index: 1000;
+      font-weight: bold;
+    }
+
+    #backToTop.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #backToTop:hover {
+      transform: translateY(-4px);
+      background: var(--champagne-light);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 980px) {
+
+      .nav-links-wrap,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: inline-flex;
+      }
+
+      .testimonies-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .testimonies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-wrapper {
+        max-width: 100%;
+      }
+
+      .category-tabs-wrapper {
+        padding: 0 24px; /* leaves room for arrows */
+      }
+
+      .scroll-arrow {
+        display: flex; /* Show only on mobile screen sizes */
+      }
+
+      .category-tabs {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+      }
+
+      .category-tabs::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+      }
+
+      .category-tabs .tab-btn {
+        flex-shrink: 0;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .testimonies-hero {
+        padding: 120px 0 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav id="navbar" aria-label="Primary navigation">
+    <a href="index.html" class="nav-brand" aria-label="Word Diet International Gospel Church home">
+      <span class="brand-icon">
+        <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+      </span>
+      <span>WDIGC</span>
+    </a>
+
+    <div class="nav-links-wrap">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <div class="nav-dropdown-wrapper">
+        <a href="#" class="nav-dropdown-trigger active" onclick="return false;">
+          Resources
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="events.html">Events</a>
+          <a href="testimonies.html">Testimonies</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="locate.html">Locate Church</a>
+          <a href="forms.html">Forms</a>
+        </div>
+      </div>
+      <a href="giving.html">Donate Now</a>
+      <a href="ministries.html">Ministries</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="events.html" class="btn btn-gold nav-cta">Join Us</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-controls="mobileNav"
+        aria-expanded="false" onclick="openMobileNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Panel -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-top">
+        <a href="index.html" class="nav-brand" onclick="closeMobileNav()">
+          <span class="brand-icon">
+            <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+          </span>
+          <span>WDIGC</span>
+        </a>
+        <button class="mobile-nav-close" type="button" aria-label="Close navigation"
+          onclick="closeMobileNav()">&times;</button>
+      </div>
+      <a href="index.html" onclick="closeMobileNav()">Home</a>
+      <a href="about.html" onclick="closeMobileNav()">About</a>
+
+      <!-- Collapsible Mobile Dropdown -->
+      <div class="mobile-dropdown-wrapper">
+        <button class="mobile-dropdown-btn active" onclick="toggleMobileDropdown(this)">
+          Resources
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="events.html" onclick="closeMobileNav()">Events</a>
+          <a href="testimonies.html" onclick="closeMobileNav()">Testimonies</a>
+          <a href="sermons.html" onclick="closeMobileNav()">Sermons</a>
+          <a href="locate.html" onclick="closeMobileNav()">Locate Church</a>
+          <a href="forms.html" onclick="closeMobileNav()">Forms</a>
+        </div>
+      </div>
+
+      <a href="giving.html" onclick="closeMobileNav()">Donate Now</a>
+      <a href="ministries.html" onclick="closeMobileNav()">Ministries</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="testimonies-hero">
+      <div class="container">
+        <span class="section-kicker">Wonders & Proofs</span>
+        <h1>Supernatural Proofs</h1>
+        <p>Read the raw, tangible proofs of God's power working through the Word, accurate prophecies, and deliverance
+          in the lives of believers worldwide.</p>
+      </div>
+    </section>
+
+    <!-- Filter Panel -->
+    <section class="filter-panel">
+      <div class="container">
+        <div class="filter-inner">
+          <div class="search-wrapper">
+            <span class="search-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </span>
+            <input type="text" class="search-input" id="searchInput"
+              placeholder="Search testimonies by keyword, name, location..." oninput="handleSearch(this.value)" />
+          </div>
+
+          <div class="category-tabs-wrapper">
+            <button class="scroll-arrow scroll-arrow-left" onclick="scrollTabs('left')" aria-label="Scroll left" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="category-tabs" id="categoryTabs">
+              <button class="tab-btn active" onclick="filterCategory('all')">All Breakthroughs</button>
+              <button class="tab-btn" onclick="filterCategory('healing')">Healings</button>
+              <button class="tab-btn" onclick="filterCategory('financial')">Financial</button>
+              <button class="tab-btn" onclick="filterCategory('prophecy')">Prophetic</button>
+              <button class="tab-btn" onclick="filterCategory('deliverance')">Deliverance</button>
+              <button class="tab-btn" onclick="filterCategory('career')">Career & Growth</button>
+            </div>
+            <button class="scroll-arrow scroll-arrow-right" onclick="scrollTabs('right')" aria-label="Scroll right" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonies Grid -->
+    <section class="section">
+      <div class="container">
+        <div class="testimonies-grid" id="testimoniesGrid">
+          <!-- Loaded Dynamically -->
+        </div>
+
+        <!-- Submit CTA Banner -->
+        <div class="cta-banner">
+          <h2 class="cta-title">Has God Done Something Marvelous for You?</h2>
+          <p class="cta-desc">Share your testimony! The Bible says we overcome the enemy by the blood of the Lamb and by
+            the word of our testimony. Your testimony is a seed for someone else's breakthrough.</p>
+          <button class="btn btn-gold" onclick="openFormModal()">Submit Your Testimony</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Submit Testimony Modal Form -->
+  <div class="modal-overlay" id="formModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeFormModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title-text">Submit Your Testimony</h3>
+        <p class="modal-desc-text">Document what the Lord has done under the ministry of WDIGC. All submissions are
+          verified before publishing.</p>
+      </div>
+      <div class="modal-body">
+        <form id="testimonyForm" onsubmit="submitTestimony(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tName">Your Full Name</label>
+              <input type="text" id="tName" class="form-control" placeholder="Sister / Brother..." required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tLocation">Your Location</label>
+              <input type="text" id="tLocation" class="form-control" placeholder="City, Country..." required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tCategory">Breakthrough Category</label>
+              <select id="tCategory" class="form-control" required>
+                <option value="healing">Miraculous Healing</option>
+                <option value="financial">Financial Breakthrough</option>
+                <option value="prophecy">Prophetic Accuracy</option>
+                <option value="deliverance">Family Deliverance</option>
+                <option value="career">Career & Spiritual Elevation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tScripture">Scripture Verse (Optional)</label>
+              <input type="text" id="tScripture" class="form-control" placeholder="e.g. Obadiah 1:17" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="tContent">Your Testimony</label>
+            <textarea id="tContent" class="form-control"
+              placeholder="Write the details of your miracle. Be as specific and detailed as possible..."
+              required></textarea>
+          </div>
+          <div class="consent-group">
+            <input type="checkbox" id="tConsent" class="consent-checkbox" required />
+            <label for="tConsent" class="consent-label">
+              I consent to Word Diet International Gospel Church publishing my testimony online to encourage and build the faith of others worldwide.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-gold submit-btn">Submit Testimony to WDIGC</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tithe and Offerings Giving Modal exactly matches other pages -->
+  <div class="modal-overlay" id="givingModal" aria-hidden="true">
+    <div class="modal-content giving-modal-content">
+      <button class="modal-close-giving" onclick="closeGivingModal()" aria-label="Close modal">&times;</button>
+      <h3 class="modal-title">Tithe & Offering</h3>
+      <p class="modal-desc" style="color: rgba(255, 255, 255, 0.65);">Support the work of WDIGC using our verified bank
+        accounts. Touch a card to copy the account number.</p>
+
+      <div class="bank-list">
+        <div class="bank-card" onclick="copyToClipboard('2038758839', this)">
+          <div class="bank-card-top">
+            <span class="bank-name">First Bank</span>
+            <button class="copy-btn" type="button"
+              style="background: var(--champagne); color: var(--obsidian); border: none; padding: 6px 12px; font-weight: 700; border-radius: var(--radius); font-size: 0.7rem; cursor: pointer;">
+              Copy Account
+            </button>
+          </div>
+          <div class="bank-acc" style="color: var(--white); font-size: 1.4rem; font-weight: 700; margin: 6px 0;">
+            2038758839</div>
+          <div class="bank-holder" style="color: rgba(255, 255, 255, 0.5); font-size: 0.8rem;">Word Diet International
+            Gospel Church</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <span class="brand-icon">
+              <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+            </span>
+            <span>WDIGC</span>
+          </a>
+          <p>Word Diet International Gospel Church is a prophetic global ministry mandated to raise a standard for God's
+            people through the spoken Word of God.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="ministries.html">Ministries</a>
+          <a href="index.html#events">Events</a>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact & Info</h4>
+          <p>📍 98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
+          <p style="margin-top: 12px;">📞 Apostle Omotosho Tope Joseph: +234 816 575 8740</p>
+          <div class="footer-social-icons">
+            <a href="https://www.youtube.com/@Apostleomotoshotopejoseph9963" class="social-btn" target="_blank"
+              aria-label="Youtube"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
+                <path
+                  d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.053 0 12 0 12s0 3.947.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.495 20.455 12 20.455 12 20.455s7.505 0 9.388-.511a3.002 3.002 0 0 0 2.11-2.107C24 15.947 24 12 24 12s0-3.947-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg></a>
+            <a href="https://www.facebook.com" class="social-btn" target="_blank" aria-label="Facebook"><svg
+                viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
+                <path
+                  d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
+              </svg></a>
+            <a href="https://www.instagram.com" class="social-btn" target="_blank" aria-label="Instagram"><svg
+                viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+              </svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p class="footer-line">&copy; 2026 Word Diet International Gospel Church. All rights reserved.</p>
+        <p class="footer-line">Raises generational leaders worldwide.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    &uarr;
+  </div>
+
+  <script>
+    // Authentic WDIGC testimonies dataset
+    const testimoniesData = [
+      {
+        id: 1,
+        name: "Sister Evelyn Henshaw",
+        location: "Calabar, Cross River State",
+        category: "healing",
+        categoryText: "",
+        scripture: "",
+        text: "For five years, I suffered from severe spinal compression. I was scheduled for a risky surgery, but during the Midweek Prophetic Encounter Service, Apostle OTJ called out my case accurately. He laid hands on me, and immediately I felt a warm sensation course through my spine. Today, I am completely healed, walking, and running without pain!",
+        initials: "EH",
+        date: "2 weeks ago"
+      },
+      {
+        id: 2,
+        name: "Brother Chidi Okafor",
+        location: "Port Harcourt, Rivers State",
+        category: "financial",
+        categoryText: "",
+        scripture: "",
+        text: "My logistics business was on the verge of bankruptcy with heavy debts. During the End-of-Year Covenant Gathering, Apostle declared that God would cause a supernatural shift. Two weeks later, I received an unexpected federal contract that wiped out all my debts and expanded our fleet by 12 new trucks!",
+        initials: "CO",
+        date: "1 month ago"
+      },
+      {
+        id: 3,
+        name: "Mother Patricia Thomas",
+        location: "Houston, Texas, USA",
+        category: "prophecy",
+        categoryText: "",
+        scripture: "",
+        text: "Apostle OTJ sent a direct prophetic word regarding my family in Nigeria, warning us of a planned highway attack on a specific date and instructing us to cancel all travel. We obeyed, and on that very day, the commercial vehicle my children were originally booked to travel in was attacked, but none of my children were there. God saved my family through his prophet!",
+        initials: "PT",
+        date: "3 weeks ago"
+      },
+      {
+        id: 4,
+        name: "Sister Sarah Mensah",
+        location: "Accra, Ghana",
+        category: "deliverance",
+        categoryText: "",
+        scripture: "",
+        text: "In my family, academic and marital delays were a painful pattern. After attending the WDIGC 14-Day Power Fasting program, the yoke was broken. Within six months, I was awarded a fully funded PhD scholarship to Europe, and my two elder siblings got married to their God-ordained spouses.",
+        initials: "SM",
+        date: "3 months ago"
+      },
+      {
+        id: 5,
+        name: "Brother Samuel Ademola",
+        location: "Lagos, Nigeria",
+        category: "healing",
+        categoryText: "",
+        scripture: "",
+        text: "My left eye had been completely blind for two years due to glaucoma damage. During a prayer session on YouTube, Apostle commanded blind eyes to open. I touched my eye as he prayed, and suddenly light broke in. I can now see clearly, read, and write with both eyes!",
+        initials: "SA",
+        date: "1 month ago"
+      },
+      {
+        id: 6,
+        name: "Brother Marcus van der Merwe",
+        location: "Cape Town, South Africa",
+        category: "career",
+        categoryText: "",
+        scripture: "",
+        text: "Through constant feeding on the Word Diet teachings, my spiritual life matured deeply. I learned how to stand on the Word. In my career as a clinical researcher, I was promoted three levels higher to Lead Director, bypassing years of standard requirements.",
+        initials: "MM",
+        date: "2 months ago"
+      }
+    ];
+
+    let activeCategory = "all";
+    let searchQuery = "";
+    const grid = document.getElementById("testimoniesGrid");
+
+    function renderTestimonies() {
+      // Filter logic
+      const filtered = testimoniesData.filter(t => {
+        const matchesCategory = activeCategory === "all" || t.category === activeCategory;
+        const query = searchQuery.toLowerCase();
+        const matchesSearch = t.name.toLowerCase().includes(query) ||
+          t.location.toLowerCase().includes(query) ||
+          t.text.toLowerCase().includes(query) ||
+          (t.categoryText && t.categoryText.toLowerCase().includes(query));
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 60px 0; color: var(--muted);">
+            <p style="font-size: 1.2rem; font-weight: 600;">No testimonies found matching your search.</p>
+            <p style="margin-top: 8px;">Try selecting another category or typing another keyword.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(t => {
+        return `
+          <article class="testimony-card">
+            <div class="card-top">
+              <div class="avatar-chip">${t.initials}</div>
+              <div class="user-info">
+                <h3 class="user-name">${t.name}</h3>
+                <p class="user-location">📍 ${t.location}</p>
+              </div>
+            </div>
+            ${(t.categoryText || t.scripture) ? `
+            <div class="badge-row">
+              ${t.categoryText ? `<span class="category-badge">${t.categoryText}</span>` : ""}
+              ${t.scripture ? `<span class="scripture-tag">📖 ${t.scripture}</span>` : ""}
+            </div>
+            ` : ""}
+            <div class="testimony-text">
+              ${t.text}
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function filterCategory(cat) {
+      activeCategory = cat;
+
+      // Update tab buttons style
+      const tabBtns = document.querySelectorAll(".category-tabs .tab-btn");
+      tabBtns.forEach(btn => {
+        const onClickAttr = btn.getAttribute("onclick");
+        if (onClickAttr.includes(`'${cat}'`)) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+
+      renderTestimonies();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val;
+      renderTestimonies();
+    }
+
+    // Modal Control
+    function openFormModal() {
+      document.getElementById("formModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeFormModal() {
+      document.getElementById("formModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function openGivingModal() {
+      document.getElementById("givingModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeGivingModal() {
+      document.getElementById("givingModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    // Navigation Drawer
+    const mobileNav = document.getElementById("mobileNav");
+    const hamburger = document.getElementById("hamburger");
+    const navbar = document.getElementById("navbar");
+    const backToTop = document.getElementById("backToTop");
+
+    function openMobileNav() {
+      mobileNav.classList.add("open");
+      mobileNav.setAttribute("aria-hidden", "false");
+      hamburger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMobileNav() {
+      mobileNav.classList.remove("open");
+      mobileNav.setAttribute("aria-hidden", "true");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    function toggleMobileDropdown(btn) {
+      btn.classList.toggle("active");
+      const content = btn.nextElementSibling;
+      content.classList.toggle("open");
+    }
+
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = "Copied!";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.classList.remove("copied");
+        }, 2000);
+      });
+    }
+
+    // Submit Testimony Form
+    function submitTestimony(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("tName").value;
+      const location = document.getElementById("tLocation").value;
+      const category = document.getElementById("tCategory").value;
+      const categoryText = document.getElementById("tCategory").options[document.getElementById("tCategory").selectedIndex].text;
+      const scripture = document.getElementById("tScripture").value;
+      const text = document.getElementById("tContent").value;
+
+      // Extract Initials
+      const initials = name.split(" ").map(n => n[0]).join("").substring(0, 2).toUpperCase() || "T";
+
+      // Append to local testimonies
+      testimoniesData.unshift({
+        id: testimoniesData.length + 1,
+        name: name,
+        location: location,
+        category: category,
+        categoryText: categoryText,
+        scripture: scripture,
+        text: text,
+        initials: initials,
+        date: "Just now"
+      });
+
+      // Clear Form and close modal
+      document.getElementById("testimonyForm").reset();
+      closeFormModal();
+
+      // Re-render Grid with category set to All
+      filterCategory("all");
+
+      // Show instant feedback alert
+      alert("Hallelujah! Your testimony has been submitted successfully for verification. Thank you for declaring the works of God!");
+    }
+
+    window.addEventListener("scroll", function () {
+      const scrollPos = window.scrollY;
+      navbar.classList.toggle("is-scrolled", scrollPos > 60);
+      backToTop.classList.toggle("visible", scrollPos > 300);
+    });
+
+    mobileNav.addEventListener("click", function (event) {
+      if (event.target === mobileNav) {
+        closeMobileNav();
+      }
+    });
+
+    window.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMobileNav();
+        closeFormModal();
+      }
+    });
+
+    function scrollTabs(direction) {
+      const tabs = document.getElementById("categoryTabs");
+      const scrollAmount = 150;
+      if (direction === 'left') {
+        tabs.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        tabs.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    // App Initialization
+    renderTestimonies();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms & Registrations | Word Diet International Gospel Church (WDIGC)</title>
+  <meta name="description"
+    content="Register for water baptism, submit baby dedication requests, book prophetic counseling sessions, or join the WDIGC volunteer workforce." />
+  <link rel="icon" type="image/png" href="img/WDIGCPNG.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --obsidian: #0b0f19;
+      --obsidian-dark: #070910;
+      --champagne: #c5a368;
+      --champagne-light: #d6b880;
+      --champagne-dark: #a8854c;
+      --white: #ffffff;
+      --alabaster: #f9f9fb;
+      --soft: #f3f3f6;
+      --ink: #111520;
+      --muted: #646b7c;
+      --muted-light: #a6a9b0;
+      --line: #e2e4e8;
+      --charcoal: #171d2b;
+      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --radius: 8px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+      --font: 'Outfit', sans-serif;
+      --heading: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--alabaster);
+      color: var(--ink);
+      font-family: var(--font);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .btn {
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 600;
+      gap: 8px;
+      justify-content: center;
+      padding: 14px 28px;
+      transition: all var(--transition);
+    }
+
+    .btn-gold {
+      background: var(--champagne);
+      color: var(--obsidian);
+    }
+
+    .btn-gold:hover {
+      background: var(--champagne-light);
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      height: 20px;
+      justify-content: space-between;
+      width: 26px;
+    }
+
+    .hamburger span {
+      background: var(--white);
+      height: 2px;
+      transition: all var(--transition);
+      width: 100%;
+    }
+
+    /* Navbar styling */
+    #navbar {
+      background: var(--obsidian);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      transition: all var(--transition);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    #navbar.is-scrolled {
+      padding: 14px 24px;
+      background: var(--obsidian-dark);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--heading);
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links-wrap {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links-wrap a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links-wrap a:hover,
+    .nav-links-wrap a.active {
+      color: var(--champagne);
+    }
+
+    /* Resources Dropdown menu styles */
+    .nav-dropdown-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color var(--transition);
+      padding-bottom: 4px;
+    }
+
+    .nav-dropdown-trigger:hover,
+    .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
+      color: var(--champagne);
+    }
+
+    .dropdown-chevron {
+      transition: transform var(--transition);
+    }
+
+    .nav-dropdown-wrapper:hover .dropdown-chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--white);
+      min-width: 220px;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      padding: 12px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition);
+      z-index: 150;
+      border: 1px solid var(--line);
+    }
+
+    .nav-dropdown-wrapper:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 24px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all var(--transition);
+    }
+
+    .nav-dropdown-menu a:hover {
+      color: var(--champagne-dark);
+      background: var(--soft);
+      padding-left: 28px;
+    }
+
+    .nav-dropdown-menu a.active {
+      color: var(--champagne);
+      background: var(--soft);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-cta {
+      padding: 10px 20px;
+      font-size: 0.88rem;
+    }
+
+    /* Mobile Nav Panel */
+    .mobile-nav {
+      background: rgba(5, 7, 12, 0.6);
+      backdrop-filter: blur(12px);
+      display: flex;
+      height: 100vh;
+      justify-content: flex-end;
+      left: 0;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      transition: all 0.4s ease;
+      visibility: hidden;
+      width: 100vw;
+      z-index: 200;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-panel {
+      background: var(--obsidian-dark);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-width: 320px;
+      padding: 40px 30px;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+    }
+
+    .mobile-nav.open .mobile-nav-panel {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-top {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
+      width: 100%;
+    }
+
+    .mobile-nav-close {
+      background: transparent;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .mobile-nav a {
+      color: rgba(255, 255, 255, 0.7);
+      font-family: var(--heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      transition: color var(--transition);
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      color: var(--champagne);
+    }
+
+    /* Mobile Dropdown items */
+    .mobile-dropdown-wrapper {
+      margin-bottom: 24px;
+    }
+
+    .mobile-dropdown-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      text-align: left;
+      padding: 0;
+    }
+
+    .mobile-dropdown-btn svg {
+      transition: transform var(--transition);
+    }
+
+    .mobile-dropdown-btn.active {
+      color: var(--champagne);
+    }
+
+    .mobile-dropdown-btn.active svg {
+      transform: rotate(180deg);
+    }
+
+    .mobile-dropdown-content {
+      display: none;
+      flex-direction: column;
+      padding-left: 20px;
+      border-left: 2px solid var(--champagne-dark);
+      margin-top: 15px;
+      gap: 16px;
+    }
+
+    .mobile-dropdown-content.open {
+      display: flex;
+    }
+
+    .mobile-dropdown-content a {
+      font-size: 1rem;
+      margin-bottom: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hero Styling */
+    .forms-hero {
+      background: linear-gradient(135deg, var(--obsidian-dark), var(--obsidian));
+      color: var(--white);
+      padding: 180px 0 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .forms-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(197, 163, 104, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .forms-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .forms-hero .section-kicker {
+      align-items: center;
+      color: var(--champagne);
+      display: inline-flex;
+      font-size: 0.8rem;
+      font-weight: 700;
+      gap: 12px;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      justify-content: center;
+    }
+
+    .forms-hero h1 {
+      font-family: var(--heading);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .forms-hero p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Portal Layout Grid */
+    .portal-section {
+      background: var(--white);
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Left Select Sidebar */
+    .forms-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-selector-pill {
+      background: var(--alabaster);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      cursor: pointer;
+      text-align: left;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-selector-pill:hover {
+      background: var(--soft);
+      border-color: var(--champagne);
+      transform: translateY(-2px);
+    }
+
+    .form-selector-pill.active {
+      background: var(--charcoal);
+      color: var(--white);
+      border-color: var(--charcoal);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-selector-pill::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--champagne);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .form-selector-pill.active::before {
+      opacity: 1;
+    }
+
+    .form-selector-pill h3 {
+      font-family: var(--heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .form-selector-pill p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .form-selector-pill.active p {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Right Focal Form Box */
+    .active-form-card {
+      background: var(--alabaster);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: var(--shadow-soft);
+      min-height: 550px;
+    }
+
+    .form-header-block {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+
+    .form-header-block h2 {
+      font-family: var(--heading);
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .form-header-block p {
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    /* Form Fields Styling */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--white);
+      transition: all var(--transition);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--champagne);
+      box-shadow: 0 0 0 3px rgba(197, 163, 104, 0.15);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      min-height: 52px;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      margin-top: 15px;
+    }
+
+    .consent-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 20px 0;
+      cursor: pointer;
+    }
+
+    .consent-checkbox {
+      accent-color: var(--champagne);
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .consent-label {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.4;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Modal Form Lightbox overlays */
+    .modal-overlay {
+      background: rgba(5, 7, 12, 0.85);
+      backdrop-filter: blur(16px);
+      display: none;
+      inset: 0;
+      padding: 40px 20px;
+      position: fixed;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: modalFadeUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow: hidden;
+    }
+
+    @keyframes modalFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      padding: 30px;
+      border-bottom: 1px solid var(--line);
+      background: var(--alabaster);
+    }
+
+    .modal-title {
+      font-family: var(--heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .modal-close-giving {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      color: var(--white);
+      cursor: pointer;
+      font-size: 1.5rem;
+      height: 40px;
+      line-height: 1;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .modal-close-giving:hover {
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-color: var(--champagne);
+      transform: rotate(90deg);
+    }
+
+    .giving-modal-content {
+      background: var(--charcoal);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      padding: 40px;
+    }
+
+    /* Receipt Ticket Visual styling */
+    .receipt-wrapper {
+      padding: 30px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .wdigc-ticket {
+      width: 100%;
+      max-width: 420px;
+      background: linear-gradient(135deg, var(--charcoal), var(--obsidian));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      color: var(--white);
+      position: relative;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .wdigc-ticket::after,
+    .wdigc-ticket::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      background: var(--white);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .wdigc-ticket::before {
+      left: -10px;
+    }
+
+    .wdigc-ticket::after {
+      right: -10px;
+    }
+
+    .ticket-dashed-line {
+      border-top: 1px dashed rgba(255, 255, 255, 0.15);
+      margin: 20px 0;
+      width: 100%;
+    }
+
+    .ticket-brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .ticket-brand span {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--champagne);
+    }
+
+    .ticket-code {
+      font-family: monospace;
+      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 10px;
+      border-radius: var(--radius);
+      color: var(--muted-light);
+    }
+
+    .ticket-user h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .ticket-user p {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .ticket-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .ticket-meta h4 {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 2px;
+    }
+
+    .ticket-meta p {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .ticket-footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted-light);
+    }
+
+    .modal-close-btn {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.3rem;
+      height: 36px;
+      width: 36px;
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      z-index: 10;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-color: var(--champagne);
+    }
+
+    /* Dynamic Scripture Blessing */
+    .scripture-blessing-box {
+      background: rgba(197, 163, 104, 0.1);
+      border-left: 3px solid var(--champagne);
+      padding: 16px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .scripture-blessing-box p {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--champagne-light);
+      line-height: 1.4;
+    }
+
+    .scripture-blessing-box span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Footer styles */
+    footer {
+      background: var(--obsidian-dark);
+      color: var(--white);
+      padding: 80px 0 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 48px;
+      grid-template-columns: 1.2fr 1fr 1fr;
+    }
+
+    .footer-brand p,
+    .footer-contact p,
+    .footer-social p,
+    .footer-line {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .footer-brand p {
+      margin-top: 20px;
+    }
+
+    .footer-grid h4 {
+      font-family: var(--heading);
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+      color: var(--champagne);
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.93rem;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--champagne);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-btn {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      color: var(--white);
+      display: inline-flex;
+      height: 38px;
+      justify-content: center;
+      transition: all var(--transition);
+      width: 38px;
+    }
+
+    .social-btn:hover {
+      background: var(--champagne);
+      color: var(--obsidian);
+      border-color: var(--champagne);
+      transform: translateY(-3px);
+    }
+
+    .footer-divider {
+      background: rgba(255, 255, 255, 0.05);
+      height: 1px;
+      margin: 48px 0 32px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    #backToTop {
+      background: var(--champagne);
+      bottom: 24px;
+      color: var(--obsidian);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      opacity: 0;
+      position: fixed;
+      right: 24px;
+      transition: all var(--transition);
+      visibility: hidden;
+      width: 44px;
+      height: 44px;
+      z-index: 1000;
+      font-weight: bold;
+    }
+
+    #backToTop.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #backToTop:hover {
+      transform: translateY(-4px);
+      background: var(--champagne-light);
+    }
+
+    /* Swipeable selector bar for mobile */
+    .mobile-selector-wrapper {
+      display: none;
+      position: relative;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .scroll-arrow {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+      z-index: 15;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      transition: all var(--transition);
+      padding: 0;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .scroll-arrow:hover {
+      background: var(--soft);
+      color: var(--ink);
+      border-color: var(--champagne);
+    }
+
+    .scroll-arrow-left {
+      left: 0;
+    }
+
+    .scroll-arrow-right {
+      right: 0;
+    }
+
+    .mobile-selector-tabs {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      min-width: 0;
+      padding: 4px 0;
+    }
+
+    .mobile-selector-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-pill {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-family: var(--font);
+      outline: none;
+    }
+
+    .mobile-pill.active {
+      background: var(--charcoal);
+      color: var(--white);
+      border-color: var(--charcoal);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 980px) {
+      .nav-links-wrap,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: inline-flex;
+      }
+
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .forms-sidebar {
+        display: none; /* Hide desktop vertical sidebar */
+      }
+
+      .mobile-selector-wrapper {
+        display: flex; /* Show touch horizontal swiper */
+        padding: 0;
+      }
+
+      .mobile-selector-tabs {
+        padding: 4px 40px; /* leaves room for arrows */
+      }
+
+      .scroll-arrow-left {
+        left: 8px;
+      }
+
+      .scroll-arrow-right {
+        right: 8px;
+      }
+
+      .scroll-arrow {
+        display: flex;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        padding: 60px 0;
+      }
+
+      .forms-hero {
+        padding: 120px 0 60px;
+      }
+
+      .active-form-card {
+        padding: 30px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 32px); /* narrower margins for compact screens */
+      }
+
+      .active-form-card {
+        padding: 24px 20px; /* compact padding for narrow screens */
+        min-height: auto;
+      }
+
+      .form-header-block {
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+      }
+
+      .form-header-block h2 {
+        font-size: 1.52rem;
+      }
+
+      .form-header-block p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .modal-overlay {
+        padding: 20px 12px;
+      }
+
+      .modal-content {
+        max-height: 95vh;
+      }
+
+      .modal-header {
+        padding: 20px;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+      }
+
+      .receipt-wrapper {
+        padding: 15px;
+      }
+
+      .wdigc-ticket {
+        padding: 20px 16px;
+        margin-bottom: 16px;
+      }
+
+      .ticket-user h3 {
+        font-size: 1.15rem;
+      }
+
+      .ticket-meta p {
+        font-size: 0.85rem;
+      }
+
+      .scripture-blessing-box {
+        padding: 12px;
+        margin-top: 12px;
+      }
+
+      .scripture-blessing-box p {
+        font-size: 0.82rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav id="navbar" aria-label="Primary navigation">
+    <a href="index.html" class="nav-brand" aria-label="Word Diet International Gospel Church home">
+      <span class="brand-icon">
+        <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+      </span>
+      <span>WDIGC</span>
+    </a>
+
+    <div class="nav-links-wrap">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <div class="nav-dropdown-wrapper">
+        <a href="#" class="nav-dropdown-trigger active" onclick="return false;">
+          Resources
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="events.html">Events</a>
+          <a href="testimonies.html">Testimonies</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="locate.html">Locate Church</a>
+          <a href="forms.html" class="active">Forms</a>
+        </div>
+      </div>
+      <a href="giving.html">Donate Now</a>
+      <a href="ministries.html">Ministries</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="events.html" class="btn btn-gold nav-cta">Join Us</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-controls="mobileNav"
+        aria-expanded="false" onclick="openMobileNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Panel -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-top">
+        <a href="index.html" class="nav-brand" onclick="closeMobileNav()">
+          <span class="brand-icon">
+            <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+          </span>
+          <span>WDIGC</span>
+        </a>
+        <button class="mobile-nav-close" type="button" aria-label="Close navigation"
+          onclick="closeMobileNav()">&times;</button>
+      </div>
+      <a href="index.html" onclick="closeMobileNav()">Home</a>
+      <a href="about.html" onclick="closeMobileNav()">About</a>
+
+      <!-- Collapsible Mobile Dropdown -->
+      <div class="mobile-dropdown-wrapper">
+        <button class="mobile-dropdown-btn active" onclick="toggleMobileDropdown(this)">
+          Resources
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-dropdown-content open">
+          <a href="events.html" onclick="closeMobileNav()">Events</a>
+          <a href="testimonies.html" onclick="closeMobileNav()">Testimonies</a>
+          <a href="sermons.html" onclick="closeMobileNav()">Sermons</a>
+          <a href="locate.html" onclick="closeMobileNav()">Locate Church</a>
+          <a href="forms.html" class="active" onclick="closeMobileNav()">Forms</a>
+        </div>
+      </div>
+
+      <a href="giving.html" onclick="closeMobileNav()">Donate Now</a>
+      <a href="ministries.html" onclick="closeMobileNav()">Ministries</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="forms-hero">
+      <div class="container">
+        <span class="section-kicker">Grow With Us</span>
+        <h1>Kingdom Registrations</h1>
+        <p>Register for foundation classes, book prophetic counseling, schedule baby dedications, or volunteer in WDIGC departments.</p>
+      </div>
+    </section>
+
+    <!-- Portal Section -->
+    <section class="section portal-section">
+      <div class="container">
+        
+        <div class="portal-grid">
+          
+          <!-- Desktop Vertical Sidebar Selector -->
+          <div class="forms-sidebar">
+            <button class="form-selector-pill active" onclick="switchForm('counseling')">
+              <h3>Prophetic Counseling</h3>
+              <p>Book a direct prayer session with Apostle Omotosho Tope Joseph (OTJ).</p>
+            </button>
+            <button class="form-selector-pill" onclick="switchForm('volunteer')">
+              <h3>Workforce Application</h3>
+              <p>Express interest in volunteering with Choir, Media, Protocol, and Ushers.</p>
+            </button>
+            <button class="form-selector-pill" onclick="switchForm('baptism')">
+              <h3>Baptism & Foundation</h3>
+              <p>Take the next step in public water immersion and kingdom growth classes.</p>
+            </button>
+            <button class="form-selector-pill" onclick="switchForm('baby')">
+              <h3>Baby Dedication</h3>
+              <p>Schedule a prophetic dedication ceremony for your child on Sunday.</p>
+            </button>
+          </div>
+
+          <!-- Mobile Swipe Pill Bar Selector -->
+          <div class="mobile-selector-wrapper">
+            <button class="scroll-arrow scroll-arrow-left" onclick="scrollPills('left')" aria-label="Scroll left" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="mobile-selector-tabs" id="mobilePills">
+              <button class="mobile-pill active" onclick="switchForm('counseling')">Prophetic Counseling</button>
+              <button class="mobile-pill" onclick="switchForm('volunteer')">Workforce Application</button>
+              <button class="mobile-pill" onclick="switchForm('baptism')">Baptism & Foundation</button>
+              <button class="mobile-pill" onclick="switchForm('baby')">Baby Dedication</button>
+            </div>
+            <button class="scroll-arrow scroll-arrow-right" onclick="scrollPills('right')" aria-label="Scroll right" type="button">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+          <!-- Active Form Content Display Card -->
+          <div class="active-form-card" id="formContentCard">
+            <!-- Rendered Dynamically by JS -->
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Submission Receipt Pass Overlay -->
+  <div class="modal-overlay" id="receiptModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeReceiptModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title">Submission Confirmed!</h3>
+      </div>
+      <div class="receipt-wrapper">
+        <div class="wdigc-ticket" id="receiptTicket">
+          <!-- Populated by JS -->
+        </div>
+        <div class="scripture-blessing-box" id="scriptureBlessing">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tithe and Offerings Giving Modal -->
+  <div class="modal-overlay" id="givingModal" aria-hidden="true">
+    <div class="modal-content giving-modal-content">
+      <button class="modal-close-giving" onclick="closeGivingModal()" aria-label="Close modal">&times;</button>
+      <h3 class="modal-title">Tithe & Offering</h3>
+      <p class="modal-desc" style="color: rgba(255, 255, 255, 0.65);">Support the work of WDIGC using our verified bank accounts. Touch a card to copy the account number.</p>
+      
+      <div class="bank-list">
+        <div class="bank-card" onclick="copyToClipboard('2038758839', this)">
+          <div class="bank-card-top">
+            <span class="bank-name" style="color: var(--champagne); font-weight: 800; font-size: 0.9rem;">First Bank</span>
+            <button class="copy-btn" type="button" style="background: var(--champagne); color: var(--obsidian); border: none; padding: 6px 12px; font-weight: 700; border-radius: var(--radius); font-size: 0.7rem; cursor: pointer;">
+              Copy Account
+            </button>
+          </div>
+          <div class="bank-acc" style="color: var(--white); font-size: 1.4rem; font-weight: 700; margin: 6px 0;">2038758839</div>
+          <div class="bank-holder" style="color: rgba(255, 255, 255, 0.5); font-size: 0.8rem;">Word Diet International Gospel Church</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <span class="brand-icon">
+              <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+            </span>
+            <span>WDIGC</span>
+          </a>
+          <p>Word Diet International Gospel Church is a prophetic global ministry mandated to raise a standard for God's people through the spoken Word of God.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="index.html#ministries">Ministries</a>
+          <a href="index.html#events">Events</a>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact & Info</h4>
+          <p>📍 98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
+          <p style="margin-top: 12px;">📞 Apostle Omotosho Tope Joseph: +234 816 575 8740</p>
+          <div class="footer-social-icons">
+            <a href="https://www.youtube.com/@Apostleomotoshotopejoseph9963" class="social-btn" target="_blank" aria-label="Youtube"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.053 0 12 0 12s0 3.947.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.495 20.455 12 20.455 12 20.455s7.505 0 9.388-.511a3.002 3.002 0 0 0 2.11-2.107C24 15.947 24 12 24 12s0-3.947-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://www.facebook.com" class="social-btn" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+            <a href="https://www.instagram.com" class="social-btn" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p class="footer-line">&copy; 2026 Word Diet International Gospel Church. All rights reserved.</p>
+        <p class="footer-line">Raises generational leaders worldwide.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    &uarr;
+  </div>
+
+  <script>
+    // Navigation Drawer
+    const mobileNav = document.getElementById("mobileNav");
+    const hamburger = document.getElementById("hamburger");
+    const navbar = document.getElementById("navbar");
+    const backToTop = document.getElementById("backToTop");
+
+    function openMobileNav() {
+      mobileNav.classList.add("open");
+      mobileNav.setAttribute("aria-hidden", "false");
+      hamburger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMobileNav() {
+      mobileNav.classList.remove("open");
+      mobileNav.setAttribute("aria-hidden", "true");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    function toggleMobileDropdown(btn) {
+      btn.classList.toggle("active");
+      const content = btn.nextElementSibling;
+      content.classList.toggle("open");
+    }
+
+    function openGivingModal() {
+      document.getElementById("givingModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeGivingModal() {
+      document.getElementById("givingModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = "Copied!";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.classList.remove("copied");
+        }, 2000);
+      });
+    }
+
+    // Horizontal scroll bar for mobile selector
+    function scrollPills(direction) {
+      const pills = document.getElementById("mobilePills");
+      const scrollAmount = 150;
+      if (direction === 'left') {
+        pills.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        pills.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    // Dynamic Form Switchboard Engine
+    const formsContent = {
+      counseling: {
+        title: "Prophetic Counseling & Prayer Request",
+        desc: "Schedule a virtual or physical counseling session with Apostle Omotosho Tope Joseph.",
+        html: `
+          <form id="counselingForm" onsubmit="submitFormPort(event, 'counseling')">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cName">Your Full Name</label>
+                <input type="text" id="cName" class="form-control" placeholder="Sister / Brother..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cEmail">Email Address</label>
+                <input type="email" id="cEmail" class="form-control" placeholder="yourname@gmail.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cPhone">Phone Number</label>
+                <input type="tel" id="cPhone" class="form-control" placeholder="+234..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cType">Counseling Session Type</label>
+                <select id="cType" class="form-control" required>
+                  <option value="Prophetic Guidance">Prophetic Guidance / Deliverance</option>
+                  <option value="Family Counseling">Family Deliverance Counseling</option>
+                  <option value="Healing / Health Prayer">Healing / Deliverance Prayer Session</option>
+                  <option value="General Ministerial Prayer">General Intercession</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cRequest">State Your Prayer Request / Counseling Details</label>
+              <textarea id="cRequest" class="form-control" placeholder="Provide as much details as possible so the Apostle and intercessors can align with you..." required></textarea>
+            </div>
+            <div class="consent-group">
+              <input type="checkbox" id="cConsent" class="consent-checkbox" required />
+              <label for="cConsent" class="consent-label">I declare that the details provided are true and I expect a supernatural visitation.</label>
+            </div>
+            <button type="submit" class="btn btn-gold submit-btn">Submit Booking to WDIGC</button>
+          </form>
+        `
+      },
+      volunteer: {
+        title: "Workforce & Volunteer Registration",
+        desc: "Express interest in volunteering with WDIGC Departments and Connect Centres.",
+        html: `
+          <form id="volunteerForm" onsubmit="submitFormPort(event, 'volunteer')">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="vName">Your Full Name</label>
+                <input type="text" id="vName" class="form-control" placeholder="First Name and Surname..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vEmail">Email Address</label>
+                <input type="email" id="vEmail" class="form-control" placeholder="yourname@gmail.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="vPhone">Phone Number</label>
+                <input type="tel" id="vPhone" class="form-control" placeholder="+234..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vDept">Select Workforce Department</label>
+                <select id="vDept" class="form-control" required>
+                  <option value="Judah Choir">Judah Choir (Worship & Music)</option>
+                  <option value="Media & Sound Tech">Media, Sound, & Tech (Livestream/Cameras)</option>
+                  <option value="Ushers & Greeters">Ushers & Greeters (Hospitality)</option>
+                  <option value="Protocol & Security">Protocol & Security (Sanctuary Guards)</option>
+                  <option value="Evangelism / Outreaches">Evangelism & Outreaches</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vReason">Why do you want to join this department?</label>
+              <textarea id="vReason" class="form-control" placeholder="List any relevant experience, musical skills, tech skills, or personal convictions..." required></textarea>
+            </div>
+            <div class="consent-group">
+              <input type="checkbox" id="vConsent" class="consent-checkbox" required />
+              <label for="vConsent" class="consent-label">I agree to submit to the spiritual leadership of WDIGC and abide by all workforce rules.</label>
+            </div>
+            <button type="submit" class="btn btn-gold submit-btn">Submit Workforce Application</button>
+          </form>
+        `
+      },
+      baptism: {
+        title: "Water Baptism & Discipleship Foundation Class",
+        desc: "Take the next step in water immersion and kingdom discipleship.",
+        html: `
+          <form id="baptismForm" onsubmit="submitFormPort(event, 'baptism')">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="bName">Your Full Name</label>
+                <input type="text" id="bName" class="form-control" placeholder="Sister / Brother..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="bEmail">Email Address</label>
+                <input type="email" id="bEmail" class="form-control" placeholder="yourname@gmail.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="bPhone">Phone Number</label>
+                <input type="tel" id="bPhone" class="form-control" placeholder="+234..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="bLevel">Foundation Class Level</label>
+                <select id="bLevel" class="form-control" required>
+                  <option value="Water Baptism Immersion">Water Baptism Immersion Prep</option>
+                  <option value="New Converts Discipleship">New Converts Class (Level 1)</option>
+                  <option value="Kingdom Workers Training">Kingdom Workers School (Level 2)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="bMessage">Share your salvation testimony briefly</label>
+              <textarea id="bMessage" class="form-control" placeholder="Tell us when and how you gave your life to Jesus Christ..." required></textarea>
+            </div>
+            <div class="consent-group">
+              <input type="checkbox" id="bConsent" class="consent-checkbox" required />
+              <label for="bConsent" class="consent-label">I confess Jesus Christ as my personal Lord and Saviour and request public water immersion.</label>
+            </div>
+            <button type="submit" class="btn btn-gold submit-btn">Submit Registration</button>
+          </form>
+        `
+      },
+      baby: {
+        title: "Baby Dedication Ceremony",
+        desc: "Schedule a prophetic baby dedication ceremony during our Sunday Word Celebration service.",
+        html: `
+          <form id="babyForm" onsubmit="submitFormPort(event, 'baby')">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="babyName">Child's Full Name</label>
+                <input type="text" id="babyName" class="form-control" placeholder="Name of child..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="babyDate">Child's Date of Birth</label>
+                <input type="date" id="babyDate" class="form-control" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fatherName">Father's Name</label>
+                <input type="text" id="fatherName" class="form-control" placeholder="Brother..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="motherName">Mother's Name</label>
+                <input type="text" id="motherName" class="form-control" placeholder="Sister..." required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="pPhone">Contact Phone Number</label>
+                <input type="tel" id="pPhone" class="form-control" placeholder="+234..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="dedicationDate">Requested Sunday Date</label>
+                <input type="date" id="dedicationDate" class="form-control" required />
+              </div>
+            </div>
+            <div class="consent-group">
+              <input type="checkbox" id="babyConsent" class="consent-checkbox" required />
+              <label for="babyConsent" class="consent-label">We promise to raise this child in the fear, instruction, and truth of the Spoken Word of God.</label>
+            </div>
+            <button type="submit" class="btn btn-gold submit-btn">Submit Dedication Request</button>
+          </form>
+        `
+      }
+    };
+
+    const categoriesBlessings = {
+      counseling: {
+        scripture: "📖 Isaiah 65:24",
+        blessing: "And it shall come to pass, that before they call, I will answer; and while they are yet speaking, I will hear. The Prophet's mantle is set for your breakthrough!"
+      },
+      volunteer: {
+        scripture: "📖 Colossians 3:23-24",
+        blessing: "And whatsoever ye do, do it heartily, as to the Lord, and not unto men; Knowing that of the Lord ye shall receive the reward of the inheritance: for ye serve the Lord Christ."
+      },
+      baptism: {
+        scripture: "📖 Romans 6:4",
+        blessing: "Therefore we are buried with him by baptism into death: that like as Christ was raised up from the dead by the glory of the Father, even so we also should walk in newness of life."
+      },
+      baby: {
+        scripture: "📖 1 Samuel 1:27-28",
+        blessing: "For this child I prayed; and the Lord hath given me my petition which I asked of him. Therefore also I have lent him to the Lord; as long as he liveth he shall be lent to the Lord."
+      }
+    };
+
+    function switchForm(formKey) {
+      // Toggle sidebar elements
+      const sidebarPills = document.querySelectorAll(".form-selector-pill");
+      sidebarPills.forEach(p => p.classList.remove("active"));
+      
+      const mobilePills = document.querySelectorAll(".mobile-pill");
+      mobilePills.forEach(p => p.classList.remove("active"));
+
+      // Set active based on key
+      const activeIdx = Object.keys(formsContent).indexOf(formKey);
+      if (activeIdx !== -1) {
+        sidebarPills[activeIdx].classList.add("active");
+        mobilePills[activeIdx].classList.add("active");
+      }
+
+      // Render Active Form Block
+      const formDetails = formsContent[formKey];
+      const htmlBlock = `
+        <div class="form-header-block">
+          <h2>${formDetails.title}</h2>
+          <p>${formDetails.desc}</p>
+        </div>
+        ${formDetails.html}
+      `;
+
+      document.getElementById("formContentCard").innerHTML = htmlBlock;
+    }
+
+    function submitFormPort(event, formKey) {
+      event.preventDefault();
+
+      let name = "";
+      let phone = "";
+      let label1 = "";
+      let val1 = "";
+      let label2 = "";
+      let val2 = "";
+
+      if (formKey === 'counseling') {
+        name = document.getElementById("cName").value;
+        phone = document.getElementById("cPhone").value;
+        label1 = "Appointment Session";
+        val1 = document.getElementById("cType").value;
+        label2 = "Target Need";
+        val2 = "Prophetic Prayer/Counseling";
+      } else if (formKey === 'volunteer') {
+        name = document.getElementById("vName").value;
+        phone = document.getElementById("vPhone").value;
+        label1 = "Express Department";
+        val1 = document.getElementById("vDept").value;
+        label2 = "Status Selection";
+        val2 = "WDIGC Volunteer";
+      } else if (formKey === 'baptism') {
+        name = document.getElementById("bName").value;
+        phone = document.getElementById("bPhone").value;
+        label1 = "Discipleship Category";
+        val1 = document.getElementById("bLevel").value;
+        label2 = "Program Track";
+        val2 = "Kingdom Discipleship";
+      } else if (formKey === 'baby') {
+        const cName = document.getElementById("babyName").value;
+        name = "Parents: " + document.getElementById("fatherName").value + " & " + document.getElementById("motherName").value;
+        phone = document.getElementById("pPhone").value;
+        label1 = "Dedicated Child";
+        val1 = cName;
+        label2 = "Selected Date";
+        val2 = new Date(document.getElementById("dedicationDate").value).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        });
+      }
+
+      // Create unique registration receipt code
+      const regCode = "WDIGC-" + Math.floor(1000 + Math.random() * 9000) + "-REG";
+
+      const ticketHtml = `
+        <div class="ticket-brand">
+          <span>Word Diet Int'l Gospel Church</span>
+          <div class="ticket-code">${regCode}</div>
+        </div>
+        <div class="ticket-user">
+          <h3>${name}</h3>
+          <p>📞 Contact: ${phone}</p>
+        </div>
+        <div class="ticket-dashed-line"></div>
+        <div class="ticket-meta-grid">
+          <div class="ticket-meta">
+            <h4>${label1}</h4>
+            <p>${val1}</p>
+          </div>
+          <div class="ticket-meta">
+            <h4>${label2}</h4>
+            <p>${val2}</p>
+          </div>
+        </div>
+        <div class="ticket-meta-grid" style="margin-top: 12px;">
+          <div class="ticket-meta">
+            <h4>Processing Centre</h4>
+            <p>Admin Desk, Calabar HQ</p>
+          </div>
+          <div class="ticket-meta">
+            <h4>Status</h4>
+            <p style="color: var(--champagne);">Saved & Submitted</p>
+          </div>
+        </div>
+      `;
+
+      // Select blessing
+      const blessingInfo = categoriesBlessings[formKey];
+      const blessingHtml = `
+        <p>"${blessingInfo.blessing}"</p>
+        <span>${blessingInfo.scripture}</span>
+      `;
+
+      document.getElementById("receiptTicket").innerHTML = ticketHtml;
+      document.getElementById("scriptureBlessing").innerHTML = blessingHtml;
+      document.getElementById("receiptModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeReceiptModal() {
+      document.getElementById("receiptModal").classList.remove("open");
+      document.body.style.overflow = "";
+      
+      // Reset currently active form
+      const currentActive = document.querySelector(".form-selector-pill.active").getAttribute("onclick");
+      const activeKey = currentActive.split("'")[1];
+      switchForm(activeKey);
+    }
+
+    window.addEventListener("scroll", function () {
+      const scrollPos = window.scrollY;
+      navbar.classList.toggle("is-scrolled", scrollPos > 60);
+      backToTop.classList.toggle("visible", scrollPos > 300);
+    });
+
+    mobileNav.addEventListener("click", function (event) {
+      if (event.target === mobileNav) {
+        closeMobileNav();
+      }
+    });
+
+    window.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMobileNav();
+        closeGivingModal();
+        closeReceiptModal();
+      }
+    });
+
+    // Default initialization to show first counseling form
+    switchForm('counseling');
+  </script>
+</body>
+
+</html>

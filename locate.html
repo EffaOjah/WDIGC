@@ -15,1183 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
-  <style>
-    :root {
-      --obsidian: #0b0f19;
-      --obsidian-dark: #070910;
-      --champagne: #c5a368;
-      --champagne-light: #d6b880;
-      --champagne-dark: #a8854c;
-      --white: #ffffff;
-      --alabaster: #f9f9fb;
-      --soft: #f3f3f6;
-      --ink: #111520;
-      --muted: #646b7c;
-      --muted-light: #a6a9b0;
-      --line: #e2e4e8;
-      --charcoal: #171d2b;
-      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --radius: 8px;
-      --radius-lg: 16px;
-      --radius-pill: 9999px;
-      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
-      --shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-      --font: 'Outfit', sans-serif;
-      --heading: 'Outfit', sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: var(--alabaster);
-      color: var(--ink);
-      font-family: var(--font);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1160px, calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 80px 0;
-    }
-
-    .btn {
-      align-items: center;
-      border: 1px solid transparent;
-      border-radius: var(--radius);
-      cursor: pointer;
-      display: inline-flex;
-      font-family: var(--font);
-      font-size: 0.95rem;
-      font-weight: 600;
-      gap: 8px;
-      justify-content: center;
-      padding: 14px 28px;
-      transition: all var(--transition);
-    }
-
-    .btn-gold {
-      background: var(--champagne);
-      color: var(--obsidian);
-    }
-
-    .btn-gold:hover {
-      background: var(--champagne-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      border-color: var(--line);
-      background: transparent;
-      color: var(--ink);
-    }
-
-    .btn-outline:hover {
-      background: var(--soft);
-      border-color: var(--champagne);
-      transform: translateY(-2px);
-    }
-
-    .hamburger {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      height: 20px;
-      justify-content: space-between;
-      width: 26px;
-    }
-
-    .hamburger span {
-      background: var(--white);
-      height: 2px;
-      transition: all var(--transition);
-      width: 100%;
-    }
-
-    /* Navbar styling */
-    #navbar {
-      background: var(--obsidian);
-      color: var(--white);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 24px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      transition: all var(--transition);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    #navbar.is-scrolled {
-      padding: 14px 24px;
-      background: var(--obsidian-dark);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--heading);
-      font-weight: 800;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-icon img {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-
-    .nav-links-wrap {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .nav-links-wrap a {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color var(--transition);
-    }
-
-    .nav-links-wrap a:hover,
-    .nav-links-wrap a.active {
-      color: var(--champagne);
-    }
-
-    /* Resources Dropdown menu styles */
-    .nav-dropdown-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .nav-dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: color var(--transition);
-      padding-bottom: 4px;
-    }
-
-    .nav-dropdown-trigger:hover,
-    .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
-      color: var(--champagne);
-    }
-
-    .dropdown-chevron {
-      transition: transform var(--transition);
-    }
-
-    .nav-dropdown-wrapper:hover .dropdown-chevron {
-      transform: rotate(180deg);
-    }
-
-    .nav-dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      background: var(--white);
-      min-width: 220px;
-      border-radius: var(--radius);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
-      padding: 12px 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition);
-      z-index: 150;
-      border: 1px solid var(--line);
-    }
-
-    .nav-dropdown-wrapper:hover .nav-dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .nav-dropdown-menu a {
-      display: block;
-      padding: 10px 24px;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all var(--transition);
-    }
-
-    .nav-dropdown-menu a:hover {
-      color: var(--champagne-dark);
-      background: var(--soft);
-      padding-left: 28px;
-    }
-
-    .nav-dropdown-menu a.active {
-      color: var(--champagne);
-      background: var(--soft);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .nav-cta {
-      padding: 10px 20px;
-      font-size: 0.88rem;
-    }
-
-    /* Mobile Nav Panel */
-    .mobile-nav {
-      background: rgba(5, 7, 12, 0.6);
-      backdrop-filter: blur(12px);
-      display: flex;
-      height: 100vh;
-      justify-content: flex-end;
-      left: 0;
-      opacity: 0;
-      position: fixed;
-      top: 0;
-      transition: all 0.4s ease;
-      visibility: hidden;
-      width: 100vw;
-      z-index: 200;
-    }
-
-    .mobile-nav.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-nav-panel {
-      background: var(--obsidian-dark);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      max-width: 320px;
-      padding: 40px 30px;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      width: 100%;
-    }
-
-    .mobile-nav.open .mobile-nav-panel {
-      transform: translateX(0);
-    }
-
-    .mobile-nav-top {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 50px;
-      width: 100%;
-    }
-
-    .mobile-nav-close {
-      background: transparent;
-      border: none;
-      color: var(--white);
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    .mobile-nav a {
-      color: rgba(255, 255, 255, 0.7);
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      transition: color var(--transition);
-    }
-
-    .mobile-nav a:hover,
-    .mobile-nav a.active {
-      color: var(--champagne);
-    }
-
-    /* Mobile Dropdown items */
-    .mobile-dropdown-wrapper {
-      margin-bottom: 24px;
-    }
-
-    .mobile-dropdown-btn {
-      background: transparent;
-      border: none;
-      color: rgba(255, 255, 255, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      width: 100%;
-      cursor: pointer;
-      text-align: left;
-      padding: 0;
-    }
-
-    .mobile-dropdown-btn svg {
-      transition: transform var(--transition);
-    }
-
-    .mobile-dropdown-btn.active {
-      color: var(--champagne);
-    }
-
-    .mobile-dropdown-btn.active svg {
-      transform: rotate(180deg);
-    }
-
-    .mobile-dropdown-content {
-      display: none;
-      flex-direction: column;
-      padding-left: 20px;
-      border-left: 2px solid var(--champagne-dark);
-      margin-top: 15px;
-      gap: 16px;
-    }
-
-    .mobile-dropdown-content.open {
-      display: flex;
-    }
-
-    .mobile-dropdown-content a {
-      font-size: 1rem;
-      margin-bottom: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Locate Hero styles */
-    .locate-hero {
-      background: linear-gradient(135deg, var(--obsidian-dark), var(--obsidian));
-      color: var(--white);
-      padding: 180px 0 100px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .locate-hero::after {
-      content: "";
-      position: absolute;
-      bottom: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(197, 163, 104, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .locate-hero .container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .locate-hero .section-kicker {
-      align-items: center;
-      color: var(--champagne);
-      display: inline-flex;
-      font-size: 0.8rem;
-      font-weight: 700;
-      gap: 12px;
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      justify-content: center;
-    }
-
-    .locate-hero h1 {
-      font-family: var(--heading);
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
-    }
-
-    .locate-hero p {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 750px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Headquarters Map Layout Grid */
-    .hq-section {
-      background: var(--white);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hq-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: stretch;
-    }
-
-    .map-container {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      min-height: 450px;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-    }
-
-    .map-container iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .hq-card {
-      background: var(--alabaster);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .hq-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: var(--champagne);
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    }
-
-    .hq-badge {
-      align-self: flex-start;
-      background: rgba(197, 163, 104, 0.15);
-      color: var(--champagne-dark);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    .hq-title {
-      font-family: var(--heading);
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.15;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
-    }
-
-    .hq-details {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .hq-info-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .hq-icon-wrap {
-      color: var(--champagne-dark);
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-
-    .hq-info-text h4 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .hq-info-text p {
-      font-size: 1.05rem;
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    /* Global Connect Grid */
-    .network-section {
-      background: var(--alabaster);
-    }
-
-    .network-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .network-header h2 {
-      font-family: var(--heading);
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-
-    .network-header p {
-      font-size: 1.15rem;
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .branches-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .branch-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      box-shadow: var(--shadow-soft);
-      transition: all var(--transition);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .branch-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--line);
-      transition: background var(--transition);
-    }
-
-    .branch-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: var(--champagne);
-    }
-
-    .branch-card:hover::before {
-      background: var(--champagne);
-    }
-
-    .branch-type {
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted-light);
-      margin-bottom: 14px;
-    }
-
-    .branch-name {
-      font-family: var(--heading);
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 12px;
-    }
-
-    .branch-addr {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 24px;
-      flex-grow: 1;
-    }
-
-    .branch-contact {
-      border-top: 1px solid var(--line);
-      padding-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    /* Plan Your Visit Form */
-    .visit-section {
-      background: var(--white);
-    }
-
-    .visit-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .visit-info h2 {
-      font-family: var(--heading);
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.15;
-      margin-bottom: 24px;
-      letter-spacing: -0.02em;
-    }
-
-    .visit-info p {
-      font-size: 1.15rem;
-      color: var(--muted);
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
-    .visit-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .visit-step {
-      display: flex;
-      gap: 16px;
-    }
-
-    .step-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(197, 163, 104, 0.12);
-      color: var(--champagne-dark);
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 0.95rem;
-    }
-
-    .step-text h4 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .step-text p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 0;
-    }
-
-    .visit-form-card {
-      background: var(--alabaster);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .visit-form-title {
-      font-family: var(--heading);
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    .visit-form-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 30px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--ink);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      font-family: var(--font);
-      font-size: 0.95rem;
-      color: var(--ink);
-      background: var(--white);
-      transition: all var(--transition);
-      outline: none;
-    }
-
-    .form-control:focus {
-      border-color: var(--champagne);
-      box-shadow: 0 0 0 3px rgba(197, 163, 104, 0.15);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    textarea.form-control {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      width: 100%;
-      min-height: 50px;
-      margin-top: 10px;
-    }
-
-    /* Modal Form Lightbox overlays */
-    .modal-overlay {
-      background: rgba(5, 7, 12, 0.85);
-      backdrop-filter: blur(16px);
-      display: none;
-      inset: 0;
-      padding: 40px 20px;
-      position: fixed;
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .modal-content {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
-      max-width: 600px;
-      width: 100%;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      animation: modalFadeUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      overflow: hidden;
-    }
-
-    @keyframes modalFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .modal-header {
-      padding: 30px;
-      border-bottom: 1px solid var(--line);
-      background: var(--alabaster);
-    }
-
-    .modal-title {
-      font-family: var(--heading);
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--ink);
-    }
-
-    .modal-close-giving {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 50%;
-      color: var(--white);
-      cursor: pointer;
-      font-size: 1.5rem;
-      height: 40px;
-      line-height: 1;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      width: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .modal-close-giving:hover {
-      background: var(--champagne);
-      color: var(--obsidian);
-      border-color: var(--champagne);
-      transform: rotate(90deg);
-    }
-
-    .giving-modal-content {
-      background: var(--charcoal);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--white);
-      padding: 40px;
-    }
-
-    /* Ticket visual styling */
-    .ticket-wrapper {
-      padding: 30px;
-      overflow-y: auto;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .wdigc-ticket {
-      width: 100%;
-      max-width: 420px;
-      background: linear-gradient(135deg, var(--charcoal), var(--obsidian));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      color: var(--white);
-      position: relative;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-    }
-
-    .wdigc-ticket::after,
-    .wdigc-ticket::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 20px;
-      height: 20px;
-      background: var(--white);
-      border-radius: 50%;
-      transform: translateY(-50%);
-    }
-
-    .wdigc-ticket::before {
-      left: -10px;
-    }
-
-    .wdigc-ticket::after {
-      right: -10px;
-    }
-
-    .ticket-dashed-line {
-      border-top: 1px dashed rgba(255, 255, 255, 0.15);
-      margin: 20px 0;
-      width: 100%;
-    }
-
-    .ticket-brand {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .ticket-brand span {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--champagne);
-    }
-
-    .ticket-code {
-      font-family: monospace;
-      font-size: 0.85rem;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 4px 10px;
-      border-radius: var(--radius);
-      color: var(--muted-light);
-    }
-
-    .ticket-user h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .ticket-user p {
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.55);
-    }
-
-    .ticket-meta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .ticket-meta h4 {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: rgba(255, 255, 255, 0.4);
-      margin-bottom: 2px;
-    }
-
-    .ticket-meta p {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .ticket-footer {
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--muted-light);
-    }
-
-    .modal-close-btn {
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      color: var(--ink);
-      cursor: pointer;
-      font-size: 1.3rem;
-      height: 36px;
-      width: 36px;
-      position: absolute;
-      right: 24px;
-      top: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-      z-index: 10;
-    }
-
-    .modal-close-btn:hover {
-      background: var(--champagne);
-      color: var(--obsidian);
-      border-color: var(--champagne);
-    }
-
-    /* Footer styles */
-    footer {
-      background: var(--obsidian-dark);
-      color: var(--white);
-      padding: 80px 0 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-grid {
-      display: grid;
-      gap: 48px;
-      grid-template-columns: 1.2fr 1fr 1fr;
-    }
-
-    .footer-brand p,
-    .footer-contact p,
-    .footer-social p,
-    .footer-line {
-      color: rgba(255, 255, 255, 0.55);
-      font-size: 0.93rem;
-      line-height: 1.6;
-    }
-
-    .footer-brand p {
-      margin-top: 20px;
-    }
-
-    .footer-grid h4 {
-      font-family: var(--heading);
-      font-size: 1.05rem;
-      margin-bottom: 20px;
-      color: var(--champagne);
-      font-weight: 700;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 0.93rem;
-      transition: color var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--champagne);
-    }
-
-    .footer-social-icons {
-      display: flex;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .social-btn {
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 50%;
-      color: var(--white);
-      display: inline-flex;
-      height: 38px;
-      justify-content: center;
-      transition: all var(--transition);
-      width: 38px;
-    }
-
-    .social-btn:hover {
-      background: var(--champagne);
-      color: var(--obsidian);
-      border-color: var(--champagne);
-      transform: translateY(-3px);
-    }
-
-    .footer-divider {
-      background: rgba(255, 255, 255, 0.05);
-      height: 1px;
-      margin: 48px 0 32px;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    #backToTop {
-      background: var(--champagne);
-      bottom: 24px;
-      color: var(--obsidian);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      opacity: 0;
-      position: fixed;
-      right: 24px;
-      transition: all var(--transition);
-      visibility: hidden;
-      width: 44px;
-      height: 44px;
-      z-index: 1000;
-      font-weight: bold;
-    }
-
-    #backToTop.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #backToTop:hover {
-      transform: translateY(-4px);
-      background: var(--champagne-light);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 980px) {
-
-      .nav-links-wrap,
-      .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: inline-flex;
-      }
-
-      .hq-grid,
-      .visit-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .map-container {
-        min-height: 350px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .section {
-        padding: 60px 0;
-      }
-
-      .locate-hero {
-        padding: 120px 0 60px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .hq-card {
-        padding: 30px;
-      }
-
-      .visit-form-card {
-        padding: 30px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/locate.css" />
 </head>
 
 <body>
@@ -1283,7 +108,8 @@
       <div class="container">
         <span class="section-kicker">Worship With Us</span>
         <h1>Our Locations</h1>
-        <p>Experience dynamic worship, raw miracles, and deep revelation of the Spoken Word at WDIGC branches globally.</p>
+        <p>Experience dynamic worship, raw miracles, and deep revelation of the Spoken Word at WDIGC branches globally.
+        </p>
       </div>
     </section>
 
@@ -1303,11 +129,15 @@
             <div>
               <span class="hq-badge">International HQ</span>
               <h2 class="hq-title">WDIGC Cathedral</h2>
-              
+
               <div class="hq-details">
                 <div class="hq-info-row">
                   <div class="hq-icon-wrap">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
                   </div>
                   <div class="hq-info-text">
                     <h4>Address</h4>
@@ -1317,7 +147,12 @@
 
                 <div class="hq-info-row">
                   <div class="hq-icon-wrap">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
                   </div>
                   <div class="hq-info-text">
                     <h4>Service Times</h4>
@@ -1328,7 +163,11 @@
 
                 <div class="hq-info-row">
                   <div class="hq-icon-wrap">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
                   </div>
                   <div class="hq-info-text">
                     <h4>Hotline</h4>
@@ -1338,7 +177,7 @@
               </div>
             </div>
 
-            <a href="#visitFormSection" class="btn btn-gold">Plan Your Visit Live</a>
+            <a href="events.html" class="btn btn-gold">Join Us Live</a>
           </div>
         </div>
       </div>
@@ -1408,316 +247,181 @@
       </div>
     </section>
 
-    <!-- Plan Your Visit Section -->
-    <section class="section visit-section" id="visitFormSection">
-      <div class="container">
-        <div class="visit-grid">
-          <div class="visit-info">
-            <h2>Plan Your First Visit</h2>
-            <p>Visiting a new church can be intimidating, but we want to make your first WDIGC experience completely seamless and supernatural. Fill out this quick form, and our hospitality hosts will be waiting to receive you!</p>
-            
-            <div class="visit-steps">
-              <div class="visit-step">
-                <div class="step-num">1</div>
-                <div class="step-text">
-                  <h4>V.I.P Reception</h4>
-                  <p>A host will meet you at the entrance, help you find parking, and show you to the best seats.</p>
-                </div>
-              </div>
 
-              <div class="visit-step">
-                <div class="step-num">2</div>
-                <div class="step-text">
-                  <h4>Prophetic Connection</h4>
-                  <p>Receive our custom welcome package and a direct connection script with our leaders.</p>
-                </div>
-              </div>
 
-              <div class="visit-step">
-                <div class="step-num">3</div>
-                <div class="step-text">
-                  <h4>Word Feast</h4>
-                  <p>Enjoy a power-packed worship experience and the life-changing spoken Word mandate.</p>
-                </div>
-              </div>
+    <!-- Tithe and Offerings Giving Modal -->
+    <div class="modal-overlay" id="givingModal" aria-hidden="true">
+      <div class="modal-content giving-modal-content">
+        <button class="modal-close-giving" onclick="closeGivingModal()" aria-label="Close modal">&times;</button>
+        <h3 class="modal-title">Tithe & Offering</h3>
+        <p class="modal-desc" style="color: rgba(255, 255, 255, 0.65);">Support the work of WDIGC using our verified
+          bank accounts. Touch a card to copy the account number.</p>
+
+        <div class="bank-list">
+          <div class="bank-card" onclick="copyToClipboard('2038758839', this)">
+            <div class="bank-card-top">
+              <span class="bank-name" style="color: var(--champagne); font-weight: 800; font-size: 0.9rem;">First
+                Bank</span>
+              <button class="copy-btn" type="button"
+                style="background: var(--champagne); color: var(--obsidian); border: none; padding: 6px 12px; font-weight: 700; border-radius: var(--radius); font-size: 0.7rem; cursor: pointer;">
+                Copy Account
+              </button>
             </div>
+            <div class="bank-acc" style="color: var(--white); font-size: 1.4rem; font-weight: 700; margin: 6px 0;">
+              2038758839</div>
+            <div class="bank-holder" style="color: rgba(255, 255, 255, 0.5); font-size: 0.8rem;">Word Diet International
+              Gospel Church</div>
           </div>
-
-          <!-- Plan Your Visit Form Card -->
-          <div class="visit-form-card">
-            <h3 class="visit-form-title">Tell Us You're Coming</h3>
-            <p class="visit-form-desc">Provide your visit details, and we'll save a VIP seat for you!</p>
-            
-            <form id="visitForm" onsubmit="generatePass(event)">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="vName">Full Name</label>
-                  <input type="text" id="vName" class="form-control" placeholder="Enter your name..." required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="vEmail">Email Address</label>
-                  <input type="email" id="vEmail" class="form-control" placeholder="yourname@gmail.com" required />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="vPhone">Phone Number</label>
-                  <input type="tel" id="vPhone" class="form-control" placeholder="+234..." required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="vDate">Date of Visit</label>
-                  <input type="date" id="vDate" class="form-control" required />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="vService">Worship Service</label>
-                  <select id="vService" class="form-control" required>
-                    <option value="Sunday Service (8:00 AM)">Sunday Word Celebration - 8:00 AM</option>
-                    <option value="Wednesday Service (5:30 PM)">Wednesday Prophetic - 5:30 PM</option>
-                    <option value="Friday Vigil (10:00 PM)">Friday Deliverance Night - 10:00 PM</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="vGuests">Number of Guests</label>
-                  <input type="number" id="vGuests" class="form-control" min="1" value="1" required />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="vNotes">Special Requests (Optional)</label>
-                <textarea id="vNotes" class="form-control" placeholder="Need transport? Have kids? Let us know here..."></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-gold submit-btn">Generate Welcome Pass</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Digital Welcome Ticket Overlay -->
-  <div class="modal-overlay" id="ticketModal" aria-hidden="true">
-    <div class="modal-content">
-      <button class="modal-close-btn" onclick="closeTicketModal()" aria-label="Close modal">&times;</button>
-      <div class="modal-header">
-        <h3 class="modal-title">Your WDIGC Welcome Pass</h3>
-      </div>
-      <div class="ticket-wrapper">
-        <div class="wdigc-ticket" id="passTicket">
-          <!-- Populated by JS -->
-        </div>
-        <p class="ticket-footer">Screenshot or present this pass at the hospitality desk for V.I.P entry!</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tithe and Offerings Giving Modal -->
-  <div class="modal-overlay" id="givingModal" aria-hidden="true">
-    <div class="modal-content giving-modal-content">
-      <button class="modal-close-giving" onclick="closeGivingModal()" aria-label="Close modal">&times;</button>
-      <h3 class="modal-title">Tithe & Offering</h3>
-      <p class="modal-desc" style="color: rgba(255, 255, 255, 0.65);">Support the work of WDIGC using our verified bank accounts. Touch a card to copy the account number.</p>
-      
-      <div class="bank-list">
-        <div class="bank-card" onclick="copyToClipboard('2038758839', this)">
-          <div class="bank-card-top">
-            <span class="bank-name" style="color: var(--champagne); font-weight: 800; font-size: 0.9rem;">First Bank</span>
-            <button class="copy-btn" type="button" style="background: var(--champagne); color: var(--obsidian); border: none; padding: 6px 12px; font-weight: 700; border-radius: var(--radius); font-size: 0.7rem; cursor: pointer;">
-              Copy Account
-            </button>
-          </div>
-          <div class="bank-acc" style="color: var(--white); font-size: 1.4rem; font-weight: 700; margin: 6px 0;">2038758839</div>
-          <div class="bank-holder" style="color: rgba(255, 255, 255, 0.5); font-size: 0.8rem;">Word Diet International Gospel Church</div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-brand">
-            <span class="brand-icon">
-              <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
-            </span>
-            <span>WDIGC</span>
-          </a>
-          <p>Word Diet International Gospel Church is a prophetic global ministry mandated to raise a standard for God's people through the spoken Word of God.</p>
-        </div>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="nav-brand">
+              <span class="brand-icon">
+                <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
+              </span>
+              <span>WDIGC</span>
+            </a>
+            <p>Word Diet International Gospel Church (WDIGC) is a prophetic global ministry mandated to raise a standard
+              for God's people through the spoken Word of God, raising generational leaders filled with the Holy Spirit
+              and manifesting kingdom results worldwide.</p>
+          </div>
 
-        <div class="footer-links">
-          <h4>Navigation</h4>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="sermons.html">Sermons</a>
-          <a href="index.html#ministries">Ministries</a>
-          <a href="index.html#events">Events</a>
-        </div>
+          <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
+            <p>+234 813 215 974</p>
+            <p>info@worddietgospel.org</p>
+          </div>
 
-        <div class="footer-contact">
-          <h4>Contact & Info</h4>
-          <p>📍 98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
-          <p style="margin-top: 12px;">📞 Apostle Omotosho Tope Joseph: +234 816 575 8740</p>
-          <div class="footer-social-icons">
-            <a href="https://www.youtube.com/@Apostleomotoshotopejoseph9963" class="social-btn" target="_blank" aria-label="Youtube"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.053 0 12 0 12s0 3.947.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.495 20.455 12 20.455 12 20.455s7.505 0 9.388-.511a3.002 3.002 0 0 0 2.11-2.107C24 15.947 24 12 24 12s0-3.947-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-            <a href="https://www.facebook.com" class="social-btn" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
-            <a href="https://www.instagram.com" class="social-btn" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <div class="footer-social">
+            <h4>Stay Connected</h4>
+            <div class="social-links">
+              <a href="https://www.facebook.com/share/18G29A3yyi/?mibextid=wwXIfr" aria-label="Facebook" target="_blank"
+                rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5C10.5 7 11.9 6 14.1 6c1 0 2 .1 2 .1v2.4h-1.4c-1.1 0-1.4.7-1.4 1.4V12h2.7l-.4 3h-2.3v7A10 10 0 0 0 22 12Z" />
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@Apostleomotoshotopejoseph9963" aria-label="YouTube" target="_blank"
+                rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.6 4.5 12 4.5 12 4.5s-7.6 0-9.4.6A3 3 0 0 0 .5 7.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-4.8ZM9.5 15.5v-7l6 3.5-6 3.5Z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/apostle_omotosho_tope_joseph?igsh=NnhpZ3Vzejl1ZWpp&utm_source=qr"
+                aria-label="Instagram" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5Zm6.5-1.75a1.25 1.25 0 1 0-1.25 1.25 1.25 1.25 0 0 0 1.25-1.25ZM12 10a3 3 0 1 1-3 3 3 3 0 0 1 3-3Z" />
+                </svg>
+              </a>
+              <a href="https://x.com/omotoshotopejos?s=21&t=deu1vkviCwDsBwX0lUGV5Q" aria-label="X" target="_blank"
+                rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6 22H2.9l7.3-8.4L1 2h6.3l4.4 5.8L18.9 2Zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20Z" />
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@apostleomotoshotopejosep?_r=1&_t=ZS-95lzK71oHdy" aria-label="TikTok"
+                target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M21 8.5a8.38 8.38 0 0 1-5-1.7V14a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1V11a3.2 3.2 0 0 0-1-.2 3.1 3.1 0 1 0 3.1 3.1V2h3.1a5.3 5.3 0 0 0 4.2 5.2v1.3Z" />
+                </svg>
+              </a>
+            </div>
+            <p>Follow us for sermons, updates, and prophetic moments.</p>
           </div>
         </div>
-      </div>
 
-      <div class="footer-divider"></div>
-
-      <div class="footer-bottom">
-        <p class="footer-line">&copy; 2026 Word Diet International Gospel Church. All rights reserved.</p>
-        <p class="footer-line">Raises generational leaders worldwide.</p>
+        <div class="footer-line">
+          &copy; 2026 Word Diet International Gospel Church (WDIGC). All rights reserved.
+        </div>
       </div>
+    </footer>
+
+    <div id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      &uarr;
     </div>
-  </footer>
 
-  <div id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-    &uarr;
-  </div>
+    <script>
+      // Navigation Drawer
+      const mobileNav = document.getElementById("mobileNav");
+      const hamburger = document.getElementById("hamburger");
+      const navbar = document.getElementById("navbar");
+      const backToTop = document.getElementById("backToTop");
 
-  <script>
-    // Navigation Drawer
-    const mobileNav = document.getElementById("mobileNav");
-    const hamburger = document.getElementById("hamburger");
-    const navbar = document.getElementById("navbar");
-    const backToTop = document.getElementById("backToTop");
+      function openMobileNav() {
+        mobileNav.classList.add("open");
+        mobileNav.setAttribute("aria-hidden", "false");
+        hamburger.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
 
-    function openMobileNav() {
-      mobileNav.classList.add("open");
-      mobileNav.setAttribute("aria-hidden", "false");
-      hamburger.setAttribute("aria-expanded", "true");
-      document.body.style.overflow = "hidden";
-    }
+      function closeMobileNav() {
+        mobileNav.classList.remove("open");
+        mobileNav.setAttribute("aria-hidden", "true");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
 
-    function closeMobileNav() {
-      mobileNav.classList.remove("open");
-      mobileNav.setAttribute("aria-hidden", "true");
-      hamburger.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
-    }
+      function toggleMobileDropdown(btn) {
+        btn.classList.toggle("active");
+        const content = btn.nextElementSibling;
+        content.classList.toggle("open");
+      }
 
-    function toggleMobileDropdown(btn) {
-      btn.classList.toggle("active");
-      const content = btn.nextElementSibling;
-      content.classList.toggle("open");
-    }
+      function openGivingModal() {
+        document.getElementById("givingModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
 
-    function openGivingModal() {
-      document.getElementById("givingModal").classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
+      function closeGivingModal() {
+        document.getElementById("givingModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
 
-    function closeGivingModal() {
-      document.getElementById("givingModal").classList.remove("open");
-      document.body.style.overflow = "";
-    }
+      function copyToClipboard(text, btn) {
+        navigator.clipboard.writeText(text).then(() => {
+          const originalHtml = btn.innerHTML;
+          btn.innerHTML = "Copied!";
+          btn.classList.add("copied");
+          setTimeout(() => {
+            btn.innerHTML = originalHtml;
+            btn.classList.remove("copied");
+          }, 2000);
+        });
+      }
 
-    function copyToClipboard(text, btn) {
-      navigator.clipboard.writeText(text).then(() => {
-        const originalHtml = btn.innerHTML;
-        btn.innerHTML = "Copied!";
-        btn.classList.add("copied");
-        setTimeout(() => {
-          btn.innerHTML = originalHtml;
-          btn.classList.remove("copied");
-        }, 2000);
-      });
-    }
 
-    // Generate Welcome Pass Ticket
-    function generatePass(event) {
-      event.preventDefault();
-      
-      const name = document.getElementById("vName").value;
-      const phone = document.getElementById("vPhone").value;
-      const dateVal = document.getElementById("vDate").value;
-      const service = document.getElementById("vService").value;
-      const guests = document.getElementById("vGuests").value;
-      
-      // Formatting Date nicely
-      const dateFormatted = new Date(dateVal).toLocaleDateString("en-US", {
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric"
+
+      window.addEventListener("scroll", function () {
+        const scrollPos = window.scrollY;
+        navbar.classList.toggle("is-scrolled", scrollPos > 60);
+        backToTop.classList.toggle("visible", scrollPos > 300);
       });
 
-      // Unique Ticket Reference
-      const ticketRef = "WDIGC-" + Math.floor(1000 + Math.random() * 9000) + "-2026";
+      mobileNav.addEventListener("click", function (event) {
+        if (event.target === mobileNav) {
+          closeMobileNav();
+        }
+      });
 
-      const ticketHtml = `
-        <div class="ticket-brand">
-          <span>Word Diet Int'l Gospel Church</span>
-          <div class="ticket-code">${ticketRef}</div>
-        </div>
-        <div class="ticket-user">
-          <h3>${name}</h3>
-          <p>📞 ${phone}</p>
-        </div>
-        <div class="ticket-dashed-line"></div>
-        <div class="ticket-meta-grid">
-          <div class="ticket-meta">
-            <h4>Worship Service</h4>
-            <p>${service}</p>
-          </div>
-          <div class="ticket-meta">
-            <h4>Date of Visit</h4>
-            <p>${dateFormatted}</p>
-          </div>
-        </div>
-        <div class="ticket-meta-grid" style="margin-top: 12px;">
-          <div class="ticket-meta">
-            <h4>Reserved Seats</h4>
-            <p>${guests} VIP Seat${guests > 1 ? "s" : ""}</p>
-          </div>
-          <div class="ticket-meta">
-            <h4>Location</h4>
-            <p>Calabar HQ Cathedral</p>
-          </div>
-        </div>
-      `;
-
-      document.getElementById("passTicket").innerHTML = ticketHtml;
-      document.getElementById("ticketModal").classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeTicketModal() {
-      document.getElementById("ticketModal").classList.remove("open");
-      document.body.style.overflow = "";
-      document.getElementById("visitForm").reset();
-    }
-
-    window.addEventListener("scroll", function () {
-      const scrollPos = window.scrollY;
-      navbar.classList.toggle("is-scrolled", scrollPos > 60);
-      backToTop.classList.toggle("visible", scrollPos > 300);
-    });
-
-    mobileNav.addEventListener("click", function (event) {
-      if (event.target === mobileNav) {
-        closeMobileNav();
-      }
-    });
-
-    window.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeMobileNav();
-        closeGivingModal();
-        closeTicketModal();
-      }
-    });
-  </script>
+      window.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeMobileNav();
+          closeGivingModal();
+        }
+      });
+    </script>
 </body>
 
 </html>

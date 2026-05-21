@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config();
+// Load environment variables directly from the same directory
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,11 +11,12 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/uploads', express.static(path.join(__dirname, 'server/uploads')));
+// Path updated since server.js is now inside the server/ directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Routes
-const authRoutes = require('./server/routes/authRoutes');
-const sermonRoutes = require('./server/routes/sermonRoutes');
+// Routes - Paths simplified as we are inside the server/ directory
+const authRoutes = require('./routes/authRoutes');
+const sermonRoutes = require('./routes/sermonRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/sermons', sermonRoutes);

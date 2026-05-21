@@ -5,1304 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sermons & Messages | Word Diet International Gospel Church (WDIGC)</title>
-  <meta name="description" content="Feast on the undiluted Word of God. Stream live services, download audio messages, or study sermon transcripts from Apostle Omotosho Tope Joseph." />
+  <meta name="description"
+    content="Feast on the undiluted Word of God. Stream live services, download audio messages, or study sermon transcripts from Apostle Omotosho Tope Joseph." />
   <link rel="icon" type="image/png" href="img/WDIGCPNG.png" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --obsidian: #0b0f19;
-      --obsidian-dark: #070910;
-      --champagne: #c5a368;
-      --champagne-light: #d6b880;
-      --champagne-dark: #a8854c;
-      --white: #ffffff;
-      --alabaster: #f9f9fb;
-      --soft: #f3f3f6;
-      --ink: #111520;
-      --muted: #646b7c;
-      --muted-light: #a6a9b0;
-      --line: #e2e4e8;
-      --charcoal: #171d2b;
-      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --radius: 8px;
-      --radius-lg: 16px;
-      --radius-pill: 9999px;
-      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
-      --shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-      --font: 'Outfit', sans-serif;
-      --heading: 'Outfit', sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: var(--alabaster);
-      color: var(--ink);
-      font-family: var(--font);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1160px, calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 80px 0;
-    }
-
-    /* Navbar styling matches index.html exactly */
-    #navbar {
-      background: var(--obsidian);
-      color: var(--white);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 24px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      transition: all var(--transition);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    #navbar.is-scrolled {
-      padding: 14px 24px;
-      background: var(--obsidian-dark);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--heading);
-      font-weight: 800;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-icon img {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-
-    .nav-links-wrap {
-      display: flex;
-      gap: 32px;
-    }
-
-    .nav-links-wrap a {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color var(--transition);
-    }
-
-    .nav-links-wrap a:hover,
-    .nav-links-wrap a.active {
-      color: var(--champagne);
-    }
-
-    /* Resources Dropdown menu styles */
-    .nav-dropdown-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .nav-dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: color var(--transition);
-      padding-bottom: 4px;
-    }
-
-    .nav-dropdown-trigger:hover,
-    .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
-      color: var(--champagne);
-    }
-
-    .dropdown-chevron {
-      transition: transform var(--transition);
-    }
-
-    .nav-dropdown-wrapper:hover .dropdown-chevron {
-      transform: rotate(180deg);
-    }
-
-    .nav-dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      background: var(--white);
-      min-width: 220px;
-      border-radius: var(--radius);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
-      padding: 12px 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition);
-      z-index: 150;
-      border: 1px solid var(--line);
-    }
-
-    .nav-dropdown-wrapper:hover .nav-dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .nav-dropdown-menu a {
-      display: block;
-      padding: 12px 20px;
-      color: var(--obsidian) !important;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all var(--transition);
-      text-align: left;
-    }
-
-    .nav-dropdown-menu a:hover {
-      background: var(--soft);
-      color: var(--champagne-dark) !important;
-      padding-left: 24px;
-    }
-
-    /* Mobile Dropdown styles */
-    .mobile-dropdown-wrapper {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin-bottom: 24px;
-    }
-
-    .mobile-dropdown-btn {
-      background: transparent;
-      border: none;
-      color: rgba(255, 255, 255, 0.7);
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      transition: color var(--transition);
-      padding: 0;
-      outline: none;
-    }
-
-    .mobile-dropdown-btn:hover,
-    .mobile-dropdown-btn.active {
-      color: var(--champagne);
-    }
-
-    .mobile-dropdown-btn svg {
-      transition: transform var(--transition);
-    }
-
-    .mobile-dropdown-btn.active svg {
-      transform: rotate(180deg);
-    }
-
-    .mobile-dropdown-content {
-      display: none;
-      flex-direction: column;
-      padding-left: 20px;
-      margin-top: 16px;
-      border-left: 2px solid rgba(197, 163, 104, 0.3);
-    }
-
-    .mobile-dropdown-content.open {
-      display: flex;
-    }
-
-    .mobile-dropdown-content a {
-      font-size: 1.05rem !important;
-      margin-bottom: 16px !important;
-      font-weight: 500 !important;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-family: var(--font);
-      font-size: 0.92rem;
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: var(--radius-pill);
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all var(--transition);
-      white-space: nowrap;
-    }
-
-    .btn-gold {
-      background: var(--champagne);
-      color: var(--obsidian);
-    }
-
-    .btn-gold:hover {
-      background: var(--champagne-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      border-color: var(--line);
-      background: transparent;
-      color: var(--ink);
-    }
-
-    .btn-outline:hover {
-      background: var(--soft);
-      border-color: var(--champagne);
-      transform: translateY(-2px);
-    }
-
-    .hamburger {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      height: 20px;
-      justify-content: space-between;
-      width: 26px;
-    }
-
-    .hamburger span {
-      background: var(--white);
-      height: 2px;
-      transition: all var(--transition);
-      width: 100%;
-    }
-
-    /* Mobile Nav styles matches index.html exactly */
-    .mobile-nav {
-      background: rgba(5, 7, 12, 0.6);
-      backdrop-filter: blur(12px);
-      display: flex;
-      height: 100vh;
-      justify-content: flex-end;
-      left: 0;
-      opacity: 0;
-      position: fixed;
-      top: 0;
-      transition: all 0.4s ease;
-      visibility: hidden;
-      width: 100vw;
-      z-index: 200;
-    }
-
-    .mobile-nav.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-nav-panel {
-      background: var(--obsidian-dark);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      max-width: 320px;
-      padding: 40px 30px;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      width: 100%;
-    }
-
-    .mobile-nav.open .mobile-nav-panel {
-      transform: translateX(0);
-    }
-
-    .mobile-nav-top {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 50px;
-      width: 100%;
-    }
-
-    .mobile-nav-close {
-      background: transparent;
-      border: none;
-      color: var(--white);
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    .mobile-nav a {
-      color: rgba(255, 255, 255, 0.7);
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      transition: color var(--transition);
-    }
-
-    .mobile-nav a:hover,
-    .mobile-nav a.active {
-      color: var(--champagne);
-    }
-
-    /* Page Hero with dark distinction */
-    .sermons-hero {
-      background: linear-gradient(135deg, var(--obsidian-dark), var(--obsidian));
-      color: var(--white);
-      padding: 180px 0 100px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .sermons-hero::after {
-      content: "";
-      position: absolute;
-      bottom: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(197, 163, 104, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .sermons-hero .container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .sermons-hero .section-kicker {
-      align-items: center;
-      color: var(--champagne);
-      display: inline-flex;
-      font-size: 0.8rem;
-      font-weight: 700;
-      gap: 12px;
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      justify-content: center;
-    }
-
-    .sermons-hero h1 {
-      font-family: var(--heading);
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
-    }
-
-    .sermons-hero p {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 750px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Filter Dashboard panel */
-    .filter-panel {
-      background: var(--white);
-      border-bottom: 1px solid var(--line);
-      padding: 24px 0;
-      position: sticky;
-      top: 73px;
-      z-index: 90;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
-
-    .filter-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .search-wrapper {
-      position: relative;
-      flex: 1;
-      max-width: 400px;
-      min-width: 280px;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 12px 18px 12px 42px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--line);
-      font-family: var(--font);
-      font-size: 0.95rem;
-      background: var(--alabaster);
-      color: var(--ink);
-      transition: all var(--transition);
-      outline: none;
-    }
-
-    .search-input:focus {
-      border-color: var(--champagne);
-      background: var(--white);
-      box-shadow: 0 0 0 3px rgba(197, 163, 104, 0.15);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      pointer-events: none;
-    }
-
-    /* Modern switcher tabs matching design guidelines */
-    .format-tabs {
-      display: flex;
-      background: var(--soft);
-      padding: 6px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--line);
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: none;
-      font-family: var(--font);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--muted);
-      padding: 10px 24px;
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-      transition: all var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .tab-btn.active {
-      background: var(--white);
-      color: var(--obsidian);
-      box-shadow: var(--shadow-soft);
-    }
-
-    /* Sermons Grid layout */
-    .sermons-grid {
-      display: grid;
-      gap: 32px;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Premium Sermon Card components */
-    .sermon-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      transition: all var(--transition);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .sermon-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: var(--champagne);
-    }
-
-    .card-media {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: var(--obsidian);
-      overflow: hidden;
-    }
-
-    .card-thumbnail {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .sermon-card:hover .card-thumbnail {
-      transform: scale(1.04);
-    }
-
-    .media-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(9, 13, 22, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 1;
-      transition: background var(--transition);
-    }
-
-    .sermon-card:hover .media-overlay {
-      background: rgba(9, 13, 22, 0.55);
-    }
-
-    .play-btn-circle {
-      width: 56px;
-      height: 56px;
-      background: var(--champagne);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--obsidian);
-      font-size: 1.5rem;
-      box-shadow: 0 8px 24px rgba(197, 163, 104, 0.4);
-      transition: all var(--transition);
-      border: none;
-      cursor: pointer;
-    }
-
-    .sermon-card:hover .play-btn-circle {
-      transform: scale(1.1);
-      background: var(--champagne-light);
-      box-shadow: 0 12px 30px rgba(197, 163, 104, 0.6);
-    }
-
-    /* Inline custom audio player UI */
-    .audio-player-block {
-      background: var(--charcoal);
-      color: var(--white);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      height: 100%;
-      justify-content: center;
-    }
-
-    .player-controls {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .player-play-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--champagne);
-      color: var(--obsidian);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-
-    .player-play-btn:hover {
-      transform: scale(1.08);
-      background: var(--champagne-light);
-    }
-
-    .player-meta-wrap {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .player-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--white);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .player-speaker {
-      font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.5);
-      margin-top: 2px;
-    }
-
-    .player-timeline-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .player-slider {
-      flex: 1;
-      height: 4px;
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.1);
-      outline: none;
-      -webkit-appearance: none;
-      cursor: pointer;
-    }
-
-    .player-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--champagne);
-      cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-
-    .player-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.3);
-    }
-
-    .audio-actions-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 4px;
-    }
-
-    .audio-download-link {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--champagne);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color var(--transition);
-    }
-
-    .audio-download-link:hover {
-      color: var(--champagne-light);
-    }
-
-    /* Text excerpt & Reading layout */
-    .text-excerpt-block {
-      background: var(--soft);
-      border-left: 4px solid var(--champagne);
-      padding: 24px;
-      font-size: 0.95rem;
-      color: var(--ink);
-      font-style: italic;
-      line-height: 1.65;
-      border-radius: 0 var(--radius) var(--radius) 0;
-      margin: 16px;
-      min-height: 120px;
-      display: flex;
-      align-items: center;
-    }
-
-    /* Card details block */
-    .card-body {
-      padding: 30px 24px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .sermon-category {
-      background: rgba(197, 163, 104, 0.15);
-      color: var(--champagne-dark);
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      text-transform: uppercase;
-      align-self: flex-start;
-      margin-bottom: 16px;
-    }
-
-    .sermon-title-text {
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.35;
-      margin-bottom: 12px;
-    }
-
-    .sermon-meta {
-      font-size: 0.82rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 24px;
-      border-top: 1px solid var(--line);
-      padding-top: 12px;
-      margin-top: auto;
-    }
-
-    .sermon-meta span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Inline card toggles selector at bottom */
-    .inline-format-selector {
-      display: flex;
-      border-top: 1px solid var(--line);
-      background: var(--alabaster);
-    }
-
-    .format-btn {
-      flex: 1;
-      background: transparent;
-      border: none;
-      font-family: var(--font);
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--muted);
-      padding: 14px 8px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      transition: all var(--transition);
-    }
-
-    .format-btn:not(:last-child) {
-      border-right: 1px solid var(--line);
-    }
-
-    .format-btn:hover {
-      background: var(--soft);
-      color: var(--ink);
-    }
-
-    .format-btn.active {
-      background: var(--white);
-      color: var(--champagne-dark);
-    }
-
-    .format-btn svg {
-      width: 16px;
-      height: 16px;
-      transition: transform var(--transition);
-    }
-
-    .format-btn:hover svg {
-      transform: scale(1.1);
-    }
-
-    /* Reading modal lightbox */
-    .reading-modal {
-      background: rgba(5, 7, 12, 0.85);
-      backdrop-filter: blur(16px);
-      display: none;
-      inset: 0;
-      padding: 40px 20px;
-      position: fixed;
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .reading-modal.open {
-      display: flex;
-    }
-
-    .reading-content {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
-      max-width: 800px;
-      width: 100%;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      animation: modalFadeUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      overflow: hidden;
-    }
-
-    .reading-header {
-      padding: 30px;
-      border-bottom: 1px solid var(--line);
-      background: var(--alabaster);
-    }
-
-    .reading-title {
-      font-family: var(--heading);
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    .reading-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-      display: flex;
-      gap: 16px;
-    }
-
-    .reading-body {
-      padding: 40px 30px;
-      overflow-y: auto;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--ink);
-      flex: 1;
-    }
-
-    .reading-body p {
-      margin-bottom: 24px;
-    }
-
-    .reading-close {
-      background: var(--soft);
-      border-radius: 50%;
-      color: var(--ink);
-      cursor: pointer;
-      font-size: 1.3rem;
-      height: 36px;
-      width: 36px;
-      position: absolute;
-      right: 24px;
-      top: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--line);
-      transition: all var(--transition);
-      z-index: 10;
-    }
-
-    .reading-close:hover {
-      background: var(--champagne);
-      color: var(--obsidian);
-      border-color: var(--champagne);
-    }
-
-    /* Video player embedded modal */
-    .video-modal {
-      background: rgba(5, 7, 12, 0.95);
-      backdrop-filter: blur(20px);
-      display: none;
-      inset: 0;
-      position: fixed;
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .video-modal.open {
-      display: flex;
-    }
-
-    .video-container {
-      width: min(900px, 90vw);
-      aspect-ratio: 16 / 9;
-      position: relative;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: #000;
-    }
-
-    .video-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .video-close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--white);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.5rem;
-      transition: all var(--transition);
-      z-index: 10;
-    }
-
-    .video-close:hover {
-      background: var(--champagne);
-      color: var(--obsidian);
-      border-color: var(--champagne);
-    }
-
-    /* Modal giving box exactly matches index.html */
-    .modal-overlay {
-      background: rgba(5, 7, 12, 0.85);
-      backdrop-filter: blur(12px);
-      display: none;
-      inset: 0;
-      padding: 20px;
-      position: fixed;
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .modal-content {
-      background: var(--charcoal);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
-      max-width: 500px;
-      padding: 40px;
-      position: relative;
-      width: 100%;
-      animation: modalFadeUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    @keyframes modalFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .modal-close-giving {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 50%;
-      color: var(--white);
-      cursor: pointer;
-      font-size: 1.5rem;
-      height: 40px;
-      line-height: 1;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      width: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .modal-close-giving:hover {
-      background: var(--champagne);
-      color: var(--obsidian);
-      border-color: var(--champagne);
-      transform: rotate(90deg);
-    }
-
-    .modal-title {
-      color: var(--champagne);
-      font-family: var(--heading);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .modal-desc {
-      color: rgba(255, 255, 255, 0.55);
-      font-size: 0.95rem;
-      margin-bottom: 30px;
-    }
-
-    .bank-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .bank-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: var(--radius);
-      padding: 20px;
-      transition: all var(--transition);
-      position: relative;
-    }
-
-    .bank-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: var(--champagne);
-    }
-
-    .bank-card-top {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      align-items: center;
-    }
-
-    .bank-name {
-      color: var(--champagne);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .bank-acc {
-      color: var(--white);
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .bank-holder {
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 0.8rem;
-      margin-top: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .copy-btn {
-      background: var(--champagne);
-      border-radius: var(--radius);
-      color: var(--obsidian);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      transition: all var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .copy-btn:hover {
-      background: var(--champagne-light);
-      transform: translateY(-2px);
-    }
-
-    .copy-btn.copied {
-      background: #10b981;
-      color: var(--white);
-    }
-
-    /* Footer styling exactly matches index.html */
-    footer {
-      background: var(--obsidian-dark);
-      color: var(--white);
-      padding: 80px 0 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-grid {
-      display: grid;
-      gap: 48px;
-      grid-template-columns: 1.2fr 1fr 1fr;
-    }
-
-    .footer-brand p,
-    .footer-contact p,
-    .footer-social p,
-    .footer-line {
-      color: rgba(255, 255, 255, 0.55);
-      font-size: 0.93rem;
-      line-height: 1.6;
-    }
-
-    .footer-brand p {
-      margin-top: 20px;
-    }
-
-    .footer-grid h4 {
-      font-family: var(--heading);
-      font-size: 1.05rem;
-      margin-bottom: 20px;
-      color: var(--champagne);
-      font-weight: 700;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 0.93rem;
-      transition: color var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--champagne);
-    }
-
-    .footer-social-icons {
-      display: flex;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .social-btn {
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 50%;
-      color: var(--white);
-      display: inline-flex;
-      height: 38px;
-      justify-content: center;
-      transition: all var(--transition);
-      width: 38px;
-    }
-
-    .social-btn:hover {
-      background: var(--champagne);
-      color: var(--obsidian);
-      border-color: var(--champagne);
-      transform: translateY(-3px);
-    }
-
-    .footer-divider {
-      background: rgba(255, 255, 255, 0.05);
-      height: 1px;
-      margin: 60px 0 32px;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    /* Back To Top exactly matches index.html */
-    #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 48px;
-      height: 48px;
-      background: var(--champagne);
-      color: var(--obsidian);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition);
-      z-index: 1000;
-    }
-
-    #backToTop.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #backToTop:hover {
-      transform: translateY(-4px);
-      background: var(--champagne-light);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 980px) {
-      .nav-links-wrap,
-      .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: inline-flex;
-      }
-
-      .sermons-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .sermons-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .filter-inner {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .search-wrapper {
-        max-width: 100%;
-      }
-
-      .format-tabs {
-        justify-content: center;
-      }
-
-      .section {
-        padding: 60px 0;
-      }
-
-      .sermons-hero {
-        padding: 120px 0 60px;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/sermons.css" />
 </head>
 
 <body>
@@ -1321,7 +35,10 @@
       <div class="nav-dropdown-wrapper">
         <a href="#" class="nav-dropdown-trigger active" onclick="return false;">
           Resources
-          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
         </a>
         <div class="nav-dropdown-menu">
           <a href="events.html">Events</a>
@@ -1361,12 +78,15 @@
       </div>
       <a href="index.html" onclick="closeMobileNav()">Home</a>
       <a href="about.html" onclick="closeMobileNav()">About</a>
-      
+
       <!-- Collapsible Mobile Dropdown -->
       <div class="mobile-dropdown-wrapper">
         <button class="mobile-dropdown-btn active" onclick="toggleMobileDropdown(this)">
           Resources
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
         </button>
         <div class="mobile-dropdown-content">
           <a href="events.html" onclick="closeMobileNav()">Events</a>
@@ -1388,7 +108,8 @@
       <div class="container">
         <span class="section-kicker">Feast On The Word</span>
         <h1>Sermons & Messages</h1>
-        <p>Stream dynamic video services, download powerful audio podcasts, or study deep sermon transcripts from WDIGC expressions.</p>
+        <p>Stream dynamic video services, download powerful audio podcasts, or study deep sermon transcripts from WDIGC
+          expressions.</p>
       </div>
     </section>
 
@@ -1398,22 +119,36 @@
         <div class="filter-inner">
           <div class="search-wrapper">
             <span class="search-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
             </span>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search sermons by topic, speaker, or scripture..." oninput="handleSearch(this.value)" />
+            <input type="text" class="search-input" id="searchInput"
+              placeholder="Search sermons by topic, speaker, or scripture..." oninput="handleSearch(this.value)" />
           </div>
 
           <div class="format-tabs">
             <button class="tab-btn active" id="tab-video" onclick="setGlobalFormat('video')">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path
+                  d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
+              </svg>
               Videos
             </button>
             <button class="tab-btn" id="tab-audio" onclick="setGlobalFormat('audio')">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+              </svg>
               Audios
             </button>
             <button class="tab-btn" id="tab-text" onclick="setGlobalFormat('text')">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path
+                  d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+              </svg>
               Texts
             </button>
           </div>
@@ -1435,7 +170,9 @@
   <div class="video-modal" id="videoModal" aria-hidden="true">
     <button class="video-close" onclick="closeVideoPlayer()" aria-label="Close video player">&times;</button>
     <div class="video-container">
-      <iframe id="videoIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe id="videoIframe" src=""
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
     </div>
   </div>
 
@@ -1462,8 +199,9 @@
     <div class="modal-content">
       <button class="modal-close-giving" onclick="closeGivingModal()" aria-label="Close modal">&times;</button>
       <h3 class="modal-title">Tithe & Offering</h3>
-      <p class="modal-desc">Support the work of WDIGC using our verified bank accounts. Touch a card to copy the account number.</p>
-      
+      <p class="modal-desc">Support the work of WDIGC using our verified bank accounts. Touch a card to copy the account
+        number.</p>
+
       <div class="bank-list">
         <div class="bank-card" onclick="copyToClipboard('2038758839', this)">
           <div class="bank-card-top">
@@ -1484,41 +222,69 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-brand">
+          <a href="#" class="nav-brand">
             <span class="brand-icon">
               <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
             </span>
             <span>WDIGC</span>
           </a>
-          <p>Word Diet International Gospel Church is a prophetic global ministry mandated to raise a standard for God's people through the spoken Word of God.</p>
-        </div>
-
-        <div class="footer-links">
-          <h4>Navigation</h4>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="sermons.html">Sermons</a>
-          <a href="ministries.html">Ministries</a>
-          <a href="index.html#events">Events</a>
+          <p>Word Diet International Gospel Church (WDIGC) is a prophetic global ministry mandated to raise a standard
+            for God's people through the spoken Word of God, raising generational leaders filled with the Holy Spirit
+            and manifesting kingdom results worldwide.</p>
         </div>
 
         <div class="footer-contact">
-          <h4>Contact & Info</h4>
-          <p>📍 98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
-          <p style="margin-top: 12px;">📞 Apostle Omotosho Tope Joseph: +234 816 575 8740</p>
-          <div class="footer-social-icons">
-            <a href="https://www.youtube.com/@Apostleomotoshotopejoseph9963" class="social-btn" target="_blank" aria-label="Youtube"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.053 0 12 0 12s0 3.947.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.495 20.455 12 20.455 12 20.455s7.505 0 9.388-.511a3.002 3.002 0 0 0 2.11-2.107C24 15.947 24 12 24 12s0-3.947-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-            <a href="https://www.facebook.com" class="social-btn" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
-            <a href="https://www.instagram.com" class="social-btn" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <h4>Contact Us</h4>
+          <p>98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
+          <p>+234 813 215 974</p>
+          <p>info@worddietgospel.org</p>
+        </div>
+
+        <div class="footer-social">
+          <h4>Stay Connected</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/share/18G29A3yyi/?mibextid=wwXIfr" aria-label="Facebook" target="_blank"
+              rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.5C10.5 7 11.9 6 14.1 6c1 0 2 .1 2 .1v2.4h-1.4c-1.1 0-1.4.7-1.4 1.4V12h2.7l-.4 3h-2.3v7A10 10 0 0 0 22 12Z" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/@Apostleomotoshotopejoseph9963" aria-label="YouTube" target="_blank"
+              rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.6 4.5 12 4.5 12 4.5s-7.6 0-9.4.6A3 3 0 0 0 .5 7.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-4.8ZM9.5 15.5v-7l6 3.5-6 3.5Z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/apostle_omotosho_tope_joseph?igsh=NnhpZ3Vzejl1ZWpp&utm_source=qr"
+              aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5Zm6.5-1.75a1.25 1.25 0 1 0-1.25 1.25 1.25 1.25 0 0 0 1.25-1.25ZM12 10a3 3 0 1 1-3 3 3 3 0 0 1 3-3Z" />
+              </svg>
+            </a>
+            <a href="https://x.com/omotoshotopejos?s=21&t=deu1vkviCwDsBwX0lUGV5Q" aria-label="X" target="_blank"
+              rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6 22H2.9l7.3-8.4L1 2h6.3l4.4 5.8L18.9 2Zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20Z" />
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@apostleomotoshotopejosep?_r=1&_t=ZS-95lzK71oHdy" aria-label="TikTok"
+              target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M21 8.5a8.38 8.38 0 0 1-5-1.7V14a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1V11a3.2 3.2 0 0 0-1-.2 3.1 3.1 0 1 0 3.1 3.1V2h3.1a5.3 5.3 0 0 0 4.2 5.2v1.3Z" />
+              </svg>
+            </a>
           </div>
+          <p>Follow us for sermons, updates, and prophetic moments.</p>
         </div>
       </div>
 
-      <div class="footer-divider"></div>
-
-      <div class="footer-bottom">
-        <p class="footer-line">&copy; 2026 Word Diet International Gospel Church. All rights reserved.</p>
-        <p class="footer-line">Raises generational leaders worldwide.</p>
+      <div class="footer-line">
+        &copy; 2026 Word Diet International Gospel Church (WDIGC). All rights reserved.
       </div>
     </div>
   </footer>
@@ -1539,6 +305,7 @@
         category: "Prophetic",
         youtubeId: "xqPBN9cRx1t",
         audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80",
         excerpt: "Dismantling satanic limitations and standing in the authority of Christ to declare prophetic standard over your household...",
         transcript: "In the beginning was the Word, and the Word was with God. Today, we delve into the deep mysteries of the Spoken Word. Every limitation, ancestral foundation, or ancestral hold over your life is shattered today. When the Apostle declarations are spoken under divine inspiration, they carry a physical and spiritual force that bends realities to match the covenant of Luke 2:34. I declare that every evil foundation in your lineage is completely dismantled by the spoken Word!"
       },
@@ -1551,6 +318,7 @@
         category: "Deliverance",
         youtubeId: "xqPBN9cRx1t",
         audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        imageUrl: "https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&w=800&q=80",
         excerpt: "A deep prophetic warfare sermon on breaking ancestral curses, dismantling negative family covenants, and walking in the liberty of redemption...",
         transcript: "We are breaking the covenants that have bound families for generations. Christ has redeemed us from the curse of the law, being made a curse for us. You cannot be bound where the blood of the covenant has spoken. In this powerful message, we unlock the keys to walking in complete total family deliverance. Ancestral altars are set on fire! The spoken Word releases an immediate spiritual standard that breaks every hold!"
       },
@@ -1563,6 +331,7 @@
         category: "Prosperity",
         youtubeId: "xqPBN9cRx1t",
         audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        imageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
         excerpt: "Unlocking financial breakthroughs, operating in kingdom prosperity covenants, and taking your place in all endeavors of human efforts...",
         transcript: "Beloved, I wish above all things that thou mayest prosper and be in health, even as thy soul prospereth. Prosperity is a spiritual covenant. God gives us power to get wealth to establish His covenant. We explore the deep laws of sowing, tithing, treading in wisdom, and unlocking the doors of massive blessings through absolute obedience. The spoken Word models you into realms of physical blessings through raw kingdom provision."
       },
@@ -1575,6 +344,7 @@
         category: "Holy Spirit",
         youtubeId: "xqPBN9cRx1t",
         audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+        imageUrl: "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?auto=format&fit=crop&w=800&q=80",
         excerpt: "Understanding the empowerment of the Holy Spirit, walking in raw revival power, and commanding signs and wonders in daily life...",
         transcript: "But ye shall receive power, after that the Holy Ghost is come upon you. Power in the Greek is Dunamis. This represents inherent, miraculous power. We look at the seven distinct dimensions of how this power operates inside a believer who stays holy, prayerful, and consecrated. It is time to step out of weak theology and operate in raw revival power that establishes dominion!"
       },
@@ -1587,6 +357,7 @@
         category: "Healing",
         youtubeId: "xqPBN9cRx1t",
         audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+        imageUrl: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
         excerpt: "A divine study of physical and spiritual healing covenants, claiming victory over sickness, and living in health by the Word...",
         transcript: "Surely he hath borne our griefs, and carried our sorrows. By His stripes, we are healed. Healing is the children's bread. We look at the deep spiritual dynamics of lay-on-hands, commanding spirits of infirmity to depart, and walking in the perpetual flow of divine health. Sickness is an illegal occupier of your physical body! The covenant guarantees total wholeness!"
       },
@@ -1599,6 +370,7 @@
         category: "Wisdom",
         youtubeId: "xqPBN9cRx1t",
         audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+        imageUrl: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=800&q=80",
         excerpt: "How to build a life of honor, leverage divine vision, apply Joshua 1:8 success principles, and manifest raw brilliance in all fields...",
         transcript: "Through wisdom is an house builded; and by understanding it is established. Wisdom is the principal thing. In this message, we unpack what it means to lead successfully, establish clear spiritual visions, and execute plans with the spirit of excellence. The spoken Word releases wisdom that positions you for raw, evident proofs in all areas of human endeavors!"
       }
@@ -1607,7 +379,7 @@
     // Global states
     let activeGlobalFormat = "video"; // default is video
     let searchQuery = "";
-    
+
     // Active Audio tracks registry
     let currentPlayingAudio = null;
     let currentPlayingBtn = null;
@@ -1631,9 +403,9 @@
       const filtered = sermons.filter(s => {
         const query = searchQuery.toLowerCase();
         return s.title.toLowerCase().includes(query) ||
-               s.speaker.toLowerCase().includes(query) ||
-               s.scripture.toLowerCase().includes(query) ||
-               s.category.toLowerCase().includes(query);
+          s.speaker.toLowerCase().includes(query) ||
+          s.scripture.toLowerCase().includes(query) ||
+          s.category.toLowerCase().includes(query);
       });
 
       if (filtered.length === 0) {
@@ -1658,7 +430,7 @@
       if (format === "video") {
         mediaContent = `
           <div class="card-media">
-            <img src="img/IMG_2163kk.png" class="card-thumbnail" alt="${sermon.title}" />
+            <img src="${sermon.imageUrl}" class="card-thumbnail" alt="${sermon.title}" />
             <div class="media-overlay">
               <button class="play-btn-circle" onclick="openVideoPlayer('${sermon.youtubeId}')" aria-label="Play video">
                 ▶
@@ -1756,7 +528,7 @@
     function setGlobalFormat(format) {
       stopAudioPlayback();
       activeGlobalFormat = format;
-      
+
       // Update global tabs active states
       tabBtns.forEach(btn => btn.classList.remove("active"));
       document.getElementById(`tab-${format}`).classList.add("active");
@@ -1777,7 +549,7 @@
     // Audio Playback Engine
     function toggleAudio(url, id) {
       const playBtn = document.getElementById(`playBtn-${id}`);
-      
+
       if (currentPlayingAudio && currentPlayingAudio.src === url) {
         if (currentPlayingAudio.paused) {
           currentPlayingAudio.play();
@@ -1795,7 +567,7 @@
 
       currentPlayingAudio = new Audio(url);
       currentPlayingBtn = playBtn;
-      
+
       currentPlayingAudio.play().then(() => {
         playBtn.innerHTML = "❚❚";
         startProgressInterval(id);
@@ -1829,7 +601,7 @@
         if (!currentPlayingAudio) return;
         const cur = currentPlayingAudio.currentTime;
         const dur = currentPlayingAudio.duration || 255;
-        
+
         const pct = (cur / dur) * 100;
         slider.value = pct;
 
@@ -1872,7 +644,7 @@
       document.getElementById("mSpeaker").innerHTML = `Speaker: ${sermon.speaker}`;
       document.getElementById("mDate").innerHTML = `Date: ${sermon.date}`;
       document.getElementById("mScripture").innerHTML = `Scripture: ${sermon.scripture}`;
-      
+
       const paragraphs = sermon.transcript.split("\n\n").map(p => `<p>${p}</p>`).join("");
       document.getElementById("mBody").innerHTML = paragraphs;
 

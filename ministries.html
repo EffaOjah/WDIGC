@@ -10,1218 +10,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
     rel="stylesheet" />
-  <style>
-    :root {
-      /* Premium Solid Colors */
-      --obsidian: #090d16;
-      --obsidian-dark: #05070c;
-      --charcoal: #131924;
-      --charcoal-light: #1c2331;
-
-      --alabaster: #FAF8F5;
-      --alabaster-dark: #f0ede6;
-      --cream-card: #ffffff;
-
-      --champagne: #c5a368;
-      --champagne-dark: #b08e54;
-      --champagne-light: #d6b885;
-
-      --ink: #090d16;
-      --muted: #5c6068;
-      --muted-light: #a6a9b0;
-      --line: #efece6;
-      --soft: #FAF8F5;
-      --white: #ffffff;
-
-      --heading: "Plus Jakarta Sans", "Montserrat", sans-serif;
-      --body: "Inter", "Manrope", sans-serif;
-      --radius: 8px;
-      --radius-lg: 16px;
-      --radius-pill: 9999px;
-      --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
-      --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
-      --transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-width: 320px;
-      background: var(--white);
-      color: var(--ink);
-      font-family: var(--body);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      border: 0;
-      cursor: pointer;
-      font: inherit;
-    }
-
-    .container {
-      width: min(1160px, calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 80px 0;
-    }
-
-    .section-head {
-      margin-bottom: 48px;
-      text-align: center;
-    }
-
-    .section-kicker {
-      align-items: center;
-      color: var(--champagne-dark);
-      display: inline-flex;
-      font-size: 0.8rem;
-      font-weight: 700;
-      gap: 12px;
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      justify-content: center;
-    }
-
-    .section-title {
-      font-family: var(--heading);
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.15;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-copy {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .btn {
-      align-items: center;
-      border: 1px solid transparent;
-      border-radius: var(--radius);
-      cursor: pointer;
-      display: inline-flex;
-      font-family: var(--font);
-      font-size: 0.95rem;
-      font-weight: 600;
-      gap: 8px;
-      justify-content: center;
-      padding: 14px 28px;
-      transition: all var(--transition);
-    }
-
-    .btn-gold {
-      background: var(--champagne);
-      color: var(--obsidian);
-    }
-
-    .btn-gold:hover {
-      background: var(--champagne-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-charcoal {
-      background: var(--charcoal);
-      color: var(--white);
-    }
-
-    .btn-charcoal:hover {
-      background: var(--obsidian-dark);
-      transform: translateY(-2px);
-    }
-
-    .hamburger {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      height: 20px;
-      justify-content: space-between;
-      width: 26px;
-    }
-
-    .hamburger span {
-      background: var(--white);
-      height: 2px;
-      transition: all var(--transition);
-      width: 100%;
-    }
-
-    .hamburger span {
-      background: var(--white);
-    }
-
-    /* Navbar styling */
-    #navbar {
-      background: var(--obsidian);
-      color: var(--white);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 24px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      transition: all var(--transition);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    #navbar.is-scrolled {
-      padding: 14px 24px;
-      background: var(--obsidian-dark);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--heading);
-      font-weight: 800;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-icon img {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-
-    .nav-links-wrap {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .nav-links-wrap a {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color var(--transition);
-    }
-
-    .nav-links-wrap a:hover,
-    .nav-links-wrap a.active {
-      color: var(--champagne);
-    }
-
-    /* Resources Dropdown menu styles */
-    .nav-dropdown-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .nav-dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: color var(--transition);
-      padding-bottom: 4px;
-    }
-
-    .nav-dropdown-trigger:hover,
-    .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
-      color: var(--champagne);
-    }
-
-    .dropdown-chevron {
-      transition: transform var(--transition);
-    }
-
-    .nav-dropdown-wrapper:hover .dropdown-chevron {
-      transform: rotate(180deg);
-    }
-
-    .nav-dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      background: var(--white);
-      min-width: 220px;
-      border-radius: var(--radius);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
-      padding: 12px 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition);
-      z-index: 150;
-      border: 1px solid var(--line);
-    }
-
-    .nav-dropdown-wrapper:hover .nav-dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .nav-dropdown-menu a {
-      display: block;
-      padding: 10px 24px;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all var(--transition);
-    }
-
-    .nav-dropdown-menu a:hover {
-      color: var(--champagne-dark);
-      background: var(--soft);
-      padding-left: 28px;
-    }
-
-    .nav-dropdown-menu a.active {
-      color: var(--champagne);
-      background: var(--soft);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .nav-cta {
-      padding: 10px 20px;
-      font-size: 0.88rem;
-    }
-
-    /* Mobile Nav Panel */
-    .mobile-nav {
-      background: rgba(5, 7, 12, 0.6);
-      backdrop-filter: blur(12px);
-      display: flex;
-      height: 100vh;
-      justify-content: flex-end;
-      left: 0;
-      opacity: 0;
-      position: fixed;
-      top: 0;
-      transition: all 0.4s ease;
-      visibility: hidden;
-      width: 100vw;
-      z-index: 200;
-    }
-
-    .mobile-nav.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-nav-panel {
-      background: var(--obsidian-dark);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      max-width: 320px;
-      padding: 40px 30px;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      width: 100%;
-    }
-
-    .mobile-nav.open .mobile-nav-panel {
-      transform: translateX(0);
-    }
-
-    .mobile-nav-top {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 50px;
-      width: 100%;
-    }
-
-    .mobile-nav-close {
-      background: transparent;
-      border: none;
-      color: var(--white);
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    .mobile-nav a {
-      color: rgba(255, 255, 255, 0.7);
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      transition: color var(--transition);
-    }
-
-    .mobile-nav a:hover,
-    .mobile-nav a.active {
-      color: var(--champagne);
-    }
-
-    /* Mobile Dropdown items */
-    .mobile-dropdown-wrapper {
-      margin-bottom: 24px;
-    }
-
-    .mobile-dropdown-btn {
-      background: transparent;
-      border: none;
-      color: rgba(255, 255, 255, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      width: 100%;
-      cursor: pointer;
-      text-align: left;
-      padding: 0;
-    }
-
-    .mobile-dropdown-btn svg {
-      transition: transform var(--transition);
-    }
-
-    .mobile-dropdown-btn.active {
-      color: var(--champagne);
-    }
-
-    .mobile-dropdown-btn.active svg {
-      transform: rotate(180deg);
-    }
-
-    .mobile-dropdown-content {
-      display: none;
-      flex-direction: column;
-      padding-left: 20px;
-      border-left: 2px solid var(--champagne-dark);
-      margin-top: 15px;
-      gap: 16px;
-    }
-
-    .mobile-dropdown-content.open {
-      display: flex;
-    }
-
-    .mobile-dropdown-content a {
-      font-size: 1rem;
-      margin-bottom: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Hero */
-    .ministries-hero {
-      background: linear-gradient(135deg, var(--obsidian-dark), var(--obsidian));
-      color: var(--white);
-      padding: 180px 0 100px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .ministries-hero::after {
-      content: "";
-      position: absolute;
-      bottom: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(197, 163, 104, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .ministries-hero h1 {
-      font-family: var(--heading);
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
-    }
-
-    .ministries-hero p {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 750px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Layout Grid */
-    .ministries-layout {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 48px;
-      margin-top: 40px;
-    }
-
-    /* Accordion Explorer styling */
-    .accordion-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .accordion-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: all var(--transition);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .accordion-card.active {
-      border-color: var(--champagne);
-      box-shadow: var(--shadow);
-    }
-
-    .accordion-header {
-      width: 100%;
-      background: transparent;
-      border: none;
-      padding: 24px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-align: left;
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-
-    .accordion-header h3 {
-      font-family: var(--heading);
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .accordion-number {
-      font-size: 0.9rem;
-      color: var(--champagne-dark);
-      font-weight: 800;
-      background: rgba(197, 163, 104, 0.08);
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .accordion-card.active .accordion-number {
-      background: var(--champagne);
-      color: var(--obsidian);
-    }
-
-    .accordion-chevron {
-      color: var(--muted-light);
-      transition: transform var(--transition);
-    }
-
-    .accordion-card.active .accordion-chevron {
-      transform: rotate(180deg);
-      color: var(--champagne);
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-      background: var(--alabaster);
-      border-top: 0 solid var(--line);
-    }
-
-    .accordion-card.active .accordion-content {
-      border-top-width: 1px;
-    }
-
-    .accordion-body {
-      padding: 30px;
-    }
-
-    .accordion-body p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-
-    /* Card Info Grid */
-    .ministry-meta-panel {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      border-top: 1px solid var(--line);
-      padding-top: 24px;
-    }
-
-    .meta-box h4 {
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: var(--champagne-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 6px;
-    }
-
-    .meta-box p {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 0;
-      line-height: 1.4;
-    }
-
-    .meta-box-verse {
-      grid-column: span 2;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-      font-style: italic;
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    /* Right: Dynamic Interactive Spiritual Quiz & Department Joiner */
-    .ministry-interactive-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .alignment-console-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 40px 30px;
-      box-shadow: var(--shadow);
-      position: relative;
-    }
-
-    .console-header h2 {
-      font-family: var(--heading);
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .console-header p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* Quiz Widget */
-    .quiz-container {
-      margin-top: 30px;
-      border-top: 1px solid var(--line);
-      padding-top: 24px;
-    }
-
-    .quiz-question {
-      font-family: var(--heading);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 20px;
-    }
-
-    .quiz-options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .quiz-option-btn {
-      width: 100%;
-      text-align: left;
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 14px 20px;
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--ink);
-      cursor: pointer;
-      transition: all var(--transition);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .quiz-option-btn:hover {
-      border-color: var(--champagne);
-      background: var(--white);
-      transform: translateX(4px);
-    }
-
-    .quiz-progress-bar {
-      height: 4px;
-      background: var(--line);
-      border-radius: var(--radius-pill);
-      margin-top: 30px;
-      overflow: hidden;
-    }
-
-    .quiz-progress-fill {
-      height: 100%;
-      width: 33%;
-      background: var(--champagne);
-      transition: width 0.3s ease;
-    }
-
-    /* Dynamic Result Display */
-    .quiz-result-wrapper {
-      display: none;
-      flex-direction: column;
-      animation: consoleFadeIn 0.5s ease-out;
-    }
-
-    @keyframes consoleFadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .wdigc-call-ticket {
-      background: linear-gradient(135deg, var(--charcoal), var(--obsidian));
-      border: 2px solid var(--champagne);
-      border-radius: var(--radius-lg);
-      padding: 30px 24px;
-      color: var(--white);
-      position: relative;
-      margin-top: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .wdigc-call-ticket::before,
-    .wdigc-call-ticket::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 18px;
-      height: 18px;
-      background: var(--white);
-      border-radius: 50%;
-      transform: translateY(-50%);
-    }
-
-    .wdigc-call-ticket::before {
-      left: -9px;
-      border-right: 2px solid var(--champagne);
-    }
-
-    .wdigc-call-ticket::after {
-      right: -9px;
-      border-left: 2px solid var(--champagne);
-    }
-
-    .ticket-brand {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.65rem;
-      font-weight: 800;
-      color: var(--champagne);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .ticket-code {
-      font-family: monospace;
-      font-size: 0.75rem;
-      background: rgba(197, 163, 104, 0.1);
-      padding: 2px 6px;
-      border-radius: var(--radius);
-    }
-
-    .ticket-body {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .ticket-body span {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      color: var(--muted-light);
-      letter-spacing: 0.15em;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .ticket-body h3 {
-      font-family: var(--heading);
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--white);
-    }
-
-    .ticket-divider {
-      border-top: 1px dashed rgba(255, 255, 255, 0.12);
-      margin: 16px 0;
-    }
-
-    .ticket-scripture {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 14px;
-      border-radius: var(--radius);
-      font-size: 0.82rem;
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.45;
-      text-align: center;
-    }
-
-    .ticket-barcode-box {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .ticket-barcode-lines {
-      background: repeating-linear-gradient(90deg, #ffffff, #ffffff 2px, transparent 2px, transparent 8px);
-      width: 140px;
-      height: 28px;
-    }
-
-    .ticket-barcode-num {
-      font-family: monospace;
-      font-size: 0.6rem;
-      color: rgba(255, 255, 255, 0.4);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    /* Enrollment form card */
-    .enrollment-form-card {
-      margin-top: 30px;
-      border-top: 1px solid var(--line);
-      padding-top: 30px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .form-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--ink);
-    }
-
-    .form-control {
-      padding: 12px 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      font-family: var(--body);
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color var(--transition);
-      background: var(--white);
-    }
-
-    .form-control:focus {
-      border-color: var(--champagne);
-    }
-
-    .align-submit-btn {
-      width: 100%;
-      background: var(--charcoal);
-      color: var(--white);
-      border: none;
-      padding: 14px;
-      font-size: 0.92rem;
-      font-weight: 700;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: all var(--transition);
-      letter-spacing: 0.05em;
-    }
-
-    .align-submit-btn:hover {
-      background: var(--champagne-dark);
-    }
-
-    /* Modal Altar Badge Styles */
-    .badge-modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(5, 7, 12, 0.7);
-      backdrop-filter: blur(8px);
-      z-index: 1200;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .badge-modal-overlay.open {
-      display: flex;
-    }
-
-    .badge-modal-content {
-      background: var(--white);
-      max-width: 460px;
-      width: 100%;
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      box-shadow: var(--shadow);
-      position: relative;
-      text-align: center;
-    }
-
-    .badge-modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--muted);
-      cursor: pointer;
-    }
-
-    /* Altar Badge Design */
-    .wdigc-altar-badge {
-      width: 100%;
-      background: linear-gradient(135deg, var(--obsidian-dark), var(--charcoal));
-      border: 3px double var(--champagne);
-      border-radius: var(--radius-lg);
-      padding: 40px 30px;
-      color: var(--white);
-      position: relative;
-      margin: 24px 0;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .wdigc-altar-badge::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(197,163,104,0.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .badge-brand {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .badge-brand img {
-      height: 48px;
-      width: auto;
-    }
-
-    .badge-brand span {
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.25em;
-      color: var(--champagne);
-      text-transform: uppercase;
-    }
-
-    .badge-member-photo {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid var(--champagne);
-      background: rgba(197, 163, 104, 0.08);
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--champagne);
-    }
-
-    .badge-member-name {
-      font-family: var(--heading);
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .badge-member-dept {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--champagne-light);
-      letter-spacing: 0.1em;
-      background: rgba(197, 163, 104, 0.1);
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-
-    .badge-covenant-tag {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 16px;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.5);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Toast notification */
-    .toast-box {
-      background: var(--champagne);
-      color: var(--obsidian);
-      padding: 12px 24px;
-      border-radius: var(--radius-pill);
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      z-index: 1500;
-      font-weight: 700;
-      font-size: 0.92rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      pointer-events: none;
-    }
-
-    .toast-box.show {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* Back to top button styling */
-    #backToTop {
-      background: var(--champagne);
-      bottom: 24px;
-      color: var(--obsidian);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      opacity: 0;
-      position: fixed;
-      right: 24px;
-      transition: all var(--transition);
-      visibility: hidden;
-      width: 44px;
-      height: 44px;
-      z-index: 1000;
-      font-weight: bold;
-    }
-
-    #backToTop.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #backToTop:hover {
-      transform: translateY(-4px);
-      background: var(--champagne-light);
-    }
-
-    /* Footer styling */
-    footer {
-      background: var(--obsidian);
-      color: var(--white);
-      padding: 80px 0 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-grid {
-      display: grid;
-      gap: 48px;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      margin-bottom: 60px;
-    }
-
-    .footer-brand h4,
-    .footer-contact h4,
-    .footer-social h4 {
-      font-family: var(--heading);
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 24px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--champagne);
-    }
-
-    .footer-brand p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-top: 20px;
-    }
-
-    .footer-contact p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-    }
-
-    .footer-social p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-      margin-top: 20px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 16px;
-    }
-
-    .social-links a {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-      color: rgba(255, 255, 255, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-      transition: all var(--transition);
-      width: 40px;
-    }
-
-    .social-links a:hover {
-      background: var(--champagne);
-      border-color: var(--champagne);
-      color: var(--obsidian);
-      transform: translateY(-4px);
-    }
-
-    .social-links svg {
-      height: 20px;
-      width: 20px;
-    }
-
-    .footer-line {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 0.88rem;
-      padding-top: 30px;
-      text-align: center;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 980px) {
-      .nav-links-wrap,
-      .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: inline-flex;
-      }
-
-      .ministries-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .section {
-        padding: 60px 0;
-      }
-
-      .ministries-hero {
-        padding: 120px 0 60px;
-      }
-
-      .accordion-header {
-        padding: 20px 24px;
-      }
-
-      .accordion-body {
-        padding: 24px;
-      }
-
-      .ministry-meta-panel {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      .alignment-console-card {
-        padding: 24px 16px;
-      }
-
-      .badge-modal-content {
-        padding: 24px 16px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/ministries.css" />
 </head>
 
 <body>
@@ -1311,9 +101,10 @@
     <!-- Page Hero -->
     <section class="ministries-hero">
       <div class="container">
-        <span class="section-kicker" style="color: var(--champagne)">WDIGC BRANCHES &amp; GRACE</span>
-        <h1>Our Ministries &amp; Specializations</h1>
-        <p>Discover the six core pillars of our spiritual alignment under Apostle Omotosho Tope Joseph, designed to raise generational leaders, manifest miracles, and impact communities worldwide.</p>
+        <span class="section-kicker" style="color: var(--champagne)">WDIGC Fellowship Altars</span>
+        <h1>Our Demographic Ministries</h1>
+        <p>Discover the five foundational ministries under Apostle Omotosho Tope Joseph, designed to raise generational
+          leaders, build virtuous families, and empower believers across all age groups.</p>
       </div>
     </section>
 
@@ -1321,59 +112,26 @@
     <section class="section">
       <div class="container">
         <div class="ministries-layout">
-          
+
           <!-- Left Column: Interactive Ministries Accordion -->
           <div class="accordion-panel" id="ministryAccordion">
-            
-            <!-- Ministry 1 -->
+
+            <!-- Ministry 1: Children Ministry -->
             <div class="accordion-card active">
               <button class="accordion-header" onclick="toggleAccordion(this)">
                 <h3>
                   <span class="accordion-number">01</span>
-                  Midweek Worship &amp; Communion
+                  Children Ministry
                 </h3>
-                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </button>
               <div class="accordion-content" style="max-height: 500px;">
                 <div class="accordion-body">
-                  <p>Our midweek communion and prophetic service serves as the spiritual alignment altar in the middle of the week. Worshippers break bread to lay hold of physical healing, spiritual renewal, and third-quarter victory, receiving targeted instructions from Apostle OTJ.</p>
-                  <div class="ministry-meta-panel">
-                    <div class="meta-box">
-                      <h4>Service Date</h4>
-                      <p>Every Wednesday (Weekly)</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Worship Site</h4>
-                      <p>Calabar HQ &amp; Streams</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Service Hours</h4>
-                      <p>5:30 PM - 7:30 PM</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Focus Area</h4>
-                      <p>Apostolic Re-alignment</p>
-                    </div>
-                    <div class="meta-box-verse">
-                      <strong>Covenant Promise:</strong> Acts 2:46 - "So continuing daily with one accord in the temple, and breaking bread from house to house, they ate their food with gladness and simplicity of heart."
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ministry 2 -->
-            <div class="accordion-card">
-              <button class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>
-                  <span class="accordion-number">02</span>
-                  Sunday Worship Altar
-                </h3>
-                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-body">
-                  <p>The flagship assembly where the corporate body of WDIGC gathers as one to celebrate the goodness of God. Worshippers experience extreme unadulterated praise, choral elevation, testimony showcases, and deep kingdom wisdom instructions targeting supernatural results.</p>
+                  <p>Raising a godly generation from childhood. Children are taught biblical truths, spiritual
+                    principles, and chaste living in a fun, safe, and power-packed environment.</p>
                   <div class="ministry-meta-panel">
                     <div class="meta-box">
                       <h4>Service Date</h4>
@@ -1381,7 +139,7 @@
                     </div>
                     <div class="meta-box">
                       <h4>Worship Site</h4>
-                      <p>Calabar HQ Auditorium</p>
+                      <p>Children's Church Altar</p>
                     </div>
                     <div class="meta-box">
                       <h4>Service Hours</h4>
@@ -1389,73 +147,41 @@
                     </div>
                     <div class="meta-box">
                       <h4>Focus Area</h4>
-                      <p>Family Grace &amp; Revival</p>
+                      <p>Early Discipleship &amp; Scripture</p>
                     </div>
                     <div class="meta-box-verse">
-                      <strong>Covenant Promise:</strong> Psalm 100:4 - "Enter into His gates with thanksgiving, and into His courts with praise; be thankful to Him, and bless His name."
+                      <strong>Covenant Promise:</strong> Proverbs 22:6 - "Train up a child in the way he should go, and
+                      when he is old he will not depart from it."
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Ministry 3 -->
+            <!-- Ministry 2: Youth Ministry -->
             <div class="accordion-card">
               <button class="accordion-header" onclick="toggleAccordion(this)">
                 <h3>
-                  <span class="accordion-number">03</span>
-                  Prophetic Encounters
+                  <span class="accordion-number">02</span>
+                  Youth Ministry
                 </h3>
-                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </button>
               <div class="accordion-content">
                 <div class="accordion-body">
-                  <p>Spiritual campaigns directed under a sharp prophetic mantle. Apostle Omotosho Tope Joseph releases raw spoken words, diagnostic insights, divine secrets, and spiritual blueprints that unlock career speed, break stagnation, and restore lost alignments.</p>
+                  <p>Fanning the spiritual fire of the younger generation. Activating apostolic mandates,
+                    academic/career speed, and holy living to raise impactful leaders.</p>
                   <div class="ministry-meta-panel">
                     <div class="meta-box">
                       <h4>Service Date</h4>
-                      <p>Special Campaigns &amp; Fridays</p>
+                      <p>Every Saturday (Weekly)</p>
                     </div>
                     <div class="meta-box">
                       <h4>Worship Site</h4>
-                      <p>Calabar HQ &amp; Online Altar</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Service Hours</h4>
-                      <p>Varies per Program</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Focus Area</h4>
-                      <p>Prophetic Insight &amp; Mandates</p>
-                    </div>
-                    <div class="meta-box-verse">
-                      <strong>Covenant Promise:</strong> Hosea 12:13 - "By a prophet the Lord brought Israel out of Egypt, and by a prophet he was preserved."
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ministry 4 -->
-            <div class="accordion-card">
-              <button class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>
-                  <span class="accordion-number">04</span>
-                  Evangelism &amp; Outreach Wing
-                </h3>
-                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-body">
-                  <p>Our global workforce taking the raw, saving, and delivering gospel directly into outreach fields. Members engage in hospital visitations, street evangelism, prison programs, and neighborhood crusades to plunder hell and populate the kingdom of God.</p>
-                  <div class="ministry-meta-panel">
-                    <div class="meta-box">
-                      <h4>Service Date</h4>
-                      <p>Mon, Fri, Sat (Weekly)</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Worship Site</h4>
-                      <p>Outreach Fields &amp; Hostels</p>
+                      <p>Youth Assembly Hall</p>
                     </div>
                     <div class="meta-box">
                       <h4>Service Hours</h4>
@@ -1463,155 +189,141 @@
                     </div>
                     <div class="meta-box">
                       <h4>Focus Area</h4>
-                      <p>Soul Winning &amp; Mercy</p>
+                      <p>Spiritual Fire &amp; Purpose</p>
                     </div>
                     <div class="meta-box-verse">
-                      <strong>Covenant Promise:</strong> Mark 16:15 - "And He said to them, 'Go into all the world and preach the gospel to every creature.'"
+                      <strong>Covenant Promise:</strong> 1 Timothy 4:12 - "Let no one despise your youth, but be an
+                      example to the believers in word, in conduct, in love, in spirit, in faith, in purity."
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Ministry 5 -->
+            <!-- Ministry 3: Singles Ministry -->
+            <div class="accordion-card">
+              <button class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>
+                  <span class="accordion-number">03</span>
+                  Singles Ministry
+                </h3>
+                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>Empowering single believers to live a life of focus, spiritual purity, and personal development
+                    while aligning relationship keys for a glorious future.</p>
+                  <div class="ministry-meta-panel">
+                    <div class="meta-box">
+                      <h4>Service Date</h4>
+                      <p>Monthly Campaigns</p>
+                    </div>
+                    <div class="meta-box">
+                      <h4>Worship Site</h4>
+                      <p>WDIGC HQ Auditorium</p>
+                    </div>
+                    <div class="meta-box">
+                      <h4>Service Hours</h4>
+                      <p>Varies per Program</p>
+                    </div>
+                    <div class="meta-box">
+                      <h4>Focus Area</h4>
+                      <p>Purpose, Purity &amp; Speed</p>
+                    </div>
+                    <div class="meta-box-verse">
+                      <strong>Covenant Promise:</strong> Psalm 119:9 - "How can a young man cleanse his way? By taking
+                      heed according to Your word."
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ministry 4: Women Ministry -->
+            <div class="accordion-card">
+              <button class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>
+                  <span class="accordion-number">04</span>
+                  Women Ministry
+                </h3>
+                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <p>Gathering women of virtue, prayerful pillars, and virtuous mothers to build solid family
+                    foundations, intercede for the church, and mentor younger women.</p>
+                  <div class="ministry-meta-panel">
+                    <div class="meta-box">
+                      <h4>Service Date</h4>
+                      <p>First Saturdays Monthly</p>
+                    </div>
+                    <div class="meta-box">
+                      <h4>Worship Site</h4>
+                      <p>WDIGC HQ Auditorium</p>
+                    </div>
+                    <div class="meta-box">
+                      <h4>Service Hours</h4>
+                      <p>10:00 AM - 12:30 PM</p>
+                    </div>
+                    <div class="meta-box">
+                      <h4>Focus Area</h4>
+                      <p>Family Grace &amp; Intercession</p>
+                    </div>
+                    <div class="meta-box-verse">
+                      <strong>Covenant Promise:</strong> Proverbs 31:30 - "Charm is deceitful and beauty is passing, but
+                      a woman who fears the Lord, she shall be praised."
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ministry 5: Men Ministry -->
             <div class="accordion-card">
               <button class="accordion-header" onclick="toggleAccordion(this)">
                 <h3>
                   <span class="accordion-number">05</span>
-                  Healing &amp; Deliverance Portal
+                  Men Ministry
                 </h3>
-                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </button>
               <div class="accordion-content">
                 <div class="accordion-body">
-                  <p>Enforcing absolute victory through spiritual warfare, dynamic intercession, and healing layers. Generational curses are broken, bodily ailments are instantly cured by supernatural power, and dark constraints are destroyed forever.</p>
+                  <p>Equipping men as spiritual priests of their homes, outstanding kingdom leaders, and faithful
+                    financial stewards to enforce dominion in their spheres.</p>
                   <div class="ministry-meta-panel">
                     <div class="meta-box">
                       <h4>Service Date</h4>
-                      <p>Monthly Deliverance Campaigns</p>
+                      <p>Last Saturdays Monthly</p>
                     </div>
                     <div class="meta-box">
                       <h4>Worship Site</h4>
-                      <p>Calabar HQ Auditorium</p>
+                      <p>WDIGC HQ Men's Panel</p>
                     </div>
                     <div class="meta-box">
                       <h4>Service Hours</h4>
-                      <p>5:00 PM (Last Fridays)</p>
+                      <p>8:00 AM - 10:30 AM</p>
                     </div>
                     <div class="meta-box">
                       <h4>Focus Area</h4>
-                      <p>Total Freedom &amp; Restitution</p>
+                      <p>Spiritual Priesthood &amp; Dominion</p>
                     </div>
                     <div class="meta-box-verse">
-                      <strong>Covenant Promise:</strong> Obadiah 1:17 - "But on Mount Zion there shall be deliverance, and there shall be holiness; the house of Jacob shall possess their possessions."
+                      <strong>Covenant Promise:</strong> 1 Corinthians 16:13 - "Watch, stand fast in the faith, be
+                      brave, be strong."
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Ministry 6 -->
-            <div class="accordion-card">
-              <button class="accordion-header" onclick="toggleAccordion(this)">
-                <h3>
-                  <span class="accordion-number">06</span>
-                  Home Cell Fellowships
-                </h3>
-                <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-              <div class="accordion-content">
-                <div class="accordion-body">
-                  <p>Intimate neighborhood small groups gathering in homes across Calabar and partner cities. This fellowship builds strong disciples, encourages family integration, provides mutual welfare layers, and studies the spoken Word in close-knit study panels.</p>
-                  <div class="ministry-meta-panel">
-                    <div class="meta-box">
-                      <h4>Service Date</h4>
-                      <p>Every Sunday Evening</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Worship Site</h4>
-                      <p>Assigned Neighborhood Centers</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Service Hours</h4>
-                      <p>5:00 PM - 6:00 PM</p>
-                    </div>
-                    <div class="meta-box">
-                      <h4>Focus Area</h4>
-                      <p>Spiritual Discipleship &amp; Care</p>
-                    </div>
-                    <div class="meta-box-verse">
-                      <strong>Covenant Promise:</strong> Acts 5:42 - "And daily in the temple, and in every house, they did not cease teaching and preaching Jesus Christ."
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Right Column: Interactive console and Quiz -->
-          <div class="ministry-interactive-panel">
-            
-            <div class="alignment-console-card" id="interactiveCard">
-              <div class="console-header">
-                <span class="section-kicker" style="justify-content: flex-start; margin-bottom: 6px;">DEPARTMENT QUIZ</span>
-                <h2>Find Your Divine Assignment</h2>
-                <p>Unsure where you fit within the WDIGC workforce altar? Take our interactive Spiritual Explorer quiz to discover your calling and claim your workforce call pass!</p>
-              </div>
-
-              <!-- QUIZ INTERACTIVE MODULE -->
-              <div class="quiz-container" id="quizContainer">
-                <div class="quiz-question" id="quizQuestion">Loading question...</div>
-                <div class="quiz-options-list" id="quizOptions">
-                  <!-- Options generated dynamically -->
-                </div>
-                <div class="quiz-progress-bar">
-                  <div class="quiz-progress-fill" id="quizProgress" style="width: 25%;"></div>
-                </div>
-              </div>
-
-              <!-- DYNAMIC RESULTS DISPLAY -->
-              <div class="quiz-result-wrapper" id="quizResultWrapper">
-                <div class="wdigc-call-ticket" id="printableTicket">
-                  <div class="ticket-brand">
-                    <span>WDIGC WORKFORCE MATCH</span>
-                    <div class="ticket-code" id="resultCode">WDIGC-489201</div>
-                  </div>
-                  
-                  <div class="ticket-body">
-                    <span>YOUR MATCHED DEPARTMENT</span>
-                    <h3 id="resultDeptTitle">Prophetic Media Vanguard</h3>
-                  </div>
-
-                  <div class="ticket-divider"></div>
-
-                  <div class="ticket-scripture" id="resultScripture">
-                    "Write the vision and make it plain on tablets..." - Habakkuk 2:2
-                  </div>
-
-                  <div class="ticket-barcode-box">
-                    <div class="ticket-barcode-lines"></div>
-                    <span class="ticket-barcode-num" id="resultBarcodeNum">WDIGC-489201</span>
-                  </div>
-                </div>
-
-                <!-- Registration / Enrollment Form -->
-                <div class="enrollment-form-card">
-                  <h3 style="font-family: var(--heading); font-size: 1.15rem; font-weight: 800; margin-bottom: 16px;">Enroll in Altar Workforce</h3>
-                  <form id="enrollmentForm" onsubmit="generateWorkforceBadge(event)">
-                    <div class="form-group">
-                      <label class="form-label" for="memberName">Your Full Name</label>
-                      <input type="text" id="memberName" class="form-control" placeholder="Brother / Sister..." required />
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label" for="memberEmail">Email Address</label>
-                      <input type="email" id="memberEmail" class="form-control" placeholder="yourname@gmail.com" required />
-                    </div>
-                    <button type="submit" class="align-submit-btn">Register and Claim Service Altar Badge</button>
-                  </form>
-                </div>
-              </div>
-
             </div>
 
           </div>
@@ -1620,37 +332,6 @@
       </div>
     </section>
   </main>
-
-  <!-- Workforce Badge Modal -->
-  <div class="badge-modal-overlay" id="badgeModal">
-    <div class="badge-modal-content">
-      <button class="badge-modal-close" onclick="closeBadgeModal()">&times;</button>
-      <h2 style="font-family: var(--heading); font-size: 1.45rem; font-weight: 800; color: var(--champagne-dark);">Supernatural Alignment!</h2>
-      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 10px;">Your enrollment has been logged at the WDIGC workforce altar. Present this printable badge physically at the HQ workforce center!</p>
-
-      <div class="wdigc-altar-badge" id="printableBadge">
-        <div class="badge-brand">
-          <img src="img/WDIGCPNG.png" alt="WDIGC logo" />
-          <span>WDIGC WORKFORCE ALTAR</span>
-        </div>
-
-        <div class="badge-member-photo">
-          <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </div>
-
-        <div class="badge-member-name" id="badgeName">Sister Sarah Effa</div>
-        <div class="badge-member-dept" id="badgeDept">Intercessory Prayer Altar</div>
-
-        <div class="badge-covenant-tag" id="badgeCovenant">
-          COVENANT MEMBER • ISSUED 2026
-        </div>
-      </div>
-
-      <button class="btn btn-gold" style="width: 100%;" onclick="window.print()">Print Workforce Altar Badge</button>
-    </div>
-  </div>
-
-  <div class="toast-box" id="altarToast">Badge Generated Successfully!</div>
 
   <!-- Back to top button -->
   <button id="backToTop" type="button" aria-label="Scroll back to top" onclick="scrollToTop()">&uarr;</button>
@@ -1674,7 +355,7 @@
         <div class="footer-contact">
           <h4>Contact Us</h4>
           <p>98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
-          <p>+234 816 575 8740</p>
+          <p>+234 813 215 974</p>
           <p>info@worddietgospel.org</p>
         </div>
 
@@ -1749,148 +430,7 @@
       }
     }
 
-    // Dynamic Quiz Data
-    const quizData = [
-      {
-        question: "Which dimension of service triggers the strongest desire in your heart?",
-        options: [
-          { text: "Spreading literature, sharing direct saving knowledge, and seeking souls.", dept: "Outreach & Mission Harvesters" },
-          { text: "Lifting up intensive intercessions, standing as a prayer shield, and deep warfare.", dept: "Altar Intercessory Network" },
-          { text: "Curating video details, editing streams, digital setups, and graphic alignment.", dept: "Prophetic Media Vanguard" },
-          { text: "Singing high praises, playing instruments of honor, and choral elevation.", dept: "Praise & Worship Altar Choir" }
-        ]
-      },
-      {
-        question: "Which study focus is most aligned with your personal growth plan?",
-        options: [
-          { text: "Practical mercy operations and community development structures.", dept: "Outreach & Mission Harvesters" },
-          { text: "Spiritual armor dynamics and high warfare scriptures.", dept: "Altar Intercessory Network" },
-          { text: "Spreading prophetic media files to global believers online.", dept: "Prophetic Media Vanguard" },
-          { text: "Intimate acoustic devotion and worship coordination.", dept: "Praise & Worship Altar Choir" }
-        ]
-      },
-      {
-        question: "What is your main scheduling availability vector?",
-        options: [
-          { text: "Weekly crusades, Monday/Friday/Saturday outreach runs.", dept: "Outreach & Mission Harvesters" },
-          { text: "Early morning Devotional prayer alignments (6 AM Daily).", dept: "Altar Intercessory Network" },
-          { text: "Midweek Wednesday Service & Sunday live stream hours.", dept: "Prophetic Media Vanguard" },
-          { text: "Intense weekend rehearsals and Sunday physical sessions.", dept: "Praise & Worship Altar Choir" }
-        ]
-      }
-    ];
 
-    let currentQuestionIndex = 0;
-    let deptScores = {};
-
-    function startQuiz() {
-      currentQuestionIndex = 0;
-      deptScores = {};
-      renderQuestion();
-    }
-
-    function renderQuestion() {
-      const q = quizData[currentQuestionIndex];
-      const title = document.getElementById("quizQuestion");
-      const list = document.getElementById("quizOptions");
-      const progress = document.getElementById("quizProgress");
-
-      title.textContent = q.question;
-      list.innerHTML = "";
-
-      const progressPercent = ((currentQuestionIndex + 1) / quizData.length) * 100;
-      progress.style.width = progressPercent + "%";
-
-      q.options.forEach((opt, idx) => {
-        const btn = document.createElement("button");
-        btn.className = "quiz-option-btn";
-        btn.type = "button";
-        btn.innerHTML = `
-          <span>${opt.text}</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        `;
-        btn.onclick = () => selectOption(opt.dept);
-        list.appendChild(btn);
-      });
-    }
-
-    function selectOption(dept) {
-      deptScores[dept] = (deptScores[dept] || 0) + 1;
-      
-      currentQuestionIndex++;
-      if (currentQuestionIndex < quizData.length) {
-        renderQuestion();
-      } else {
-        showQuizResult();
-      }
-    }
-
-    const scripturesList = {
-      "Outreach & Mission Harvesters": {
-        text: "Outreach & Mission Harvesters",
-        verse: "Mark 16:15 - 'And He said to them, \"Go into all the world and preach the gospel to every creature.\"' "
-      },
-      "Altar Intercessory Network": {
-        text: "Altar Intercessory Network",
-        verse: "Isaiah 62:6 - 'I have set watchmen on your walls, O Jerusalem; they shall never hold their peace day or night.'"
-      },
-      "Prophetic Media Vanguard": {
-        text: "Prophetic Media Vanguard",
-        verse: "Habakkuk 2:2 - 'Write the vision and make it plain on tablets, that he may run who reads it.'"
-      },
-      "Praise & Worship Altar Choir": {
-        text: "Praise & Worship Altar Choir",
-        verse: "Psalm 150:4 - 'Praise Him with the timbrel and dance; praise Him with stringed instruments and flutes!'"
-      }
-    };
-
-    let matchedDepartmentGlobal = "";
-
-    function showQuizResult() {
-      // Find department with highest score
-      let highestDept = Object.keys(deptScores).reduce((a, b) => deptScores[a] > deptScores[b] ? a : b);
-      
-      matchedDepartmentGlobal = highestDept;
-      
-      const quizBox = document.getElementById("quizContainer");
-      const resultBox = document.getElementById("quizResultWrapper");
-      
-      const ticketRef = "WORK-" + Math.floor(100000 + Math.random() * 900000);
-      
-      document.getElementById("resultCode").textContent = ticketRef;
-      document.getElementById("resultBarcodeNum").textContent = ticketRef;
-      document.getElementById("resultDeptTitle").textContent = scripturesList[highestDept].text;
-      document.getElementById("resultScripture").textContent = scripturesList[highestDept].verse;
-
-      quizBox.style.display = "none";
-      resultBox.style.display = "flex";
-    }
-
-    // Alignment Badge Registration
-    function generateWorkforceBadge(e) {
-      e.preventDefault();
-      const name = document.getElementById("memberName").value;
-      
-      document.getElementById("badgeName").textContent = name;
-      document.getElementById("badgeDept").textContent = matchedDepartmentGlobal;
-      
-      const today = new Date();
-      document.getElementById("badgeCovenant").textContent = `COVENANT WORKER • ISSUED ${today.getFullYear()}`;
-      
-      const modal = document.getElementById("badgeModal");
-      modal.classList.add("open");
-      document.body.style.overflow = "hidden";
-
-      const toast = document.getElementById("altarToast");
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 2000);
-    }
-
-    function closeBadgeModal() {
-      const modal = document.getElementById("badgeModal");
-      modal.classList.remove("open");
-      document.body.style.overflow = "auto";
-    }
 
     // Scroll back to top
     window.addEventListener("scroll", () => {
@@ -1944,10 +484,7 @@
       }
     });
 
-    // Initialize Quiz
-    window.addEventListener("DOMContentLoaded", () => {
-      startQuiz();
-    });
+
   </script>
 </body>
 

@@ -15,1181 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
-  <style>
-    :root {
-      --obsidian: #0b0f19;
-      --obsidian-dark: #070910;
-      --champagne: #c5a368;
-      --champagne-light: #d6b880;
-      --champagne-dark: #a8854c;
-      --white: #ffffff;
-      --alabaster: #f9f9fb;
-      --soft: #f3f3f6;
-      --ink: #111520;
-      --muted: #646b7c;
-      --muted-light: #a6a9b0;
-      --line: #e2e4e8;
-      --charcoal: #171d2b;
-      --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --radius: 8px;
-      --radius-lg: 16px;
-      --radius-pill: 9999px;
-      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
-      --shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-      --font: 'Outfit', sans-serif;
-      --heading: 'Outfit', sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: var(--alabaster);
-      color: var(--ink);
-      font-family: var(--font);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1160px, calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 80px 0;
-    }
-
-    .section-head {
-      margin-bottom: 48px;
-      text-align: center;
-    }
-
-    .section-kicker {
-      align-items: center;
-      color: var(--champagne-dark);
-      display: inline-flex;
-      font-size: 0.8rem;
-      font-weight: 700;
-      gap: 12px;
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      justify-content: center;
-    }
-
-    .section-title {
-      font-family: var(--heading);
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 800;
-      color: var(--ink);
-      line-height: 1.15;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-copy {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .btn {
-      align-items: center;
-      border: 1px solid transparent;
-      border-radius: var(--radius);
-      cursor: pointer;
-      display: inline-flex;
-      font-family: var(--font);
-      font-size: 0.95rem;
-      font-weight: 600;
-      gap: 8px;
-      justify-content: center;
-      padding: 14px 28px;
-      transition: all var(--transition);
-    }
-
-    .btn-gold {
-      background: var(--champagne);
-      color: var(--obsidian);
-    }
-
-    .btn-gold:hover {
-      background: var(--champagne-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-charcoal {
-      background: var(--charcoal);
-      color: var(--white);
-    }
-
-    .btn-charcoal:hover {
-      background: var(--obsidian-dark);
-      transform: translateY(-2px);
-    }
-
-    .hamburger {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      height: 20px;
-      justify-content: space-between;
-      width: 26px;
-    }
-
-    .hamburger span {
-      background: var(--white);
-      height: 2px;
-      transition: all var(--transition);
-      width: 100%;
-    }
-
-    /* Navbar styling */
-    #navbar {
-      background: var(--obsidian);
-      color: var(--white);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 24px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      transition: all var(--transition);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    #navbar.is-scrolled {
-      padding: 14px 24px;
-      background: var(--obsidian-dark);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--heading);
-      font-weight: 800;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-icon img {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-
-    .nav-links-wrap {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .nav-links-wrap a {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color var(--transition);
-    }
-
-    .nav-links-wrap a:hover,
-    .nav-links-wrap a.active {
-      color: var(--champagne);
-    }
-
-    /* Resources Dropdown menu styles */
-    .nav-dropdown-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .nav-dropdown-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: color var(--transition);
-      padding-bottom: 4px;
-    }
-
-    .nav-dropdown-trigger:hover,
-    .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
-      color: var(--champagne);
-    }
-
-    .dropdown-chevron {
-      transition: transform var(--transition);
-    }
-
-    .nav-dropdown-wrapper:hover .dropdown-chevron {
-      transform: rotate(180deg);
-    }
-
-    .nav-dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      background: var(--white);
-      min-width: 220px;
-      border-radius: var(--radius);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
-      padding: 12px 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition);
-      z-index: 150;
-      border: 1px solid var(--line);
-    }
-
-    .nav-dropdown-wrapper:hover .nav-dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .nav-dropdown-menu a {
-      display: block;
-      padding: 10px 24px;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all var(--transition);
-    }
-
-    .nav-dropdown-menu a:hover {
-      color: var(--champagne-dark);
-      background: var(--soft);
-      padding-left: 28px;
-    }
-
-    .nav-dropdown-menu a.active {
-      color: var(--champagne);
-      background: var(--soft);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .nav-cta {
-      padding: 10px 20px;
-      font-size: 0.88rem;
-    }
-
-    /* Mobile Nav Panel */
-    .mobile-nav {
-      background: rgba(5, 7, 12, 0.6);
-      backdrop-filter: blur(12px);
-      display: flex;
-      height: 100vh;
-      justify-content: flex-end;
-      left: 0;
-      opacity: 0;
-      position: fixed;
-      top: 0;
-      transition: all 0.4s ease;
-      visibility: hidden;
-      width: 100vw;
-      z-index: 200;
-    }
-
-    .mobile-nav.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-nav-panel {
-      background: var(--obsidian-dark);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      max-width: 320px;
-      padding: 40px 30px;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      width: 100%;
-    }
-
-    .mobile-nav.open .mobile-nav-panel {
-      transform: translateX(0);
-    }
-
-    .mobile-nav-top {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 50px;
-      width: 100%;
-    }
-
-    .mobile-nav-close {
-      background: transparent;
-      border: none;
-      color: var(--white);
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    .mobile-nav a {
-      color: rgba(255, 255, 255, 0.7);
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      transition: color var(--transition);
-    }
-
-    .mobile-nav a:hover,
-    .mobile-nav a.active {
-      color: var(--champagne);
-    }
-
-    /* Mobile Dropdown items */
-    .mobile-dropdown-wrapper {
-      margin-bottom: 24px;
-    }
-
-    .mobile-dropdown-btn {
-      background: transparent;
-      border: none;
-      color: rgba(255, 255, 255, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      width: 100%;
-      cursor: pointer;
-      text-align: left;
-      padding: 0;
-    }
-
-    .mobile-dropdown-btn svg {
-      transition: transform var(--transition);
-    }
-
-    .mobile-dropdown-btn.active {
-      color: var(--champagne);
-    }
-
-    .mobile-dropdown-btn.active svg {
-      transform: rotate(180deg);
-    }
-
-    .mobile-dropdown-content {
-      display: none;
-      flex-direction: column;
-      padding-left: 20px;
-      border-left: 2px solid var(--champagne-dark);
-      margin-top: 15px;
-      gap: 16px;
-    }
-
-    .mobile-dropdown-content.open {
-      display: flex;
-    }
-
-    .mobile-dropdown-content a {
-      font-size: 1rem;
-      margin-bottom: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Giving Hero */
-    .giving-hero {
-      background: linear-gradient(135deg, var(--obsidian-dark), var(--obsidian));
-      color: var(--white);
-      padding: 180px 0 100px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .giving-hero::after {
-      content: "";
-      position: absolute;
-      bottom: -150px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(197, 163, 104, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .giving-hero .container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .giving-hero h1 {
-      font-family: var(--heading);
-      font-size: clamp(2.4rem, 6vw, 3.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 24px;
-      letter-spacing: -0.03em;
-    }
-
-    .giving-hero p {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 750px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Scripture Header Banner */
-    .covenant-promise-section {
-      margin-top: -50px;
-      position: relative;
-      z-index: 5;
-    }
-
-    .promise-banner-card {
-      background: linear-gradient(135deg, var(--charcoal), var(--obsidian));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-lg);
-      padding: 30px 40px;
-      box-shadow: var(--shadow);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-    }
-
-    .promise-text {
-      flex: 1;
-    }
-
-    .promise-text h3 {
-      font-size: 1.35rem;
-      color: var(--champagne);
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .promise-text p {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.5;
-      font-style: italic;
-    }
-
-    .promise-verse {
-      background: rgba(197, 163, 104, 0.1);
-      border: 1px solid var(--champagne-dark);
-      padding: 8px 16px;
-      border-radius: var(--radius-pill);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      color: var(--champagne);
-    }
-
-    /* main Layout grid */
-    .giving-layout-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .giving-options-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .giving-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      box-shadow: var(--shadow-soft);
-      cursor: pointer;
-      transition: all var(--transition);
-      position: relative;
-    }
-
-    .giving-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--line);
-      transition: background var(--transition);
-    }
-
-    .giving-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      border-color: var(--champagne);
-    }
-
-    .giving-card:hover::before,
-    .giving-card.active::before {
-      background: var(--champagne);
-    }
-
-    .giving-card.active {
-      border-color: var(--champagne);
-      box-shadow: var(--shadow);
-    }
-
-    .giving-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .giving-card h3 {
-      font-family: var(--heading);
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--ink);
-    }
-
-    .giving-card p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .icon-box {
-      color: var(--champagne-dark);
-      background: rgba(197, 163, 104, 0.08);
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition);
-    }
-
-    .giving-card:hover .icon-box {
-      background: var(--champagne);
-      color: var(--obsidian);
-    }
-
-    /* Checkout & interactive Altar panel */
-    .giving-checkout-panel {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      height: fit-content;
-    }
-
-    .checkout-title h2 {
-      font-family: var(--heading);
-      font-size: 1.52rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .checkout-title p {
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    /* Tab switcher for giving channel */
-    .channel-tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--soft);
-      padding: 6px;
-      border-radius: var(--radius);
-      gap: 6px;
-    }
-
-    .channel-btn {
-      background: transparent;
-      border: none;
-      padding: 10px;
-      font-family: var(--font);
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--muted);
-      cursor: pointer;
-      border-radius: var(--radius);
-      transition: all var(--transition);
-    }
-
-    .channel-btn.active {
-      background: var(--white);
-      color: var(--ink);
-      box-shadow: var(--shadow-soft);
-    }
-
-    /* Bank Account Block */
-    .bank-details-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .bank-card {
-      background: var(--alabaster);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      position: relative;
-    }
-
-    .bank-label {
-      color: var(--champagne-dark);
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .bank-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .bank-account {
-      font-family: monospace;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-    }
-
-    .account-holder {
-      font-size: 0.85rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .copy-account-btn {
-      background: transparent;
-      border: none;
-      color: var(--champagne-dark);
-      font-weight: 700;
-      font-size: 0.8rem;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: var(--radius);
-      transition: all var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .copy-account-btn:hover {
-      background: rgba(197, 163, 104, 0.1);
-      color: var(--ink);
-    }
-
-    /* Simulated Form Details block */
-    .online-pay-wrapper {
-      display: none;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .form-grid-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .form-grid-row > .form-group {
-      flex: 1 1 calc(50% - 8px);
-      min-width: 200px;
-    }
-
-    .form-grid-row.card-expiry-row > .form-group {
-      flex: 1 1 calc(50% - 6px);
-      min-width: 80px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .form-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--ink);
-    }
-
-    .form-control {
-      padding: 12px 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      font-family: var(--font);
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color var(--transition);
-      background: var(--white);
-    }
-
-    .form-control:focus {
-      border-color: var(--champagne);
-    }
-
-    .pay-btn {
-      width: 100%;
-      padding: 14px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      background: var(--charcoal);
-      color: var(--white);
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: all var(--transition);
-      letter-spacing: 0.05em;
-      margin-top: 10px;
-    }
-
-    .pay-btn:hover {
-      background: var(--champagne-dark);
-    }
-
-    /* Printable covenant seed pass styles */
-    .receipt-wrapper {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      border-top: 1px dashed var(--line);
-      padding-top: 30px;
-      animation: formFadeIn 0.5s ease-out;
-    }
-
-    @keyframes formFadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .seed-certificate {
-      width: 100%;
-      max-width: 440px;
-      background: linear-gradient(135deg, var(--charcoal), var(--obsidian));
-      border: 2px solid var(--champagne);
-      border-radius: var(--radius-lg);
-      padding: 35px 30px;
-      color: var(--white);
-      position: relative;
-      box-shadow: var(--shadow);
-    }
-
-    .seed-certificate::before,
-    .seed-certificate::after {
-      content: "";
-      position: absolute;
-      top: 60%;
-      width: 18px;
-      height: 18px;
-      background: var(--white);
-      border-radius: 50%;
-      transform: translateY(-50%);
-    }
-
-    .seed-certificate::before {
-      left: -9px;
-    }
-
-    .seed-certificate::after {
-      right: -9px;
-    }
-
-    .cert-brand {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      color: var(--champagne);
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .cert-title {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .cert-title h3 {
-      font-family: var(--heading);
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .cert-title p {
-      font-size: 0.8rem;
-      color: var(--muted-light);
-    }
-
-    .cert-dashed-line {
-      border-top: 1px dashed rgba(255, 255, 255, 0.15);
-      margin: 20px 0;
-      width: 100%;
-    }
-
-    .cert-meta-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 16px;
-    }
-
-    .cert-meta h4 {
-      font-size: 0.68rem;
-      color: rgba(255, 255, 255, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
-    }
-
-    .cert-meta p {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .cert-scripture {
-      background: rgba(197, 163, 104, 0.08);
-      border-left: 2px solid var(--champagne);
-      padding: 16px;
-      border-radius: var(--radius);
-      margin-top: 20px;
-    }
-
-    .cert-scripture h5 {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      color: var(--champagne);
-      margin-bottom: 6px;
-      font-weight: 800;
-    }
-
-    .cert-scripture p {
-      font-size: 0.88rem;
-      font-style: italic;
-      color: var(--muted-light);
-      line-height: 1.45;
-    }
-
-    .cert-footer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 24px;
-      gap: 12px;
-      text-align: center;
-    }
-
-    .cert-barcode-box {
-      background: var(--white);
-      padding: 6px 12px;
-      border-radius: var(--radius);
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-    }
-
-    .cert-barcode-num {
-      font-family: monospace;
-      font-size: 0.65rem;
-      color: var(--obsidian);
-      letter-spacing: 0.25em;
-    }
-
-    .print-cert-btn {
-      width: 100%;
-      margin-top: 24px;
-      background: var(--champagne);
-      color: var(--obsidian);
-    }
-
-    .print-cert-btn:hover {
-      background: var(--champagne-light);
-    }
-
-    /* Toast notification */
-    .toast-box {
-      background: var(--champagne);
-      color: var(--obsidian);
-      padding: 12px 24px;
-      border-radius: var(--radius-pill);
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      z-index: 1500;
-      font-weight: 700;
-      font-size: 0.92rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      pointer-events: none;
-    }
-
-    .toast-box.show {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* Back to top button styling */
-    #backToTop {
-      background: var(--champagne);
-      bottom: 24px;
-      color: var(--obsidian);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      opacity: 0;
-      position: fixed;
-      right: 24px;
-      transition: all var(--transition);
-      visibility: hidden;
-      width: 44px;
-      height: 44px;
-      z-index: 1000;
-      font-weight: bold;
-    }
-
-    #backToTop.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #backToTop:hover {
-      transform: translateY(-4px);
-      background: var(--champagne-light);
-    }
-
-    /* Footer styling */
-    footer {
-      background: var(--obsidian);
-      color: var(--white);
-      padding: 80px 0 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-grid {
-      display: grid;
-      gap: 48px;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      margin-bottom: 60px;
-    }
-
-    .footer-brand h4,
-    .footer-contact h4,
-    .footer-social h4 {
-      font-family: var(--heading);
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 24px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--champagne);
-    }
-
-    .footer-brand p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-top: 20px;
-    }
-
-    .footer-contact p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-    }
-
-    .footer-social p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.95rem;
-      margin-top: 20px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 16px;
-    }
-
-    .social-links a {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-      color: rgba(255, 255, 255, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-      transition: all var(--transition);
-      width: 40px;
-    }
-
-    .social-links a:hover {
-      background: var(--champagne);
-      border-color: var(--champagne);
-      color: var(--obsidian);
-      transform: translateY(-4px);
-    }
-
-    .social-links svg {
-      height: 20px;
-      width: 20px;
-    }
-
-    .footer-line {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 0.88rem;
-      padding-top: 30px;
-      text-align: center;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 980px) {
-      .nav-links-wrap,
-      .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: inline-flex;
-      }
-
-      .giving-layout-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .section {
-        padding: 60px 0;
-      }
-
-      .giving-hero {
-        padding: 120px 0 60px;
-      }
-
-      .promise-banner-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        padding: 24px 20px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      .giving-checkout-panel {
-        padding: 24px 16px;
-      }
-
-      .form-grid-row {
-        gap: 12px;
-      }
-
-      .giving-card {
-        padding: 24px;
-      }
-
-      .bank-card {
-        padding: 20px 16px;
-      }
-
-      .bank-account {
-        font-size: 1.2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .seed-certificate {
-        padding: 24px 16px;
-      }
-
-      .cert-title h3 {
-        font-size: 1.15rem;
-      }
-
-      .cert-meta p {
-        font-size: 0.85rem;
-      }
-
-      .cert-scripture {
-        padding: 12px;
-      }
-
-      .cert-scripture p {
-        font-size: 0.8rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/giving.css" />
 </head>
 
 <body>
@@ -1206,7 +33,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <div class="nav-dropdown-wrapper">
-        <a href="#" class="nav-dropdown-trigger active" onclick="return false;">
+        <a href="#" class="nav-dropdown-trigger" onclick="return false;">
           Resources
           <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1281,7 +108,8 @@
       <div class="container">
         <span class="section-kicker" style="color: var(--champagne)">GENEROSITY &amp; PARTNERSHIP</span>
         <h1>Kingdom Giving Portal</h1>
-        <p>Honor the Lord with your substance. Partner with WDIGC and Apostle Omotosho Tope Joseph in spreading the gospel, building houses of worship, and expanding the kingdom worldwide.</p>
+        <p>Honor the Lord with your substance. Partner with WDIGC and Apostle Omotosho Tope Joseph in spreading the
+          gospel, building houses of worship, and expanding the kingdom worldwide.</p>
       </div>
     </section>
 
@@ -1291,7 +119,8 @@
         <div class="promise-banner-card">
           <div class="promise-text">
             <h3>The Covenant of the Giver</h3>
-            <p>"Honor the Lord with your possessions, and with the firstfruits of all your increase; so your barns will be filled with plenty, and your vats will overflow with new wine."</p>
+            <p>"Honor the Lord with your possessions, and with the firstfruits of all your increase; so your barns will
+              be filled with plenty, and your vats will overflow with new wine."</p>
           </div>
           <div class="promise-verse">📖 Proverbs 3:9-10</div>
         </div>
@@ -1305,45 +134,73 @@
           <!-- Left: Sowing Category Selection Cards -->
           <div class="giving-options-panel">
             <span class="section-kicker" style="justify-content: flex-start;">SOWING DOMAINS</span>
-            
-            <div class="giving-card active" onclick="selectGivingCategory('Tithe & Offerings', 'General Ministry funds supporting church operations and physical weekly services.', this)">
+
+            <div class="giving-card active"
+              onclick="selectGivingCategory('Tithe & Offerings', 'General Ministry funds supporting church operations and physical weekly services.', this)">
               <div class="giving-card-header">
                 <h3>Tithe &amp; General Offerings</h3>
                 <div class="icon-box">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
                 </div>
               </div>
-              <p>Support WDIGC operations, midweek prophetic communion services, and localized worship facilities worldwide.</p>
+              <p>Support WDIGC operations, midweek prophetic communion services, and localized worship facilities
+                worldwide.</p>
             </div>
 
-            <div class="giving-card" onclick="selectGivingCategory('Global Missions & Outreach', 'Funds dedicated directly to sponsoring city crusades, tracts, and charity logistics.', this)">
+            <div class="giving-card"
+              onclick="selectGivingCategory('Global Missions & Outreach', 'Funds dedicated directly to sponsoring city crusades, tracts, and charity logistics.', this)">
               <div class="giving-card-header">
                 <h3>Global Missions &amp; Outreach</h3>
                 <div class="icon-box">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                    </path>
+                  </svg>
                 </div>
               </div>
-              <p>Directly sponsor localized soul-winning outreach, street evangelism literature, logistics, and neighborhood charity.</p>
+              <p>Directly sponsor localized soul-winning outreach, street evangelism literature, logistics, and
+                neighborhood charity.</p>
             </div>
 
-            <div class="giving-card" onclick="selectGivingCategory('Church Expansion & Building', 'Sponsoring property acquisitions and sanctuary structural updates.', this)">
+            <div class="giving-card"
+              onclick="selectGivingCategory('Church Expansion & Building', 'Sponsoring property acquisitions and sanctuary structural updates.', this)">
               <div class="giving-card-header">
                 <h3>Church Expansion &amp; Building</h3>
                 <div class="icon-box">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
                 </div>
               </div>
-              <p>Partner in structural expansion, purchasing worship halls, church seating, and upgrading modern facilities.</p>
+              <p>Partner in structural expansion, purchasing worship halls, church seating, and upgrading modern
+                facilities.</p>
             </div>
 
-            <div class="giving-card" onclick="selectGivingCategory('Global Workforce Sponsorship', 'Providing tools, streams, and logistical resources for Apostle OTJ traveling team.', this)">
+            <div class="giving-card"
+              onclick="selectGivingCategory('Global Workforce Sponsorship', 'Providing tools, streams, and logistical resources for Apostle OTJ traveling team.', this)">
               <div class="giving-card-header">
                 <h3>Global Workforce Sponsorship</h3>
                 <div class="icon-box">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
                 </div>
               </div>
-              <p>Sponsor the traveling team, recording equipment, live broadcast tools, and media resources for Apostle OTJ.</p>
+              <p>Sponsor the traveling team, recording equipment, live broadcast tools, and media resources for Apostle
+                OTJ.</p>
             </div>
           </div>
 
@@ -1352,7 +209,8 @@
             <div class="checkout-title">
               <span class="section-kicker" style="justify-content: flex-start; margin-bottom: 6px;">ALTAR PORTAL</span>
               <h2 id="activeCategoryTitle">Tithe &amp; Offerings</h2>
-              <p id="activeCategoryDesc">General Ministry funds supporting church operations and physical weekly services.</p>
+              <p id="activeCategoryDesc">General Ministry funds supporting church operations and physical weekly
+                services.</p>
             </div>
 
             <!-- Tab selection channel -->
@@ -1370,7 +228,11 @@
                 <div class="account-holder">
                   <span>Account: WDIGC Calabar</span>
                   <button class="copy-account-btn" onclick="copyText('3190886364')">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
                     Copy
                   </button>
                 </div>
@@ -1383,7 +245,11 @@
                 <div class="account-holder">
                   <span>Account: WDIGC Ministry</span>
                   <button class="copy-account-btn" onclick="copyText('0921473216')">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
                     Copy
                   </button>
                 </div>
@@ -1400,11 +266,12 @@
                 <label class="form-label" for="seedEmail">Email Address</label>
                 <input type="email" id="seedEmail" class="form-control" placeholder="yourname@gmail.com" required />
               </div>
-              
+
               <div class="form-grid-row">
                 <div class="form-group">
                   <label class="form-label" for="seedAmount">Seed Amount (₦)</label>
-                  <input type="number" id="seedAmount" class="form-control" placeholder="Amount..." min="100" required />
+                  <input type="number" id="seedAmount" class="form-control" placeholder="Amount..." min="100"
+                    required />
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="seedCovenant">Covenant Promise Focus</label>
@@ -1417,21 +284,37 @@
                 </div>
               </div>
 
-              <!-- Card payment simulator info -->
-              <div style="background: var(--alabaster); padding: 16px; border: 1px solid var(--line); border-radius: var(--radius); margin-top: 6px;">
-                <span class="bank-label" style="margin-bottom: 12px; color: var(--muted)">SIMULATED SECURE GATEWAY</span>
-                <div class="form-group" style="margin-bottom: 12px;">
-                  <label class="form-label" style="font-size: 0.65rem;">Card Number</label>
-                  <input type="text" class="form-control" placeholder="•••• •••• •••• ••••" disabled value="4000 1234 5678 9010" />
-                </div>
-                <div class="form-grid-row card-expiry-row">
-                  <div class="form-group">
-                    <label class="form-label" style="font-size: 0.65rem;">Expiry Date</label>
-                    <input type="text" class="form-control" placeholder="MM/YY" disabled value="12/28" />
+              <!-- Paystack Integration Gateway Badge -->
+              <div class="paystack-gateway-badge">
+                <div class="paystack-badge-header">
+                  <div class="paystack-badge-title">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Secured by Paystack</span>
                   </div>
+                  <span class="paystack-badge-status" id="keyStatusBadge">Demo Mode</span>
+                </div>
+                <p class="paystack-badge-desc">
+                  Supports Cards, Bank Transfer, USSD, and EFT. Transactions are processed securely by Paystack.
+                </p>
+                <button type="button" class="paystack-config-toggle" onclick="togglePaystackConfig()">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                      d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                  </svg>
+                  Configure API Key
+                </button>
+                <div class="paystack-config-fields" id="paystackConfigFields">
                   <div class="form-group">
-                    <label class="form-label" style="font-size: 0.65rem;">CVV</label>
-                    <input type="password" class="form-control" placeholder="•••" disabled value="123" />
+                    <label class="form-label" style="font-size: 0.65rem; color: #a6a9b0;">Paystack Public Key</label>
+                    <input type="text" id="paystackPublicKey" class="form-control" placeholder="pk_test_..."
+                      oninput="savePaystackKey(this.value)" />
                   </div>
                 </div>
               </div>
@@ -1449,7 +332,7 @@
     </section>
   </main>
 
-  <div class="toast-box" id="toastBox">Account Copied!</div>
+  <!-- <div class="toast-box" id="toastBox">Account Copied!</div> -->
 
   <!-- Back to top button -->
   <button id="backToTop" type="button" aria-label="Scroll back to top" onclick="scrollToTop()">&uarr;</button>
@@ -1473,7 +356,7 @@
         <div class="footer-contact">
           <h4>Contact Us</h4>
           <p>98 Murtala Mohammed Highway, Calabar, Cross River State, Nigeria</p>
-          <p>+234 816 575 8740</p>
+          <p>+234 813 215 974</p>
           <p>info@worddietgospel.org</p>
         </div>
 
@@ -1526,10 +409,53 @@
     </div>
   </footer>
 
+  <!-- Paystack Inline SDK -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
-    // State
+    // State & Paystack Config
+    const DEFAULT_PAYSTACK_KEY = "pk_test_d3a8a3a0e69e00fb3033618df32f84b6f7902d33";
     let activeCategoryName = "Tithe & Offerings";
     let activeCategoryDesc = "General Ministry funds supporting church operations and physical weekly services.";
+
+    function getPaystackKey() {
+      const savedKey = localStorage.getItem('wdigc_paystack_pub_key');
+      return savedKey ? savedKey.trim() : DEFAULT_PAYSTACK_KEY;
+    }
+
+    function togglePaystackConfig() {
+      const fields = document.getElementById("paystackConfigFields");
+      fields.classList.toggle("show");
+    }
+
+    function savePaystackKey(val) {
+      if (val.trim()) {
+        localStorage.setItem('wdigc_paystack_pub_key', val.trim());
+      } else {
+        localStorage.removeItem('wdigc_paystack_pub_key');
+      }
+      updateKeyBadge();
+    }
+
+    function updateKeyBadge() {
+      const currentKey = getPaystackKey();
+      const badge = document.getElementById("keyStatusBadge");
+      if (currentKey.startsWith("pk_live")) {
+        badge.textContent = "Live Mode";
+        badge.className = "paystack-badge-status live";
+      } else {
+        badge.textContent = "Demo Mode";
+        badge.className = "paystack-badge-status";
+      }
+    }
+
+    // Initialize Paystack config field values on document load
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedKey = localStorage.getItem('wdigc_paystack_pub_key');
+      if (savedKey) {
+        document.getElementById("paystackPublicKey").value = savedKey;
+      }
+      updateKeyBadge();
+    });
 
     const scripturesMap = {
       "Financial Breakthrough": {
@@ -1589,87 +515,135 @@
 
     function copyText(val) {
       navigator.clipboard.writeText(val).then(() => {
-        const toast = document.getElementById("toastBox");
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 2000);
+        // Create an elegant temporary toast notification since toast-box is commented out in some templates
+        let toast = document.getElementById("toastBox");
+        if (!toast) {
+          toast = document.createElement("div");
+          toast.id = "toastBox";
+          toast.style.cssText = "position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--charcoal); color: var(--white); padding: 12px 24px; border-radius: var(--radius); z-index: 1000; box-shadow: var(--shadow); font-weight: 700; font-size: 0.88rem; border: 1px solid var(--accent); transition: all 0.3s ease; opacity: 0; pointer-events: none;";
+          document.body.appendChild(toast);
+        }
+        toast.textContent = "Account Number Copied!";
+        toast.style.opacity = "1";
+        toast.style.transform = "translateX(-50%) translateY(-10px)";
+        setTimeout(() => {
+          toast.style.opacity = "0";
+          toast.style.transform = "translateX(-50%)";
+        }, 2000);
       });
     }
 
     function handleGivingSubmit(e) {
       e.preventDefault();
-      
+
       const name = document.getElementById("seedName").value;
       const email = document.getElementById("seedEmail").value;
       const rawAmount = document.getElementById("seedAmount").value;
       const covenant = document.getElementById("seedCovenant").value;
 
-      // Format currency
-      const amount = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', minimumFractionDigits: 0 }).format(rawAmount);
+      const currentKey = getPaystackKey();
 
-      const refCode = "SEED-" + Math.floor(100000 + Math.random() * 900000);
-      const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      // Set button to loading state
+      const payBtn = e.target.querySelector(".pay-btn");
+      const originalBtnText = payBtn.textContent;
+      payBtn.disabled = true;
+      payBtn.textContent = "Opening Secure Portal...";
 
-      // Grab scripture blessing
-      const blessingInfo = scripturesMap[covenant] || scripturesMap["Financial Breakthrough"];
+      // Initialize Paystack Inline Pop Up
+      const handler = PaystackPop.setup({
+        key: currentKey,
+        email: email,
+        amount: Math.round(parseFloat(rawAmount) * 100), // amount in kobo
+        currency: "NGN",
+        ref: "SEED-" + Math.floor(100000 + Math.random() * 900000),
+        callback: function (response) {
+          // Transaction completed successfully!
+          payBtn.disabled = false;
+          payBtn.textContent = originalBtnText;
 
-      const receiptBox = document.getElementById("receiptDisplay");
-      receiptBox.innerHTML = `
-        <div class="seed-certificate" id="covenantSeedPass">
-          <div class="cert-brand">
-            <span>Covenant seed certificate</span>
-            <span style="font-family: monospace; color: var(--muted-light);">${refCode}</span>
-          </div>
+          // Format currency in Naira
+          const amount = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', minimumFractionDigits: 0 }).format(rawAmount);
+          const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+          const blessingInfo = scripturesMap[covenant] || scripturesMap["Financial Breakthrough"];
 
-          <div class="cert-title">
-            <h3>Covenant Partnership Pass</h3>
-            <p>Word Diet International Gospel Church</p>
-          </div>
+          const receiptBox = document.getElementById("receiptDisplay");
+          receiptBox.innerHTML = `
+            <div class="seed-certificate" id="covenantSeedPass">
+              <div class="cert-brand">
+                <span>Covenant seed certificate</span>
+                <span style="font-family: monospace; color: var(--muted-light);">${response.reference}</span>
+              </div>
 
-          <div class="cert-dashed-line"></div>
+              <div class="cert-title">
+                <h3>Covenant Partnership Pass</h3>
+                <p>Word Diet International Gospel Church</p>
+              </div>
 
-          <div class="cert-meta-grid">
-            <div class="cert-meta">
-              <h4>PARTNER IN GRACE</h4>
-              <p>${name}</p>
+              <div class="cert-dashed-line"></div>
+
+              <div class="cert-meta-grid">
+                <div class="cert-meta">
+                  <h4>PARTNER IN GRACE</h4>
+                  <p>${name}</p>
+                </div>
+                <div class="cert-meta">
+                  <h4>DATE SOWN</h4>
+                  <p>${today}</p>
+                </div>
+                <div class="cert-meta" style="margin-top: 10px;">
+                  <h4>ALTAR DOMAIN</h4>
+                  <p>${activeCategoryName}</p>
+                </div>
+                <div class="cert-meta" style="margin-top: 10px;">
+                  <h4>SEED VALUATION</h4>
+                  <p>${amount}</p>
+                </div>
+              </div>
+
+              <div class="cert-dashed-line"></div>
+
+              <div class="cert-scripture">
+                <h5>Prophetic Blessing (${blessingInfo.ref})</h5>
+                <p>${blessingInfo.verse}</p>
+              </div>
+
+              <div class="cert-footer">
+                <div class="cert-barcode-box">
+                  <div style="background: repeating-linear-gradient(90deg, var(--white), var(--white) 2px, transparent 2px, transparent 8px); width: 180px; height: 32px;"></div>
+                  <span class="cert-barcode-num">${response.reference}</span>
+                </div>
+                <p style="font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.4;">
+                  Apostle Omotosho Tope Joseph &amp; the WDIGC workforce stand in agreement with your seed of faith!
+                </p>
+              </div>
             </div>
-            <div class="cert-meta">
-              <h4>DATE SOWN</h4>
-              <p>${today}</p>
-            </div>
-            <div class="cert-meta" style="margin-top: 10px;">
-              <h4>ALTAR DOMAIN</h4>
-              <p>${activeCategoryName}</p>
-            </div>
-            <div class="cert-meta" style="margin-top: 10px;">
-              <h4>SEED VALUATION</h4>
-              <p>${amount}</p>
-            </div>
-          </div>
+            <button type="button" class="print-cert-btn" onclick="window.print()">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              Print Blessing Certificate
+            </button>
+          `;
 
-          <div class="cert-dashed-line"></div>
+          receiptBox.style.display = "flex";
+          receiptBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        },
+        onClose: function () {
+          // Transaction cancelled by user
+          payBtn.disabled = false;
+          payBtn.textContent = originalBtnText;
 
-          <div class="cert-scripture">
-            <h5>Prophetic Blessing (${blessingInfo.ref})</h5>
-            <p>${blessingInfo.verse}</p>
-          </div>
+          const alertBox = document.createElement("div");
+          alertBox.style.cssText = "position: fixed; top: 30px; left: 50%; transform: translateX(-50%); background: #1a0808; color: #ff6b6b; padding: 12px 24px; border-radius: var(--radius); z-index: 1000; box-shadow: var(--shadow); font-weight: 700; font-size: 0.88rem; border: 1px solid #8c1d1d; transition: all 0.3s ease;";
+          alertBox.textContent = "Altar transaction cancelled. The seed was not sown.";
+          document.body.appendChild(alertBox);
+          setTimeout(() => alertBox.remove(), 3000);
+        }
+      });
 
-          <div class="cert-footer">
-            <div class="cert-barcode-box">
-              <div style="background: repeating-linear-gradient(90deg, #111, #111 2px, #fff 2px, #fff 8px); width: 180px; height: 32px;"></div>
-              <span class="cert-barcode-num">${refCode}</span>
-            </div>
-            <p style="font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.4;">
-              Apostle Omotosho Tope Joseph &amp; the WDIGC workforce stand in agreement with your seed of faith!
-            </p>
-          </div>
-        </div>
-        <button class="btn print-cert-btn" onclick="window.print()">Print Blessing Certificate</button>
-      `;
-
-      receiptBox.style.display = "flex";
-      
-      // Auto scroll to certificate
-      receiptBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      handler.openIframe();
     }
 
     // Scroll back to top

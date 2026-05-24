@@ -4,7 +4,7 @@ const Auth = require('../models/authModel');
 const login = async (req, res) => {
     try {
         const { username, password } = req.body;
-        const user = await Auth.login(username, password);
+        const user = await Auth.Auth.login(username, password);
 
         if (user) {
             const token = jwt.sign(
@@ -21,4 +21,18 @@ const login = async (req, res) => {
     }
 };
 
-module.exports = { login };
+// Function to add user
+const addUser = async () => {
+    try {
+        const username = 'WDIGC_admin';
+        password = 'admin123';
+
+        const user = await Auth.addUser(username, password);
+        console.log(user);
+        return user;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+module.exports = { login, addUser };

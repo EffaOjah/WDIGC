@@ -11,10 +11,26 @@ const getAllSermons = async (req, res) => {
 
 const createSermon = async (req, res) => {
     try {
-        const { title, video_id, link } = req.body;
-        const thumbnail_path = req.file ? req.file.path : null;
+        const { title, video_id, link, speaker, sermon_date, scripture, category, excerpt, transcript } = req.body;
         
-        const sermonId = await Sermon.create({ title, video_id, thumbnail_path, link });
+        // Extract multi-file paths if uploaded
+        const thumbnail_path = req.files && req.files.thumbnail ? req.files.thumbnail[0].path : null;
+        const audio_path = req.files && req.files.audio ? req.files.audio[0].path : null;
+        
+        const sermonId = await Sermon.create({ 
+            title, 
+            video_id, 
+            thumbnail_path, 
+            link, 
+            speaker: speaker || 'Apostle Omotosho Tope Joseph', 
+            sermon_date, 
+            scripture, 
+            category, 
+            audio_path, 
+            excerpt, 
+            transcript 
+        });
+        
         res.status(201).json({ success: true, data: { id: sermonId, title } });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });

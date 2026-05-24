@@ -1,34 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Premium Solid Colors */
-  --obsidian: #090d16;
-  --obsidian-dark: #05070c;
-  --charcoal: #131924;
-  --charcoal-light: #1c2331;
+  /* Premium Solid Colors - Option A: Royal Crimson & Warm Near-Black */
+  --obsidian: #0F0E0D;
+  --obsidian-dark: #080707;
+  --charcoal: #1C1918;
+  --charcoal-light: #262321;
 
-  --alabaster: #FAF8F5;
-  --alabaster-dark: #f0ede6;
-  --cream-card: #ffffff;
+  --alabaster: #F5F0E8;
+  --alabaster-dark: #E6DFD3;
+  --cream-card: #FAF7F2;
 
-  /* Premium Accent Color (Logo Red) */
-  --accent: #ea1c24;
-  --accent-dark: #b81016;
-  --accent-light: #ff454d;
+  /* Premium Accent Color (Deep Crimson Upgrade) */
+  --accent: #9B1C1C;
+  --accent-dark: #781212;
+  --accent-light: #C23B3B;
 
-  /* Rebound Champagne variables to Logo Red for universal theme transition */
+  /* Rebound Champagne variables to Deep Crimson for universal theme transition */
   --champagne: var(--accent);
   --champagne-dark: var(--accent-dark);
   --champagne-light: var(--accent-light);
 
 
 
-  --ink: #090d16;
-  --muted: #5c6068;
-  --muted-light: #a6a9b0;
-  --line: #efece6;
-  --soft: #FAF8F5;
-  --white: #ffffff;
+  --ink: #0F0E0D;
+  --muted: #6B6359;
+  --muted-light: #A89F93;
+  --line: #EBE3D5;
+  --soft: #FAF7F2;
+  --white: #F5F0E8;
 
   --heading: "Outfit", "Plus Jakarta Sans", "Montserrat", sans-serif;
   --body: "Inter", "Manrope", sans-serif;

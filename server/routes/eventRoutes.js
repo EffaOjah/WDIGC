@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const { protect } = require('../middleware/authMiddleware');
-const { getAllSermons, createSermon, deleteSermon } = require('../controllers/sermonController');
+const { getAllEvents, createEvent, deleteEvent } = require('../controllers/eventController');
 
 // Multer setup for file uploads
 const storage = multer.diskStorage({
@@ -17,8 +17,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get('/', getAllSermons);
-router.post('/', protect, upload.fields([{ name: 'thumbnail', maxCount: 1 }, { name: 'audio', maxCount: 1 }]), createSermon);
-router.delete('/:id', protect, deleteSermon);
+router.get('/', getAllEvents);
+router.post('/', protect, upload.single('thumbnail'), createEvent);
+router.delete('/:id', protect, deleteEvent);
 
 module.exports = router;

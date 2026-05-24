@@ -42,8 +42,9 @@
         </a>
         <div class="nav-dropdown-menu">
           <a href="events.html">Events</a>
-          <a href="testimonies.html">Testimonies</a>
+          <a href="testimonies.html" class="active">Testimonies</a>
           <a href="sermons.html">Sermons</a>
+          <a href="focus.html">Ministry Focus</a>
           <a href="locate.html">Locate Church</a>
           <a href="forms.html">Forms</a>
         </div>
@@ -90,8 +91,9 @@
         </button>
         <div class="mobile-dropdown-content">
           <a href="events.html" onclick="closeMobileNav()">Events</a>
-          <a href="testimonies.html" onclick="closeMobileNav()">Testimonies</a>
+          <a href="testimonies.html" class="active" onclick="closeMobileNav()">Testimonies</a>
           <a href="sermons.html" onclick="closeMobileNav()">Sermons</a>
+          <a href="focus.html" onclick="closeMobileNav()">Ministry Focus</a>
           <a href="locate.html" onclick="closeMobileNav()">Locate Church</a>
           <a href="forms.html" onclick="closeMobileNav()">Forms</a>
         </div>
@@ -319,81 +321,52 @@
   </div>
 
   <script>
-    // Authentic WDIGC testimonies dataset
-    const testimoniesData = [
-      {
-        id: 1,
-        name: "Sister Evelyn Henshaw",
-        location: "Calabar, Cross River State",
-        category: "healing",
-        categoryText: "",
-        scripture: "",
-        text: "For five years, I suffered from severe spinal compression. I was scheduled for a risky surgery, but during the Midweek Prophetic Encounter Service, Apostle OTJ called out my case accurately. He laid hands on me, and immediately I felt a warm sensation course through my spine. Today, I am completely healed, walking, and running without pain!",
-        initials: "EH",
-        date: "2 weeks ago"
-      },
-      {
-        id: 2,
-        name: "Brother Chidi Okafor",
-        location: "Port Harcourt, Rivers State",
-        category: "financial",
-        categoryText: "",
-        scripture: "",
-        text: "My logistics business was on the verge of bankruptcy with heavy debts. During the End-of-Year Covenant Gathering, Apostle declared that God would cause a supernatural shift. Two weeks later, I received an unexpected federal contract that wiped out all my debts and expanded our fleet by 12 new trucks!",
-        initials: "CO",
-        date: "1 month ago"
-      },
-      {
-        id: 3,
-        name: "Mother Patricia Thomas",
-        location: "Houston, Texas, USA",
-        category: "prophecy",
-        categoryText: "",
-        scripture: "",
-        text: "Apostle OTJ sent a direct prophetic word regarding my family in Nigeria, warning us of a planned highway attack on a specific date and instructing us to cancel all travel. We obeyed, and on that very day, the commercial vehicle my children were originally booked to travel in was attacked, but none of my children were there. God saved my family through his prophet!",
-        initials: "PT",
-        date: "3 weeks ago"
-      },
-      {
-        id: 4,
-        name: "Sister Sarah Mensah",
-        location: "Accra, Ghana",
-        category: "deliverance",
-        categoryText: "",
-        scripture: "",
-        text: "In my family, academic and marital delays were a painful pattern. After attending the WDIGC 14-Day Power Fasting program, the yoke was broken. Within six months, I was awarded a fully funded PhD scholarship to Europe, and my two elder siblings got married to their God-ordained spouses.",
-        initials: "SM",
-        date: "3 months ago"
-      },
-      {
-        id: 5,
-        name: "Brother Samuel Ademola",
-        location: "Lagos, Nigeria",
-        category: "healing",
-        categoryText: "",
-        scripture: "",
-        text: "My left eye had been completely blind for two years due to glaucoma damage. During a prayer session on YouTube, Apostle commanded blind eyes to open. I touched my eye as he prayed, and suddenly light broke in. I can now see clearly, read, and write with both eyes!",
-        initials: "SA",
-        date: "1 month ago"
-      },
-      {
-        id: 6,
-        name: "Brother Marcus van der Merwe",
-        location: "Cape Town, South Africa",
-        category: "career",
-        categoryText: "",
-        scripture: "",
-        text: "Through constant feeding on the Word Diet teachings, my spiritual life matured deeply. I learned how to stand on the Word. In my career as a clinical researcher, I was promoted three levels higher to Lead Director, bypassing years of standard requirements.",
-        initials: "MM",
-        date: "2 months ago"
-      }
-    ];
+    // Dynamic Testimonies Data Array
+    let testimoniesData = [];
 
     let activeCategory = "all";
     let searchQuery = "";
     const grid = document.getElementById("testimoniesGrid");
 
+    // Fetch approved testimonies from live API
+    async function fetchTestimonies() {
+      try {
+        const response = await fetch('http://api.worddietgospel.org/api/testimonies/approved');
+        const data = await response.json();
+        
+        if (data.success && data.data && data.data.length > 0) {
+          testimoniesData = data.data.map(t => ({
+            id: t.id,
+            name: t.name,
+            location: t.location,
+            category: t.category,
+            categoryText: t.category_text || '',
+            scripture: t.scripture || '',
+            text: t.text,
+            initials: t.initials || 'EH',
+            date: t.date_text || 'Just now'
+          }));
+        } else {
+          testimoniesData = [];
+        }
+      } catch (err) {
+        console.warn("[WDIGC API] Live testimonies down.", err.message);
+        testimoniesData = [];
+      }
+      renderTestimonies();
+    }
+
     function renderTestimonies() {
+      if (testimoniesData.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 60px 0; color: var(--muted);">
+            <p style="font-size: 1.2rem; font-weight: 600;">No verified testimonies recorded yet.</p>
+            <p style="margin-top: 8px;">Be the first to share what the Lord has done under the Spoken Word of WDIGC!</p>
+          </div>
+        `;
+        return;
+      }
+
       // Filter logic
       const filtered = testimoniesData.filter(t => {
         const matchesCategory = activeCategory === "all" || t.category === activeCategory;
@@ -416,6 +389,7 @@
       }
 
       grid.innerHTML = filtered.map(t => {
+        const readableCategoryText = t.categoryText || (t.category ? t.category.charAt(0).toUpperCase() + t.category.slice(1) : 'Breakthrough');
         return `
           <article class="testimony-card">
             <div class="card-top">
@@ -425,9 +399,9 @@
                 <p class="user-location">📍 ${t.location}</p>
               </div>
             </div>
-            ${(t.categoryText || t.scripture) ? `
+            ${(readableCategoryText || t.scripture) ? `
             <div class="badge-row">
-              ${t.categoryText ? `<span class="category-badge">${t.categoryText}</span>` : ""}
+              ${readableCategoryText ? `<span class="category-badge">${readableCategoryText}</span>` : ""}
               ${t.scripture ? `<span class="scripture-tag">📖 ${t.scripture}</span>` : ""}
             </div>
             ` : ""}
@@ -520,8 +494,8 @@
       });
     }
 
-    // Submit Testimony Form
-    function submitTestimony(event) {
+    // Submit Testimony Form Live to API
+    async function submitTestimony(event) {
       event.preventDefault();
 
       const name = document.getElementById("tName").value;
@@ -534,28 +508,53 @@
       // Extract Initials
       const initials = name.split(" ").map(n => n[0]).join("").substring(0, 2).toUpperCase() || "T";
 
-      // Append to local testimonies
-      testimoniesData.unshift({
-        id: testimoniesData.length + 1,
-        name: name,
-        location: location,
-        category: category,
-        categoryText: categoryText,
-        scripture: scripture,
-        text: text,
-        initials: initials,
-        date: "Just now"
-      });
+      try {
+        const response = await fetch('http://api.worddietgospel.org/api/testimonies', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            location,
+            category,
+            category_text: categoryText,
+            scripture,
+            text,
+            initials,
+            date_text: "Just now",
+            status: "pending" // defaults to pending awaiting admin approval!
+          })
+        });
 
-      // Clear Form and close modal
-      document.getElementById("testimonyForm").reset();
-      closeFormModal();
-
-      // Re-render Grid with category set to All
-      filterCategory("all");
-
-      // Show instant feedback alert
-      alert("Hallelujah! Your testimony has been submitted successfully for verification. Thank you for declaring the works of God!");
+        const data = await response.json();
+        if (data.success) {
+          // Clear Form and close modal
+          document.getElementById("testimonyForm").reset();
+          closeFormModal();
+          
+          alert("Hallelujah! Your miracle testimony has been successfully submitted live to WDIGC for review and verification. Thank you for declaring the marvels of God!");
+        }
+      } catch (err) {
+        // Safe offline bypass layer
+        fallbackTestimonies.unshift({
+          id: Date.now(),
+          name: name,
+          location: location,
+          category: category,
+          categoryText: categoryText,
+          scripture: scripture,
+          text: text,
+          initials: initials,
+          date: "Just now"
+        });
+        
+        testimoniesData = fallbackTestimonies;
+        
+        document.getElementById("testimonyForm").reset();
+        closeFormModal();
+        filterCategory("all");
+        
+        alert("[Offline presentation mode] Your miracle testimony was saved in your local session! Thank you for sharing!");
+      }
     }
 
     window.addEventListener("scroll", function () {
@@ -588,7 +587,9 @@
     }
 
     // App Initialization
-    renderTestimonies();
+    window.addEventListener("DOMContentLoaded", () => {
+      fetchTestimonies();
+    });
   </script>
 </body>
 

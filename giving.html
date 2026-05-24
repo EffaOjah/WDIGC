@@ -44,6 +44,7 @@
           <a href="events.html">Events</a>
           <a href="testimonies.html">Testimonies</a>
           <a href="sermons.html">Sermons</a>
+          <a href="focus.html">Ministry Focus</a>
           <a href="locate.html">Locate Church</a>
           <a href="forms.html">Forms</a>
         </div>
@@ -92,6 +93,7 @@
           <a href="events.html" onclick="closeMobileNav()">Events</a>
           <a href="testimonies.html" onclick="closeMobileNav()">Testimonies</a>
           <a href="sermons.html" onclick="closeMobileNav()">Sermons</a>
+          <a href="focus.html" onclick="closeMobileNav()">Ministry Focus</a>
           <a href="locate.html" onclick="closeMobileNav()">Locate Church</a>
           <a href="forms.html" onclick="closeMobileNav()">Forms</a>
         </div>
@@ -207,56 +209,12 @@
           <!-- Right: Interactive Checkout Altar Console -->
           <div class="giving-checkout-panel">
             <div class="checkout-title">
-              <span class="section-kicker" style="justify-content: flex-start; margin-bottom: 6px;">ALTAR PORTAL</span>
+              <span class="section-kicker">PAY ONLINE</span>
               <h2 id="activeCategoryTitle">Tithe &amp; Offerings</h2>
               <p id="activeCategoryDesc">General Ministry funds supporting church operations and physical weekly
                 services.</p>
             </div>
-
-            <!-- Tab selection channel -->
-            <div class="channel-tabs">
-              <button class="channel-btn active" onclick="switchGivingChannel('bank', this)">Bank Transfer</button>
-              <button class="channel-btn" onclick="switchGivingChannel('online', this)">Online Card</button>
-            </div>
-
-            <!-- Channel A: Bank Transfer Details -->
-            <div class="bank-details-wrapper" id="bankChannel">
-              <div class="bank-card">
-                <span class="bank-label">First Bank Of Nigeria</span>
-                <div class="bank-name">First Bank</div>
-                <div class="bank-account">3190886364</div>
-                <div class="account-holder">
-                  <span>Account: WDIGC Calabar</span>
-                  <button class="copy-account-btn" onclick="copyText('3190886364')">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    Copy
-                  </button>
-                </div>
-              </div>
-
-              <div class="bank-card">
-                <span class="bank-label">Guaranty Trust Bank</span>
-                <div class="bank-name">GTBank</div>
-                <div class="bank-account">0921473216</div>
-                <div class="account-holder">
-                  <span>Account: WDIGC Ministry</span>
-                  <button class="copy-account-btn" onclick="copyText('0921473216')">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    Copy
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Channel B: Online Simulated Form and Blessing Pass Generator -->
+            <!-- Channel: Pay Online Simulated Form and Blessing Pass Generator -->
             <form class="online-pay-wrapper" id="onlineChannel" onsubmit="handleGivingSubmit(event)">
               <div class="form-group">
                 <label class="form-label" for="seedName">Your Full Name</label>
@@ -305,7 +263,7 @@
                     stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="3"></circle>
                     <path
-                      d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+                      d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83 2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
                     </path>
                   </svg>
                   Configure API Key
@@ -319,7 +277,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="pay-btn">Sow Seed on Altar &amp; Claim Blessing</button>
+              <button type="submit" class="pay-btn">Pay Online &amp; Sow Seed</button>
             </form>
 
             <!-- Covenant seed certificate receipt display -->
@@ -494,44 +452,6 @@
       document.getElementById("receiptDisplay").style.display = "none";
     }
 
-    function switchGivingChannel(channel, btn) {
-      const tabs = document.querySelectorAll(".channel-btn");
-      tabs.forEach(t => t.classList.remove("active"));
-      btn.classList.add("active");
-
-      const bankChannel = document.getElementById("bankChannel");
-      const onlineChannel = document.getElementById("onlineChannel");
-
-      if (channel === 'bank') {
-        bankChannel.style.display = "flex";
-        onlineChannel.style.display = "none";
-      } else {
-        bankChannel.style.display = "none";
-        onlineChannel.style.display = "flex";
-      }
-
-      document.getElementById("receiptDisplay").style.display = "none";
-    }
-
-    function copyText(val) {
-      navigator.clipboard.writeText(val).then(() => {
-        // Create an elegant temporary toast notification since toast-box is commented out in some templates
-        let toast = document.getElementById("toastBox");
-        if (!toast) {
-          toast = document.createElement("div");
-          toast.id = "toastBox";
-          toast.style.cssText = "position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--charcoal); color: var(--white); padding: 12px 24px; border-radius: var(--radius); z-index: 1000; box-shadow: var(--shadow); font-weight: 700; font-size: 0.88rem; border: 1px solid var(--accent); transition: all 0.3s ease; opacity: 0; pointer-events: none;";
-          document.body.appendChild(toast);
-        }
-        toast.textContent = "Account Number Copied!";
-        toast.style.opacity = "1";
-        toast.style.transform = "translateX(-50%) translateY(-10px)";
-        setTimeout(() => {
-          toast.style.opacity = "0";
-          toast.style.transform = "translateX(-50%)";
-        }, 2000);
-      });
-    }
 
     function handleGivingSubmit(e) {
       e.preventDefault();

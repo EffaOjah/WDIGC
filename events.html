@@ -44,6 +44,7 @@
           <a href="events.html" class="active">Events</a>
           <a href="testimonies.html">Testimonies</a>
           <a href="sermons.html">Sermons</a>
+          <a href="focus.html">Ministry Focus</a>
           <a href="locate.html">Locate Church</a>
           <a href="forms.html">Forms</a>
         </div>
@@ -92,6 +93,7 @@
           <a href="events.html" class="active" onclick="closeMobileNav()">Events</a>
           <a href="testimonies.html" onclick="closeMobileNav()">Testimonies</a>
           <a href="sermons.html" onclick="closeMobileNav()">Sermons</a>
+          <a href="focus.html" onclick="closeMobileNav()">Ministry Focus</a>
           <a href="locate.html" onclick="closeMobileNav()">Locate Church</a>
           <a href="forms.html" onclick="closeMobileNav()">Forms</a>
         </div>
@@ -113,72 +115,11 @@
       </div>
     </section>
 
-    <!-- Featured Live Countdown Program -->
+    <!-- Featured Dynamic Program -->
     <section class="featured-banner-section">
       <div class="container">
-        <div class="featured-timer-card">
-          <div class="featured-details">
-            <div class="meta-item" style="margin-bottom: 12px; color: var(--champagne)">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polygon
-                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                </polygon>
-              </svg>
-              <span>ANNUAL FLAGSHIP CONFERENCE</span>
-            </div>
-            <h2>Prophetic Overflow Conference 2026</h2>
-            <p>Prepare for a supernatural downpour of the Spirit, deep apostolic teachings, and radical kingdom
-              realignment. Hosted by Apostle Omotosho Tope Joseph with anointed guest ministers.</p>
-
-            <div class="featured-meta">
-              <div class="meta-item">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <span>Sept 15 - Sept 20, 2026</span>
-              </div>
-              <div class="meta-item">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                <span>Calabar HQ &amp; Online Global</span>
-              </div>
-            </div>
-
-            <button class="btn btn-gold" onclick="openEventModal('overflow')">View Event Details</button>
-          </div>
-
-          <!-- Countdown Timer -->
-          <div class="countdown-panel" style="display: flex; flex-direction: column; gap: 16px;">
-            <span
-              style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6)">DAYS
-              UNTIL ELEVATION</span>
-            <div class="countdown-widget" id="featuredCountdown">
-              <div class="countdown-block">
-                <span class="countdown-num" id="cdDays">00</span>
-                <span class="countdown-label">Days</span>
-              </div>
-              <div class="countdown-block">
-                <span class="countdown-num" id="cdHours">00</span>
-                <span class="countdown-label">Hours</span>
-              </div>
-              <div class="countdown-block">
-                <span class="countdown-num" id="cdMins">00</span>
-                <span class="countdown-label">Mins</span>
-              </div>
-              <div class="countdown-block">
-                <span class="countdown-num" id="cdSecs">00</span>
-                <span class="countdown-label">Secs</span>
-              </div>
-            </div>
-          </div>
+        <div class="featured-timer-card" id="featuredEventBanner">
+          <!-- Dynamically loaded first event goes here -->
         </div>
       </div>
     </section>
@@ -359,8 +300,8 @@
   </footer>
 
   <script>
-    // Event Database
-    const wdigcEvents = [
+    // Fallback Mock Events Database for Safe Offline Bypass
+    const fallbackEvents = [
       {
         id: "overflow",
         tag: "conference",
@@ -462,6 +403,102 @@
       }
     ];
 
+    // Dynamic Events Array
+    let wdigcEvents = [];
+
+    // Fetch live events from API with offline fallback
+    async function fetchEvents() {
+      try {
+        const response = await fetch('http://api.worddietgospel.org/api/events');
+        const data = await response.json();
+        
+        if (data.success && data.data && data.data.length > 0) {
+          wdigcEvents = data.data.map(e => ({
+            id: e.id,
+            tag: e.tag,
+            title: e.title,
+            dateText: e.date_text,
+            timeText: e.time_text,
+            location: e.location,
+            shortDesc: e.short_desc,
+            longDesc: e.long_desc,
+            blessing: e.blessing,
+            imageUrl: e.image_path ? `http://api.worddietgospel.org/${e.image_path.replace(/\\/g, '/')}` : null
+          }));
+        } else {
+          wdigcEvents = fallbackEvents;
+        }
+      } catch (err) {
+        console.warn("[WDIGC API] Live backend events down. Deploying safe local fallbacks.", err.message);
+        wdigcEvents = fallbackEvents;
+      }
+      
+      // Render featured event from the first active item
+      if (wdigcEvents.length > 0) {
+        renderFeaturedEvent(wdigcEvents[0]);
+      }
+      
+      renderEvents(wdigcEvents);
+    }
+
+    function renderFeaturedEvent(ev) {
+      const banner = document.getElementById("featuredEventBanner");
+      if (!banner) return;
+      
+      if (!ev) {
+        banner.style.display = "none";
+        return;
+      }
+      
+      banner.style.display = "grid";
+      
+      const readableTag = ev.tag === 'weekly' ? 'weekly service' : ev.tag === 'conference' ? 'conference' : ev.tag === 'fasting' ? 'fasting & prayer' : 'special celebration';
+      const imageHtml = ev.imageUrl ? `
+        <div class="featured-image-panel" style="border-radius: var(--radius-lg); overflow: hidden; height: 100%; min-height: 250px; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,0.06);">
+          <img src="${ev.imageUrl}" alt="${ev.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+        </div>
+      ` : `
+        <div class="featured-image-panel" style="border-radius: var(--radius-lg); overflow: hidden; height: 100%; min-height: 250px; background: linear-gradient(135deg, rgba(234, 28, 36, 0.2), rgba(0,0,0,0.6)); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.06);">
+          <img src="img/WDIGCPNG.png" alt="WDIGC logo" style="width: 120px; opacity: 0.6; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));" />
+        </div>
+      `;
+
+      banner.innerHTML = `
+        <div class="featured-details">
+          <div class="meta-item" style="margin-bottom: 12px; color: var(--champagne); text-transform: uppercase;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>${readableTag}</span>
+          </div>
+          <h2>${ev.title}</h2>
+          <p>${ev.shortDesc}</p>
+
+          <div class="featured-meta" style="margin-bottom: 24px;">
+            <div class="meta-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>${ev.dateText}</span>
+            </div>
+            <div class="meta-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>${ev.location}</span>
+            </div>
+          </div>
+
+          <button class="btn btn-gold" onclick="openEventModal('${ev.id}')">View Event Details</button>
+        </div>
+        ${imageHtml}
+      `;
+    }
+
     // Populate Events Grid
     function renderEvents(eventsList) {
       const grid = document.getElementById("eventsGrid");
@@ -480,8 +517,11 @@
         card.className = "event-card";
         card.setAttribute("onclick", `openEventModal('${ev.id}')`);
 
+        // Check if there is an image uploaded, if so render it at the top of the card or use CSS class tags
+        const readableTag = ev.tag === 'weekly' ? 'weekly service' : ev.tag === 'conference' ? 'conference' : ev.tag === 'fasting' ? 'fasting & prayer' : 'special celebration';
+
         card.innerHTML = `
-          <div class="card-tag">${ev.tag.replace('-', ' ')}</div>
+          <div class="card-tag">${readableTag}</div>
           <h3>${ev.title}</h3>
           <p>${ev.shortDesc}</p>
           <div class="card-footer">
@@ -526,41 +566,11 @@
       }
     }
 
-    // Countdown Timer Logic
-    function initCountdown() {
-      // Set Target Date: Sept 15, 2026 17:00:00 (5:00 PM)
-      const targetDate = new Date("September 15, 2026 17:00:00").getTime();
-
-      function updateClock() {
-        const now = new Date().getTime();
-        const difference = targetDate - now;
-
-        if (difference < 0) {
-          document.getElementById("featuredCountdown").innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; color: var(--champagne); font-weight: bold; font-size: 1.2rem;">
-              THE POWER OF GOD IS LIVE!
-            </div>`;
-          return;
-        }
-
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        document.getElementById("cdDays").textContent = days.toString().padStart(2, '0');
-        document.getElementById("cdHours").textContent = hours.toString().padStart(2, '0');
-        document.getElementById("cdMins").textContent = minutes.toString().padStart(2, '0');
-        document.getElementById("cdSecs").textContent = seconds.toString().padStart(2, '0');
-      }
-
-      updateClock();
-      setInterval(updateClock, 1000);
-    }
+    // Countdown Timer Logic (Removed as requested)
 
     // Modal Operations
     function openEventModal(eventId) {
-      const ev = wdigcEvents.find(e => e.id === eventId);
+      const ev = wdigcEvents.find(e => e.id == eventId);
       if (!ev) return;
 
       const modal = document.getElementById("eventModal");
@@ -568,7 +578,15 @@
       const body = document.getElementById("modalBody");
 
       title.textContent = ev.title;
+      
+      const bannerImgHtml = ev.imageUrl ? `
+        <div style="margin-bottom: 20px; border-radius: 8px; overflow: hidden; max-height: 250px;">
+          <img src="${ev.imageUrl}" alt="${ev.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+        </div>
+      ` : '';
+
       body.innerHTML = `
+        ${bannerImgHtml}
         <span class="detail-section-label">Schedule &amp; Venue</span>
         <div class="event-info-panel">
           <div class="info-block">
@@ -587,7 +605,13 @@
 
         <span class="detail-section-label">About The Event</span>
         <div class="event-long-desc">${ev.longDesc}</div>
-
+        
+        ${ev.blessing ? `
+          <span class="detail-section-label">Prophetic Scripture Blessing</span>
+          <div class="event-long-desc" style="font-style: italic; color: #d4af37; border-left: 3px solid #d4af37; padding-left: 12px; margin-top: 8px; font-weight: 500;">
+            ${ev.blessing}
+          </div>
+        ` : ''}
       `;
 
       modal.classList.add("open");
@@ -599,8 +623,6 @@
       modal.classList.remove("open");
       document.body.style.overflow = "auto";
     }
-
-
 
     // Giving Modal operations
     function openGivingModal() {
@@ -631,6 +653,7 @@
       }
     });
 
+    // Scroll function
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -675,8 +698,7 @@
 
     // Initialize App
     window.addEventListener("DOMContentLoaded", () => {
-      renderEvents(wdigcEvents);
-      initCountdown();
+      fetchEvents();
     });
   </script>
 </body>

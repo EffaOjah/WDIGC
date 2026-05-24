@@ -1,0 +1,193 @@
+/* WDIGC Premium Ministry Focus Page Styling */
+
+/* Page Hero Section */
+.focus-hero {
+  background: linear-gradient(135deg, var(--obsidian-dark), var(--obsidian));
+  color: var(--white);
+  padding: 180px 0 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.focus-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(155, 28, 28, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.focus-hero h1 {
+  font-family: var(--heading);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+}
+
+.focus-hero p {
+  font-size: 1.2rem;
+  color: var(--muted-light);
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Ministry Focus Grid Section */
+.focus-section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.focus-card-item {
+  background: var(--cream-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.focus-card-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.focus-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius);
+  background: rgba(155, 28, 28, 0.06);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all var(--transition);
+}
+
+.focus-card-item:hover .focus-icon-box {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.focus-card-item h3 {
+  font-family: var(--heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.focus-card-item p {
+  font-size: 0.96rem;
+  color: var(--muted);
+  line-height: 1.65;
+  flex-grow: 1;
+}
+
+/* Badges for status */
+.focus-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+
+.focus-badge.weekly {
+  background: rgba(155, 28, 28, 0.06);
+  color: var(--accent);
+}
+
+.focus-badge.coming-up {
+  background: rgba(197, 168, 76, 0.12);
+  color: #b39130;
+  border: 1px solid rgba(197, 168, 76, 0.2);
+}
+
+.focus-badge.special {
+  background: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+}
+
+/* Call to Action Altar section */
+.altar-banner-section {
+  background: var(--obsidian-dark);
+  color: var(--white);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.altar-banner-card {
+  background: linear-gradient(135deg, var(--charcoal), var(--obsidian));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.altar-banner-card h2 {
+  font-family: var(--heading);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.altar-banner-card p {
+  color: var(--muted-light);
+  font-size: 1.05rem;
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+/* Responsive Grid Adapters */
+@media (max-width: 980px) {
+  .focus-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .altar-banner-card {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 650px) {
+  .focus-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .altar-banner-card {
+    padding: 30px 20px;
+  }
+}

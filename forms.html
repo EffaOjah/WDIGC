@@ -44,6 +44,7 @@
           <a href="events.html">Events</a>
           <a href="testimonies.html">Testimonies</a>
           <a href="sermons.html">Sermons</a>
+          <a href="focus.html">Ministry Focus</a>
           <a href="locate.html">Locate Church</a>
           <a href="forms.html" class="active">Forms</a>
         </div>
@@ -92,6 +93,7 @@
           <a href="events.html" onclick="closeMobileNav()">Events</a>
           <a href="testimonies.html" onclick="closeMobileNav()">Testimonies</a>
           <a href="sermons.html" onclick="closeMobileNav()">Sermons</a>
+          <a href="focus.html" onclick="closeMobileNav()">Ministry Focus</a>
           <a href="locate.html" onclick="closeMobileNav()">Locate Church</a>
           <a href="forms.html" class="active" onclick="closeMobileNav()">Forms</a>
         </div>
@@ -575,7 +577,7 @@
       document.getElementById("formContentCard").innerHTML = htmlBlock;
     }
 
-    function submitFormPort(event, formKey) {
+    async function submitFormPort(event, formKey) {
       event.preventDefault();
 
       let name = "";
@@ -584,28 +586,36 @@
       let val1 = "";
       let label2 = "";
       let val2 = "";
+      let email = "";
+      let details = "";
 
       if (formKey === 'counseling') {
         name = document.getElementById("cName").value;
+        email = document.getElementById("cEmail").value;
         phone = document.getElementById("cPhone").value;
         label1 = "Appointment Session";
         val1 = document.getElementById("cType").value;
         label2 = "Target Need";
         val2 = "Prophetic Prayer/Counseling";
+        details = document.getElementById("cRequest").value;
       } else if (formKey === 'volunteer') {
         name = document.getElementById("vName").value;
+        email = document.getElementById("vEmail").value;
         phone = document.getElementById("vPhone").value;
         label1 = "Express Department";
         val1 = document.getElementById("vDept").value;
         label2 = "Status Selection";
         val2 = "WDIGC Volunteer";
+        details = document.getElementById("vReason").value;
       } else if (formKey === 'baptism') {
         name = document.getElementById("bName").value;
+        email = document.getElementById("bEmail").value;
         phone = document.getElementById("bPhone").value;
         label1 = "Discipleship Category";
         val1 = document.getElementById("bLevel").value;
         label2 = "Program Track";
         val2 = "Kingdom Discipleship";
+        details = document.getElementById("bMessage").value;
       } else if (formKey === 'baby') {
         const cName = document.getElementById("babyName").value;
         name = "Parents: " + document.getElementById("fatherName").value + " & " + document.getElementById("motherName").value;
@@ -618,54 +628,112 @@
           month: "short",
           day: "numeric"
         });
+        details = "Child DOB: " + document.getElementById("babyDate").value;
       }
 
       // Create unique registration receipt code
       const regCode = "WDIGC-" + Math.floor(1000 + Math.random() * 9000) + "-REG";
 
-      const ticketHtml = `
-        <div class="ticket-brand">
-          <span>Word Diet Int'l Gospel Church</span>
-          <div class="ticket-code">${regCode}</div>
-        </div>
-        <div class="ticket-user">
-          <h3>${name}</h3>
-          <p>📞 Contact: ${phone}</p>
-        </div>
-        <div class="ticket-dashed-line"></div>
-        <div class="ticket-meta-grid">
-          <div class="ticket-meta">
-            <h4>${label1}</h4>
-            <p>${val1}</p>
+      // Display ticket details
+      const renderTicket = (code) => {
+        const ticketHtml = `
+          <div class="ticket-brand">
+            <span>Word Diet Int'l Gospel Church</span>
+            <div class="ticket-code">${code}</div>
           </div>
-          <div class="ticket-meta">
-            <h4>${label2}</h4>
-            <p>${val2}</p>
+          <div class="ticket-user">
+            <h3>${name}</h3>
+            <p>📞 Contact: ${phone}</p>
           </div>
-        </div>
-        <div class="ticket-meta-grid" style="margin-top: 12px;">
-          <div class="ticket-meta">
-            <h4>Processing Centre</h4>
-            <p>Admin Desk, Calabar HQ</p>
+          <div class="ticket-dashed-line"></div>
+          <div class="ticket-meta-grid">
+            <div class="ticket-meta">
+              <h4>${label1}</h4>
+              <p>${val1}</p>
+            </div>
+            <div class="ticket-meta">
+              <h4>${label2}</h4>
+              <p>${val2}</p>
+            </div>
           </div>
-          <div class="ticket-meta">
-            <h4>Status</h4>
-            <p style="color: var(--champagne);">Saved & Submitted</p>
+          <div class="ticket-meta-grid" style="margin-top: 12px;">
+            <div class="ticket-meta">
+              <h4>Processing Centre</h4>
+              <p>Admin Desk, Calabar HQ</p>
+            </div>
+            <div class="ticket-meta">
+              <h4>Status</h4>
+              <p style="color: var(--champagne);">Saved & Submitted</p>
+            </div>
           </div>
-        </div>
-      `;
+        `;
 
-      // Select blessing
-      const blessingInfo = categoriesBlessings[formKey];
-      const blessingHtml = `
-        <p>"${blessingInfo.blessing}"</p>
-        <span>${blessingInfo.scripture}</span>
-      `;
+        // Select blessing
+        const blessingInfo = categoriesBlessings[formKey];
+        const blessingHtml = `
+          <p>"${blessingInfo.blessing}"</p>
+          <span>${blessingInfo.scripture}</span>
+        `;
 
-      document.getElementById("receiptTicket").innerHTML = ticketHtml;
-      document.getElementById("scriptureBlessing").innerHTML = blessingHtml;
-      document.getElementById("receiptModal").classList.add("open");
-      document.body.style.overflow = "hidden";
+        document.getElementById("receiptTicket").innerHTML = ticketHtml;
+        document.getElementById("scriptureBlessing").innerHTML = blessingHtml;
+        document.getElementById("receiptModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      };
+
+      try {
+        const response = await fetch(`http://api.worddietgospel.org/api/forms`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: regCode,
+            category: formKey,
+            name,
+            email,
+            contact: phone,
+            type: val1,
+            date_track: val2,
+            details
+          })
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          renderTicket(data.data.id);
+          
+          // Also save in local storage mock cache if it exists, to keep console synchronized
+          const localForms = JSON.parse(localStorage.getItem('wdigc_forms') || '[]');
+          localForms.unshift({
+            id: data.data.id,
+            category: formKey,
+            name,
+            contact: phone,
+            type: val1,
+            dateTrack: val2,
+            status: "pending"
+          });
+          localStorage.setItem('wdigc_forms', JSON.stringify(localForms));
+        } else {
+          // Fallback to client-side generation
+          renderTicket(regCode);
+        }
+      } catch (err) {
+        console.warn("Backend server offline, falling back to simulated ticket generation.");
+        renderTicket(regCode);
+        
+        // Save in local storage mock cache
+        const localForms = JSON.parse(localStorage.getItem('wdigc_forms') || '[]');
+        localForms.unshift({
+          id: regCode,
+          category: formKey,
+          name,
+          contact: phone,
+          type: val1,
+          dateTrack: val2,
+          status: "pending"
+        });
+        localStorage.setItem('wdigc_forms', JSON.stringify(localForms));
+      }
     }
 
     function closeReceiptModal() {

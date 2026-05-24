@@ -455,7 +455,7 @@
 }
 
 .badge-modal-card {
-  background: linear-gradient(135deg, #0d1321, #060912);
+  background: linear-gradient(135deg, var(--charcoal), var(--obsidian-dark));
   border: 2px solid var(--champagne);
   box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8), 0 0 50px rgba(197, 163, 104, 0.15);
   border-radius: var(--radius-lg);
@@ -495,7 +495,7 @@
   height: 130px;
   border-radius: 50%;
   margin: 0 auto 24px;
-  background: radial-gradient(circle, #1a2238 0%, #0d1321 70%);
+  background: radial-gradient(circle, var(--charcoal-light) 0%, var(--obsidian-dark) 70%);
   border: 3px double var(--champagne);
   display: flex;
   align-items: center;

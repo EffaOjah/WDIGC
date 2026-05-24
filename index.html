@@ -38,6 +38,7 @@
           <a href="events.html">Events</a>
           <a href="testimonies.html">Testimonies</a>
           <a href="sermons.html">Sermons</a>
+          <a href="focus.html">Ministry Focus</a>
           <a href="locate.html">Locate Church</a>
           <a href="forms.html">Forms</a>
         </div>
@@ -85,6 +86,7 @@
           <a href="events.html" onclick="closeMobileNav()">Events</a>
           <a href="testimonies.html" onclick="closeMobileNav()">Testimonies</a>
           <a href="sermons.html" onclick="closeMobileNav()">Sermons</a>
+          <a href="focus.html" onclick="closeMobileNav()">Ministry Focus</a>
           <a href="locate.html" onclick="closeMobileNav()">Locate Church</a>
           <a href="forms.html" onclick="closeMobileNav()">Forms</a>
         </div>
@@ -584,9 +586,18 @@
     function renderSermons() {
       const cards = [];
       const visibleCount = window.matchMedia("(max-width: 720px)").matches ? 1 : window.matchMedia("(max-width: 980px)").matches ? 2 : 3;
+      const controls = document.querySelector(".slider-controls");
 
-      for (let i = 0; i < visibleCount; i += 1) {
-        cards.push(sermonData[(sermonIndex + i) % sermonData.length]);
+      if (sermonData.length <= visibleCount) {
+        if (controls) controls.style.display = "none";
+        cards.push(...sermonData);
+        sermonsTrack.style.justifyContent = "center";
+      } else {
+        if (controls) controls.style.display = "flex";
+        sermonsTrack.style.justifyContent = "";
+        for (let i = 0; i < visibleCount; i += 1) {
+          cards.push(sermonData[(sermonIndex + i) % sermonData.length]);
+        }
       }
 
       sermonsTrack.innerHTML = cards.map(function (sermon) {
@@ -607,8 +618,27 @@
       renderSermons();
     }
 
+    function extractYouTubeId(urlOrId) {
+      if (!urlOrId) return "";
+      urlOrId = urlOrId.trim();
+      if (urlOrId.length === 11 && !urlOrId.includes("/") && !urlOrId.includes("?")) {
+        return urlOrId;
+      }
+      const regExp = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
+      const match = urlOrId.match(regExp);
+      if (match && match[1] && match[1].length === 11) {
+        return match[1];
+      }
+      const fallbackReg = /(?:^|\/|v=)([a-zA-Z0-9_-]{11})(?:[?&]|$)/;
+      const fallbackMatch = urlOrId.match(fallbackReg);
+      if (fallbackMatch && fallbackMatch[1]) {
+        return fallbackMatch[1];
+      }
+      return "";
+    }
+
     async function loadSermons() {
-      const LOCAL_API = "http://localhost:5000/api/sermons";
+      const LOCAL_API = "http://api.worddietgospel.org/api/sermons";
       const YOUTUBE_RSS = "https://www.youtube.com/feeds/videos.xml?channel_id=UCxqPBN9cRx1tMVcERV08fIA";
       const proxyUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(YOUTUBE_RSS);
 
@@ -618,11 +648,16 @@
         const localData = await localRes.json();
 
         if (localData.success && localData.data.length > 0) {
-          sermonData = localData.data.map(s => ({
-            title: s.title,
-            img: s.thumbnail_path ? `http://localhost:5000/${s.thumbnail_path.replace(/\\/g, '/')}` : (s.video_id ? `https://img.youtube.com/vi/${s.video_id}/hqdefault.jpg` : fallbackSermons[0].img),
-            link: s.link || (s.video_id ? `https://www.youtube.com/watch?v=${s.video_id}` : '#')
-          }));
+          sermonData = localData.data.map(s => {
+            const cleanId = extractYouTubeId((s.video_id || '').trim() || (s.link || '').trim());
+            return {
+              title: s.title,
+              img: s.thumbnail_path 
+                ? `http://api.worddietgospel.org/${s.thumbnail_path.replace(/\\/g, '/')}` 
+                : (cleanId ? `https://img.youtube.com/vi/${cleanId}/hqdefault.jpg` : fallbackSermons[0].img),
+              link: s.link || (cleanId ? `https://www.youtube.com/watch?v=${cleanId}` : '#')
+            };
+          });
         } else {
           // Fallback to YouTube RSS
           const response = await fetch(proxyUrl);

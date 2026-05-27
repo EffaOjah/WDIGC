@@ -9,16 +9,15 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 const allowedOrigins = [
-    'http://api.worddietgospel.org',
-    'https://api.worddietgospel.org',
-    'http://localhost:5000'
+    'https://worddietgospel.org',
+    'null'
 ];
 
 app.use(cors({
     origin: function (origin, callback) {
         // Allow requests with no origin (like mobile apps, curl, or local files)
         if (!origin) return callback(null, true);
-        
+
         const cleanOrigin = origin.replace(/\/$/, '');
         if (allowedOrigins.includes(cleanOrigin) || allowedOrigins.some(o => cleanOrigin.startsWith(o))) {
             callback(null, true);

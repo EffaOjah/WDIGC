@@ -357,7 +357,7 @@
     // Fetch approved testimonies from live API
     async function fetchTestimonies() {
       try {
-        const response = await fetch('http://api.worddietgospel.org/api/testimonies/approved');
+        const response = await fetch('https://api.worddietgospel.org/api/testimonies/approved');
         console.log(response);
 
         const data = await response.json();
@@ -537,7 +537,7 @@
       const initials = name.split(" ").map(n => n[0]).join("").substring(0, 2).toUpperCase() || "T";
 
       try {
-        const response = await fetch('http://api.worddietgospel.org/api/testimonies', {
+        const response = await fetch('https://api.worddietgospel.org/api/testimonies', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

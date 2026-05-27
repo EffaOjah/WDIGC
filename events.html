@@ -435,7 +435,7 @@
     // Fetch live events from API with offline fallback
     async function fetchEvents() {
       try {
-        const response = await fetch('http://api.worddietgospel.org/api/events');
+        const response = await fetch('https://api.worddietgospel.org/api/events');
         console.log(response);
 
         const data = await response.json();
@@ -450,7 +450,7 @@
             shortDesc: e.short_desc,
             longDesc: e.long_desc,
             blessing: e.blessing,
-            imageUrl: e.image_path ? `http://api.worddietgospel.org/${e.image_path.replace(/\\/g, '/')}` : null
+            imageUrl: e.image_path ? `https://api.worddietgospel.org/${e.image_path.replace(/\\/g, '/')}` : null
           }));
         } else {
           wdigcEvents = fallbackEvents;

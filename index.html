@@ -704,7 +704,7 @@
     }
 
     async function loadSermons() {
-      const LOCAL_API = "http://api.worddietgospel.org/api/sermons";
+      const LOCAL_API = "https://api.worddietgospel.org/api/sermons";
       const YOUTUBE_RSS = "https://www.youtube.com/feeds/videos.xml?channel_id=UCxqPBN9cRx1tMVcERV08fIA";
       const proxyUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(YOUTUBE_RSS);
 
@@ -719,7 +719,7 @@
             return {
               title: s.title,
               img: s.thumbnail_path
-                ? `http://api.worddietgospel.org/${s.thumbnail_path.replace(/\\/g, '/')}`
+                ? `https://api.worddietgospel.org/${s.thumbnail_path.replace(/\\/g, '/')}`
                 : (cleanId ? `https://img.youtube.com/vi/${cleanId}/hqdefault.jpg` : fallbackSermons[0].img),
               link: s.link || (cleanId ? `https://www.youtube.com/watch?v=${cleanId}` : '#')
             };

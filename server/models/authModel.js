@@ -25,6 +25,16 @@ const addUser = async (username, password) => {
 // Self-healing default administrator database seed on boot
 const seedDefaultAdmin = async () => {
     try {
+        // Create users table if it does not exist
+        await db.query(`
+            CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(50) NOT NULL UNIQUE,
+                password VARCHAR(255) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
         const [rows] = await db.query('SELECT COUNT(*) as count FROM users');
         if (rows[0].count === 0) {
             let hashedPassword = await bcrypt.hash('admin123', 10);

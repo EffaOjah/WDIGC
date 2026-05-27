@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -440,18 +440,25 @@
 
         const data = await response.json();
         if (data.success && data.data && data.data.length > 0) {
-          wdigcEvents = data.data.map(e => ({
-            id: e.id,
-            tag: e.tag,
-            title: e.title,
-            dateText: e.date_text,
-            timeText: e.time_text,
-            location: e.location,
-            shortDesc: e.short_desc,
-            longDesc: e.long_desc,
-            blessing: e.blessing,
-            imageUrl: e.image_path ? `https://api.worddietgospel.org/${e.image_path.replace(/\\/g, '/')}` : null
-          }));
+          wdigcEvents = data.data.map(e => {
+            let imageUrl = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80";
+            if (e.image_path) {
+              imageUrl = e.image_path.startsWith("http") ? e.image_path : `https://api.worddietgospel.org/${e.image_path}`;
+            }
+
+            return {
+              id: e.id,
+              tag: e.tag,
+              title: e.title,
+              dateText: e.date_text,
+              timeText: e.time_text,
+              location: e.location,
+              shortDesc: e.short_desc,
+              longDesc: e.long_desc,
+              blessing: e.blessing,
+              imageUrl: imageUrl
+            };
+          });
         } else {
           wdigcEvents = fallbackEvents;
         }

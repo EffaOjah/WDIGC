@@ -3,6 +3,25 @@ const db = require('../config/db');
 // Self-healing runtime database migration to append any missing fields on boot
 const migrate = async () => {
     try {
+        // Create sermons table if it does not exist at all
+        await db.query(`
+            CREATE TABLE IF NOT EXISTS sermons (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                title VARCHAR(255) NOT NULL,
+                video_id VARCHAR(50),
+                thumbnail_path VARCHAR(255),
+                link VARCHAR(255),
+                speaker VARCHAR(100) DEFAULT 'Apostle Omotosho Tope Joseph',
+                sermon_date VARCHAR(100),
+                scripture VARCHAR(100),
+                category VARCHAR(50),
+                audio_path VARCHAR(255),
+                excerpt TEXT,
+                transcript TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+
         // Query columns layout in MySQL
         const [columns] = await db.query('SHOW COLUMNS FROM sermons');
         const existingColumns = columns.map(c => c.Field.toLowerCase());

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +12,8 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;700;800&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;700;800&display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="css/global.css" />
@@ -31,9 +32,21 @@
 
     <div class="nav-links-wrap">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <div class="nav-dropdown-wrapper">
         <a href="#" class="nav-dropdown-trigger" onclick="return false;">
+          About
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">About Us</a>
+          <a href="overseer.html">General Overseer</a>
+        </div>
+      </div>
+      <div class="nav-dropdown-wrapper">
+        <a href="#" class="nav-dropdown-trigger active" onclick="return false;">
           Resources
           <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -78,7 +91,20 @@
           onclick="closeMobileNav()">&times;</button>
       </div>
       <a href="index.html" onclick="closeMobileNav()">Home</a>
-      <a href="about.html" onclick="closeMobileNav()">About</a>
+      <!-- Collapsible Mobile Dropdown for About -->
+      <div class="mobile-dropdown-wrapper">
+        <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
+          About
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" onclick="closeMobileNav()">About Us</a>
+          <a href="overseer.html" onclick="closeMobileNav()">General Overseer</a>
+        </div>
+      </div>
 
       <!-- Collapsible Mobile Dropdown -->
       <div class="mobile-dropdown-wrapper">
@@ -110,7 +136,8 @@
       <div class="container">
         <span class="section-kicker" style="color: var(--champagne)">WDIGC Altars of Fire</span>
         <h1>Our Ministry Focus</h1>
-        <p>Explore the six foundational service altars and corporate fellowships at WDIGC, designed by the Spirit to build complete faith, activate prophetic speed, and dismantling ancestral bounds.</p>
+        <p>Explore the six foundational service altars and corporate fellowships at WDIGC, designed by the Spirit to
+          build complete faith, activate prophetic speed, and dismantling ancestral bounds.</p>
       </div>
     </section>
 
@@ -120,7 +147,8 @@
         <div class="focus-section-header">
           <span class="section-kicker" style="color: var(--accent)">Spiritual Pillars</span>
           <h2 class="section-title">Word, Power & Prophetic Dominance</h2>
-          <p class="section-copy" style="margin: 0 auto;">Discover where to plug in, grow, and receive anointed impartations under the apostolic mandate of Apostle Omotosho Tope Joseph.</p>
+          <p class="section-copy" style="margin: 0 auto;">Discover where to plug in, grow, and receive anointed
+            impartations under the apostolic mandate of Apostle Omotosho Tope Joseph.</p>
         </div>
 
         <div class="focus-grid">
@@ -128,13 +156,16 @@
           <article class="focus-card-item">
             <span class="focus-badge weekly">Weekly Altar</span>
             <div class="focus-icon-box">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
               </svg>
             </div>
             <h3>Sunday Services</h3>
-            <p>Our flagship corporate assembly. Experience intense atmosphere of praise, deep-rooted teaching of the infallible Word by Apostle OTJ, and divine speed to conquer the week ahead.</p>
-            <div style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
+            <p>Our flagship corporate assembly. Experience intense atmosphere of praise, deep-rooted teaching of the
+              infallible Word by Apostle OTJ, and divine speed to conquer the week ahead.</p>
+            <div
+              style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
               <span style="color: var(--accent)">Schedule:</span> Every Sunday &bull; 8:00 AM
             </div>
           </article>
@@ -143,14 +174,17 @@
           <article class="focus-card-item">
             <span class="focus-badge weekly">Weekly Altar</span>
             <div class="focus-icon-box">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
               </svg>
             </div>
             <h3>WEDNESDAY Midweek Service</h3>
-            <p>Our mid-week spiritual charge. Deep bible study and covenant communion. Actively learning doctrines, praying with fire, and fortifying ourselves for physical and spiritual victory.</p>
-            <div style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
+            <p>Our mid-week spiritual charge. Deep bible study and covenant communion. Actively learning doctrines,
+              praying with fire, and fortifying ourselves for physical and spiritual victory.</p>
+            <div
+              style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
               <span style="color: var(--accent)">Schedule:</span> Every Wednesday &bull; 5:00 PM
             </div>
           </article>
@@ -159,13 +193,16 @@
           <article class="focus-card-item">
             <span class="focus-badge weekly">Weekly Altar</span>
             <div class="focus-icon-box">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
               </svg>
             </div>
             <h3>Prophetic Encounters Services</h3>
-            <p>An atmosphere heavily charged with apostolic prayer, accurate prophetic insight, and divine revelations. Under this altar, lines fall in pleasant places with instant results.</p>
-            <div style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
+            <p>An atmosphere heavily charged with apostolic prayer, accurate prophetic insight, and divine revelations.
+              Under this altar, lines fall in pleasant places with instant results.</p>
+            <div
+              style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
               <span style="color: var(--accent)">Schedule:</span> Weekly Programs
             </div>
           </article>
@@ -174,13 +211,16 @@
           <article class="focus-card-item">
             <span class="focus-badge coming-up">Coming Up</span>
             <div class="focus-icon-box">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
             </div>
             <h3>Healing & Deliverance Services</h3>
-            <p>Dismantling ancestral covenants, breaking demonic foundations, and receiving divine physical healing. Total liberation through the spoken Word of Apostle Omotosho Tope Joseph.</p>
-            <div style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
+            <p>Dismantling ancestral covenants, breaking demonic foundations, and receiving divine physical healing.
+              Total liberation through the spoken Word of Apostle Omotosho Tope Joseph.</p>
+            <div
+              style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
               <span style="color: var(--accent)">Status:</span> Custom Campaign Altar
             </div>
           </article>
@@ -189,7 +229,8 @@
           <article class="focus-card-item">
             <span class="focus-badge special">Periodic Altar</span>
             <div class="focus-icon-box">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                 <line x1="16" y1="2" x2="16" y2="6"></line>
                 <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -197,8 +238,10 @@
               </svg>
             </div>
             <h3>Specialized Services</h3>
-            <p>Monthly thanksgiving services, end-of-year gatherings, love feasts, and high-impact revival conferences that unite the global WDIGC family in worship and dominion.</p>
-            <div style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
+            <p>Monthly thanksgiving services, end-of-year gatherings, love feasts, and high-impact revival conferences
+              that unite the global WDIGC family in worship and dominion.</p>
+            <div
+              style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
               <span style="color: var(--accent)">Schedule:</span> Monthly & Festive Seasons
             </div>
           </article>
@@ -207,14 +250,17 @@
           <article class="focus-card-item">
             <span class="focus-badge coming-up">Coming Up</span>
             <div class="focus-icon-box">
-              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
               </svg>
             </div>
             <h3>Home Cell Fellowship</h3>
-            <p>Localized small-group fellowships held in neighborhoods. Cultivating mutual Christian care, interactive scripture reading, personal prayers, and deep family-like bonding.</p>
-            <div style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
+            <p>Localized small-group fellowships held in neighborhoods. Cultivating mutual Christian care, interactive
+              scripture reading, personal prayers, and deep family-like bonding.</p>
+            <div
+              style="margin-top: 20px; font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-weight: 600;">
               <span style="color: var(--accent)">Status:</span> Preparing Neighborhood Sites
             </div>
           </article>
@@ -228,7 +274,8 @@
         <div class="altar-banner-card">
           <span class="section-kicker" style="color: var(--champagne)">Apostolic Speed</span>
           <h2>Connect with Our Healing &amp; Prophetic Altars</h2>
-          <p>Whether you're joining us live in Calabar or connecting via our online broadcasts, there is a grace waiting to align your paths, ignite your prayer life, and build your faith.</p>
+          <p>Whether you're joining us live in Calabar or connecting via our online broadcasts, there is a grace waiting
+            to align your paths, ignite your prayer life, and build your faith.</p>
           <a href="locate.html" class="btn btn-gold" style="margin-top: 10px;">Find a Worship Location</a>
         </div>
       </div>

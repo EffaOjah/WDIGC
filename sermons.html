@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +12,8 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="css/global.css" />
@@ -31,7 +32,19 @@
 
     <div class="nav-links-wrap">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
+      <div class="nav-dropdown-wrapper">
+        <a href="#" class="nav-dropdown-trigger" onclick="return false;">
+          About
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">About Us</a>
+          <a href="overseer.html">General Overseer</a>
+        </div>
+      </div>
       <div class="nav-dropdown-wrapper">
         <a href="#" class="nav-dropdown-trigger active" onclick="return false;">
           Resources
@@ -43,7 +56,7 @@
         <div class="nav-dropdown-menu">
           <a href="events.html">Events</a>
           <a href="testimonies.html">Testimonies</a>
-          <a href="sermons.html">Sermons</a>
+          <a href="sermons.html" class="active">Sermons</a>
           <a href="focus.html">Ministry Focus</a>
           <a href="locate.html">Locate Church</a>
           <a href="forms.html">Forms</a>
@@ -78,7 +91,20 @@
           onclick="closeMobileNav()">&times;</button>
       </div>
       <a href="index.html" onclick="closeMobileNav()">Home</a>
-      <a href="about.html" onclick="closeMobileNav()">About</a>
+      <!-- Collapsible Mobile Dropdown for About -->
+      <div class="mobile-dropdown-wrapper">
+        <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
+          About
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" onclick="closeMobileNav()">About Us</a>
+          <a href="overseer.html" onclick="closeMobileNav()">General Overseer</a>
+        </div>
+      </div>
 
       <!-- Collapsible Mobile Dropdown -->
       <div class="mobile-dropdown-wrapper">
@@ -321,21 +347,21 @@
       try {
         const response = await fetch('http://api.worddietgospel.org/api/sermons');
         const data = await response.json();
-        
+
         if (data.success && data.data && data.data.length > 0) {
           sermons = data.data.map(s => {
             const youtubeId = extractYouTubeId((s.video_id || '').trim() || (s.link || '').trim());
-            
+
             let imageUrl = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80";
             if (s.thumbnail_path) {
               imageUrl = s.thumbnail_path.startsWith("http") ? s.thumbnail_path : `http://api.worddietgospel.org/${s.thumbnail_path}`;
             }
-            
+
             let audioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
             if (s.audio_path) {
               audioUrl = s.audio_path.startsWith("http") ? s.audio_path : `http://api.worddietgospel.org/${s.audio_path}`;
             }
-            
+
             return {
               id: s.id,
               title: s.title,
@@ -354,7 +380,7 @@
       } catch (err) {
         console.warn("[WDIGC API] Live sermons down. Loading safe local fallback monthly themes.", err.message);
       }
-      
+
       initCardFormats();
       renderSermonsGrid();
     }
@@ -678,9 +704,9 @@
     function openVideoPlayer(youtubeId) {
       const modal = document.getElementById("videoModal");
       const iframe = document.getElementById("videoIframe");
-      
+
       const cleanId = extractYouTubeId(youtubeId);
-      
+
       if (!cleanId || cleanId.includes("/") || cleanId.includes("?") || cleanId.length !== 11) {
         // Fallback: If it's a full http/https url, open it in a new window instead of showing a black iframe error
         if (youtubeId && (youtubeId.startsWith("http://") || youtubeId.startsWith("https://"))) {
@@ -690,7 +716,7 @@
         alert("Sorry, this sermon video is currently unavailable or has an incorrect link.");
         return;
       }
-      
+
       iframe.src = `https://www.youtube.com/embed/${cleanId}?autoplay=1`;
       modal.classList.add("open");
       document.body.style.overflow = "hidden";

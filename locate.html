@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +12,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="css/global.css" />
@@ -31,7 +31,19 @@
 
     <div class="nav-links-wrap">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
+      <div class="nav-dropdown-wrapper">
+        <a href="#" class="nav-dropdown-trigger" onclick="return false;">
+          About
+          <svg class="dropdown-chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="about.html">About Us</a>
+          <a href="overseer.html">General Overseer</a>
+        </div>
+      </div>
       <div class="nav-dropdown-wrapper">
         <a href="#" class="nav-dropdown-trigger active" onclick="return false;">
           Resources
@@ -78,7 +90,20 @@
           onclick="closeMobileNav()">&times;</button>
       </div>
       <a href="index.html" onclick="closeMobileNav()">Home</a>
-      <a href="about.html" onclick="closeMobileNav()">About</a>
+      <!-- Collapsible Mobile Dropdown for About -->
+      <div class="mobile-dropdown-wrapper">
+        <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
+          About
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="mobile-dropdown-content">
+          <a href="about.html" onclick="closeMobileNav()">About Us</a>
+          <a href="overseer.html" onclick="closeMobileNav()">General Overseer</a>
+        </div>
+      </div>
 
       <!-- Collapsible Mobile Dropdown -->
       <div class="mobile-dropdown-wrapper">

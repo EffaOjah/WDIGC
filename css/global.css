@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap');
 
 :root {
   /* Premium Solid Colors - Option A: Royal Crimson & Warm Near-Black */
@@ -11,7 +11,6 @@
   --alabaster-dark: #E6DFD3;
   --cream-card: #FAF7F2;
 
-  /* Premium Accent Color (Deep Crimson Upgrade) */
   --accent: #9B1C1C;
   --accent-dark: #781212;
   --accent-light: #C23B3B;
@@ -20,8 +19,7 @@
   --champagne: var(--accent);
   --champagne-dark: var(--accent-dark);
   --champagne-light: var(--accent-light);
-
-
+  --gold: #C9A84C;
 
   --ink: #0F0E0D;
   --muted: #6B6359;
@@ -30,8 +28,8 @@
   --soft: #FAF7F2;
   --white: #F5F0E8;
 
-  --heading: "Outfit", "Plus Jakarta Sans", "Montserrat", sans-serif;
-  --body: "Inter", "Manrope", sans-serif;
+  --heading: "Cinzel", Georgia, serif;
+  --body: "Lato", "Helvetica Neue", Arial, sans-serif;
   --radius: 8px;
   --radius-lg: 16px;
   --radius-pill: 9999px;
@@ -199,7 +197,7 @@ button {
 
 /* Navbar layout styles */
 #navbar {
-  background: var(--obsidian);
+  background: transparent;
   color: var(--white);
   display: flex;
   justify-content: space-between;
@@ -211,13 +209,16 @@ button {
   right: 0;
   z-index: 100;
   transition: all var(--transition);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid transparent;
 }
 
 #navbar.is-scrolled {
   padding: 14px 24px;
-  background: var(--obsidian-dark);
+  background: rgba(8, 7, 7, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-brand {
@@ -825,4 +826,12 @@ footer {
   .hamburger {
     display: inline-flex;
   }
+}
+
+/* Color Scheme Gold Utilities */
+.color-gold, .text-gold {
+  color: var(--gold) !important;
+}
+.bg-gold {
+  background-color: var(--gold) !important;
 }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -606,6 +606,13 @@
     async function submitFormPort(event, formKey) {
       event.preventDefault();
 
+      const submitBtn = event.target.querySelector('.submit-btn');
+      const originalText = submitBtn ? submitBtn.textContent : "Submit Request";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting to WDIGC...";
+      }
+
       let name = "";
       let phone = "";
       let label1 = "";
@@ -760,6 +767,11 @@
           status: "pending"
         });
         localStorage.setItem('wdigc_forms', JSON.stringify(localForms));
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
       }
     }
 

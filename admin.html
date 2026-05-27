@@ -825,6 +825,13 @@
       loginMsg.className = "status-msg";
       loginMsg.style.display = "none";
 
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : "Access Dashboard";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Authenticating...";
+      }
+
       try {
         const response = await fetch(`${API_URL}/auth/login`, {
           method: 'POST',
@@ -837,6 +844,8 @@
         console.log(response);
 
         const data = await response.json();
+        console.log(data);
+
         if (data.success) {
           localStorage.setItem('wdigc_token', data.token);
           token = data.token;
@@ -847,10 +856,12 @@
         } else {
           loginMsg.innerHTML = data.message || "Invalid credentials";
           loginMsg.className = "status-msg error";
+          loginMsg.style.display = "block";
         }
       } catch (err) {
         loginMsg.innerHTML = "Backend server is offline. Real sermon publishing disabled, dashboard rendering locally.";
         loginMsg.className = "status-msg error";
+        loginMsg.style.display = "block";
 
         // Dynamic simulated login bypass for presentation offline sandbox!
         if (document.getElementById('username').value === 'WDIGC_admin' && document.getElementById('password').value === 'admin123') {
@@ -860,6 +871,11 @@
             showDashboardShell();
             logActivity("Console Offline Login", "Admin logged in via Offline Presentation Bypass.", "now");
           }, 1000);
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
         }
       }
     });
@@ -1111,8 +1127,8 @@
           document.getElementById("statTotalSermons").textContent = data.data.length;
 
           sermonList.innerHTML = data.data.map(s => {
-            const thumbPath = s.thumbnail_path ? (s.thumbnail_path.startsWith('http') ? s.thumbnail_path : `${API_URL.replace('/api', '')}/${s.thumbnail_path}`) : 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80';
-            const audioPath = s.audio_path ? (s.audio_path.startsWith('http') ? s.audio_path : `${API_URL.replace('/api', '')}/${s.audio_path}`) : '';
+            const thumbPath = s.thumbnail_path ? (s.thumbnail_path.startsWith('http') ? s.thumbnail_path : `${API_URL.replace('/api', '')}/${s.thumbnail_path.replace(/\\/g, '/')}`) : 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80';
+            const audioPath = s.audio_path ? (s.audio_path.startsWith('http') ? s.audio_path : `${API_URL.replace('/api', '')}/${s.audio_path.replace(/\\/g, '/')}`) : '';
             return `
               <tr>
                 <td><img src="${thumbPath}" class="thumbnail-preview-cell" alt="${s.title}" /></td>
@@ -1210,109 +1226,138 @@
       sermonMsg.className = "status-msg";
       sermonMsg.style.display = "none";
 
-      const youtubeLink = document.getElementById('sermonLink').value.trim();
-      let videoId = "";
-      if (youtubeLink) {
-        if (youtubeLink.length === 11 && !youtubeLink.includes("/") && !youtubeLink.includes("?")) {
-          videoId = youtubeLink;
-        } else {
-          const regExp = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
-          const match = youtubeLink.match(regExp);
-          if (match && match[1] && match[1].length === 11) {
-            videoId = match[1];
+      const submitBtn = document.getElementById('sermonSubmitBtn');
+      const originalText = submitBtn ? submitBtn.textContent : (isEditingSermon ? "Update Sermon Message" : "Publish Sermon Message");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = isEditingSermon ? "Updating Sermon..." : "Publishing Sermon...";
+      }
+
+      try {
+        const youtubeLink = document.getElementById('sermonLink').value.trim();
+        let videoId = "";
+        if (youtubeLink) {
+          if (youtubeLink.length === 11 && !youtubeLink.includes("/") && !youtubeLink.includes("?")) {
+            videoId = youtubeLink;
           } else {
-            const fallbackReg = /(?:^|\/|v=)([a-zA-Z0-9_-]{11})(?:[?&]|$)/;
-            const fallbackMatch = youtubeLink.match(fallbackReg);
-            if (fallbackMatch && fallbackMatch[1]) {
-              videoId = fallbackMatch[1];
+            const regExp = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
+            const match = youtubeLink.match(regExp);
+            if (match && match[1] && match[1].length === 11) {
+              videoId = match[1];
+            } else {
+              const fallbackReg = /(?:^|\/|v=)([a-zA-Z0-9_-]{11})(?:[?&]|$)/;
+              const fallbackMatch = youtubeLink.match(fallbackReg);
+              if (fallbackMatch && fallbackMatch[1]) {
+                videoId = fallbackMatch[1];
+              }
             }
           }
         }
-      }
 
-      if (!videoId) {
-        sermonMsg.innerHTML = "Error: Please enter a valid YouTube Video Link (for example: https://www.youtube.com/watch?v=xqPBN9cRx1t)";
-        sermonMsg.className = "status-msg error";
-        sermonMsg.style.display = "block";
-        sermonMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        return; // Halt form submission
-      }
+        if (!videoId) {
+          sermonMsg.innerHTML = "Error: Please enter a valid YouTube Video Link (for example: https://www.youtube.com/watch?v=xqPBN9cRx1t)";
+          sermonMsg.className = "status-msg error";
+          sermonMsg.style.display = "block";
+          sermonMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          return; // Halt form submission
+        }
 
-      const title = document.getElementById('sermonTitle').value;
-      const speaker = document.getElementById('sermonSpeaker').value;
-      const sermon_date = document.getElementById('sermonDate').value;
-      const scripture = document.getElementById('sermonScripture').value;
-      const category = document.getElementById('sermonCategory').value;
-      const excerpt = document.getElementById('sermonExcerpt').value;
-      const transcript = document.getElementById('sermonTranscript').value;
+        const title = document.getElementById('sermonTitle').value;
+        const speaker = document.getElementById('sermonSpeaker').value;
+        const sermon_date = document.getElementById('sermonDate').value;
+        const scripture = document.getElementById('sermonScripture').value;
+        const category = document.getElementById('sermonCategory').value;
+        const excerpt = document.getElementById('sermonExcerpt').value;
+        const transcript = document.getElementById('sermonTranscript').value;
 
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('speaker', speaker);
-      formData.append('sermon_date', sermon_date);
-      formData.append('scripture', scripture);
-      formData.append('category', category);
-      formData.append('video_id', videoId);
-      formData.append('link', youtubeLink);
-      formData.append('excerpt', excerpt);
-      formData.append('transcript', transcript);
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('speaker', speaker);
+        formData.append('sermon_date', sermon_date);
+        formData.append('scripture', scripture);
+        formData.append('category', category);
+        formData.append('video_id', videoId);
+        formData.append('link', youtubeLink);
+        formData.append('excerpt', excerpt);
+        formData.append('transcript', transcript);
 
-      const thumbFile = document.getElementById('sermonThumb');
-      if (thumbFile.files[0]) {
-        formData.append('thumbnail', thumbFile.files[0]);
-      }
+        const thumbFile = document.getElementById('sermonThumb');
+        if (thumbFile.files[0]) {
+          formData.append('thumbnail', thumbFile.files[0]);
+        }
 
-      const audioFile = document.getElementById('sermonAudio');
-      if (audioFile.files[0]) {
-        formData.append('audio', audioFile.files[0]);
-      }
+        const audioFile = document.getElementById('sermonAudio');
+        if (audioFile.files[0]) {
+          formData.append('audio', audioFile.files[0]);
+        }
 
-      if (isEditingSermon) {
-        // EDIT MODE SUBMISSION
-        try {
-          const response = await fetch(`${API_URL}/sermons/${editSermonId}`, {
-            method: 'PUT',
-            headers: { 'Authorization': `Bearer ${token}` },
-            body: formData
-          });
-          console.log(response);
+        if (isEditingSermon) {
+          // EDIT MODE SUBMISSION
+          try {
+            const response = await fetch(`${API_URL}/sermons/${editSermonId}`, {
+              method: 'PUT',
+              headers: { 'Authorization': `Bearer ${token}` },
+              body: formData
+            });
+            console.log(response);
 
-          const data = await response.json();
-          if (data.success) {
-            sermonMsg.innerHTML = "Apostolic sermon successfully updated live!";
+            const data = await response.json();
+            if (data.success) {
+              sermonMsg.innerHTML = "Apostolic sermon successfully updated live!";
+              sermonMsg.className = "status-msg success";
+              sermonMsg.style.display = "block";
+
+              cancelEditSermon();
+              loadSermons();
+              logActivity("Sermon Updated", `Updated message: "${title}"`, "now");
+            } else {
+              sermonMsg.innerHTML = data.message || "Failed to update sermon.";
+              sermonMsg.className = "status-msg error";
+              sermonMsg.style.display = "block";
+            }
+          } catch (err) {
+            // Fallback offline simulated update
+            sermonMsg.innerHTML = "Offline Demo Mode: Sermon updated locally in console simulation.";
             sermonMsg.className = "status-msg success";
             sermonMsg.style.display = "block";
 
             cancelEditSermon();
-            loadSermons();
-            logActivity("Sermon Updated", `Updated message: "${title}"`, "now");
-          } else {
-            sermonMsg.innerHTML = data.message || "Failed to update sermon.";
-            sermonMsg.className = "status-msg error";
-            sermonMsg.style.display = "block";
+            logActivity("Sermon Updated Locally", `Updated sermon "${title}" locally in Offline bypass.`, "now");
           }
-        } catch (err) {
-          // Fallback offline simulated update
-          sermonMsg.innerHTML = "Offline Demo Mode: Sermon updated locally in console simulation.";
-          sermonMsg.className = "status-msg success";
-          sermonMsg.style.display = "block";
+        } else {
+          // CREATE MODE SUBMISSION
+          try {
+            const response = await fetch(`${API_URL}/sermons`, {
+              method: 'POST',
+              headers: { 'Authorization': `Bearer ${token}` },
+              body: formData
+            });
+            console.log(response);
 
-          cancelEditSermon();
-          logActivity("Sermon Updated Locally", `Updated sermon "${title}" locally in Offline bypass.`, "now");
-        }
-      } else {
-        // CREATE MODE SUBMISSION
-        try {
-          const response = await fetch(`${API_URL}/sermons`, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}` },
-            body: formData
-          });
-          console.log(response);
+            const data = await response.json();
+            if (data.success) {
+              sermonMsg.innerHTML = "Apostolic sermon successfully published live!";
+              sermonMsg.className = "status-msg success";
+              sermonMsg.style.display = "block";
+              document.getElementById('sermonForm').reset();
+              document.getElementById("sThumbPreview").style.display = "none";
+              document.getElementById("sAudioPreview").style.display = "none";
 
-          const data = await response.json();
-          if (data.success) {
-            sermonMsg.innerHTML = "Apostolic sermon successfully published live!";
+              // Refill date automatically
+              const dateInput = document.getElementById("sermonDate");
+              if (dateInput) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+              }
+
+              loadSermons();
+              logActivity("Sermon Published", `Published message: "${data.data?.title || 'New Message'}"`, "now");
+            } else {
+              sermonMsg.innerHTML = data.message || "Failed to publish sermon.";
+              sermonMsg.className = "status-msg error";
+              sermonMsg.style.display = "block";
+            }
+          } catch (err) {
+            sermonMsg.innerHTML = "Offline Demo Mode: New sermon saved locally to console simulation.";
             sermonMsg.className = "status-msg success";
             sermonMsg.style.display = "block";
             document.getElementById('sermonForm').reset();
@@ -1325,28 +1370,13 @@
               dateInput.value = new Date().toISOString().split('T')[0];
             }
 
-            loadSermons();
-            logActivity("Sermon Published", `Published message: "${data.data?.title || 'New Message'}"`, "now");
-          } else {
-            sermonMsg.innerHTML = data.message || "Failed to publish sermon.";
-            sermonMsg.className = "status-msg error";
-            sermonMsg.style.display = "block";
+            logActivity("Sermon Published Locally", "Apostolic sermon added locally in Offline bypass.", "now");
           }
-        } catch (err) {
-          sermonMsg.innerHTML = "Offline Demo Mode: New sermon saved locally to console simulation.";
-          sermonMsg.className = "status-msg success";
-          sermonMsg.style.display = "block";
-          document.getElementById('sermonForm').reset();
-          document.getElementById("sThumbPreview").style.display = "none";
-          document.getElementById("sAudioPreview").style.display = "none";
-
-          // Refill date automatically
-          const dateInput = document.getElementById("sermonDate");
-          if (dateInput) {
-            dateInput.value = new Date().toISOString().split('T')[0];
-          }
-
-          logActivity("Sermon Published Locally", "Apostolic sermon added locally in Offline bypass.", "now");
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
         }
       }
     });
@@ -1458,7 +1488,7 @@
           document.getElementById("statActiveEvents").textContent = data.data.length;
 
           container.innerHTML = data.data.map(e => {
-            const thumbPath = e.image_path ? (e.image_path.startsWith('http') ? e.image_path : `${API_URL.replace('/api', '')}/${e.image_path}`) : 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80';
+            const thumbPath = e.image_path ? (e.image_path.startsWith('http') ? e.image_path : `${API_URL.replace('/api', '')}/${e.image_path.replace(/\\/g, '/')}`) : 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80';
             const readableTag = e.tag === 'weekly' ? 'Weekly Service' : e.tag === 'conference' ? 'Conference' : e.tag === 'fasting' ? 'Fasting & Prayer' : 'Special Celebration';
             return `
               <tr>
@@ -1523,60 +1553,126 @@
       msg.className = "status-msg";
       msg.style.display = "none";
 
-      const title = document.getElementById('eventTitle').value;
-      const tag = document.getElementById('eventTag').value;
-      const date_text = document.getElementById('eventDateText').value;
-      const time_text = document.getElementById('eventTimeText').value;
-      const location = document.getElementById('eventLocation').value;
-      const blessing = document.getElementById('eventBlessing').value;
-      const short_desc = document.getElementById('eventShortDesc').value;
-      const long_desc = document.getElementById('eventLongDesc').value;
-
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('tag', tag);
-      formData.append('date_text', date_text);
-      formData.append('time_text', time_text);
-      formData.append('location', location);
-      formData.append('blessing', blessing);
-      formData.append('short_desc', short_desc);
-      formData.append('long_desc', long_desc);
-
-      const thumbFile = document.getElementById('eventThumb');
-      if (thumbFile.files[0]) {
-        formData.append('thumbnail', thumbFile.files[0]);
+      const submitBtn = document.getElementById('eventSubmitBtn');
+      const originalText = submitBtn ? submitBtn.textContent : (isEditingEvent ? "Update Scheduled Event" : "Schedule Event");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = isEditingEvent ? "Updating Event..." : "Scheduling Event...";
       }
 
-      if (isEditingEvent) {
-        // EDIT MODE SUBMISSION
-        try {
-          const response = await fetch(`${API_URL}/events/${editEventId}`, {
-            method: 'PUT',
-            headers: { 'Authorization': `Bearer ${token}` },
-            body: formData
-          });
+      try {
+        const title = document.getElementById('eventTitle').value;
+        const tag = document.getElementById('eventTag').value;
+        const date_text = document.getElementById('eventDateText').value;
+        const time_text = document.getElementById('eventTimeText').value;
+        const location = document.getElementById('eventLocation').value;
+        const blessing = document.getElementById('eventBlessing').value;
+        const short_desc = document.getElementById('eventShortDesc').value;
+        const long_desc = document.getElementById('eventLongDesc').value;
 
-          const data = await response.json();
-          if (data.success) {
-            msg.innerHTML = "Divine service updated and synced successfully!";
-            msg.className = "status-msg success";
-            msg.style.display = "block";
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('tag', tag);
+        formData.append('date_text', date_text);
+        formData.append('time_text', time_text);
+        formData.append('location', location);
+        formData.append('blessing', blessing);
+        formData.append('short_desc', short_desc);
+        formData.append('long_desc', long_desc);
 
-            cancelEditEvent();
-            loadEvents();
-            logActivity("Event Updated", `Updated event: "${title}"`, "now");
-          } else {
-            msg.innerHTML = data.message || "Failed to update event.";
-            msg.className = "status-msg error";
-            msg.style.display = "block";
+        const thumbFile = document.getElementById('eventThumb');
+        if (thumbFile.files[0]) {
+          formData.append('thumbnail', thumbFile.files[0]);
+        }
+
+        if (isEditingEvent) {
+          // EDIT MODE SUBMISSION
+          try {
+            const response = await fetch(`${API_URL}/events/${editEventId}`, {
+              method: 'PUT',
+              headers: { 'Authorization': `Bearer ${token}` },
+              body: formData
+            });
+
+            const data = await response.json();
+            if (data.success) {
+              msg.innerHTML = "Divine service updated and synced successfully!";
+              msg.className = "status-msg success";
+              msg.style.display = "block";
+
+              cancelEditEvent();
+              loadEvents();
+              logActivity("Event Updated", `Updated event: "${title}"`, "now");
+            } else {
+              msg.innerHTML = data.message || "Failed to update event.";
+              msg.className = "status-msg error";
+              msg.style.display = "block";
+            }
+          } catch (err) {
+            // Fallback offline simulated local storage edit
+            const localEvents = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
+            const idx = localEvents.findIndex(ev => ev.id === Number(editEventId) || ev.id === editEventId);
+            if (idx !== -1) {
+              localEvents[idx] = {
+                ...localEvents[idx],
+                tag: tag,
+                title: title,
+                date_text: date_text,
+                time_text: time_text,
+                location: location,
+                blessing: blessing,
+                short_desc: short_desc,
+                long_desc: long_desc
+              };
+
+              if (thumbFile.files[0]) {
+                localEvents[idx].mockThumb = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80";
+              }
+
+              localStorage.setItem('wdigc_events', JSON.stringify(localEvents));
+
+              msg.innerHTML = "Offline Demo Mode: Event updated locally in console simulation.";
+              msg.className = "status-msg success";
+              msg.style.display = "block";
+
+              cancelEditEvent();
+              loadEvents();
+              logActivity("Event Updated Locally", `Updated event "${title}" locally in Offline bypass.`, "now");
+            } else {
+              msg.innerHTML = "Error: Event to update not found in simulation cache.";
+              msg.className = "status-msg error";
+              msg.style.display = "block";
+            }
           }
-        } catch (err) {
-          // Fallback offline simulated local storage edit
-          const localEvents = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
-          const idx = localEvents.findIndex(ev => ev.id === Number(editEventId) || ev.id === editEventId);
-          if (idx !== -1) {
-            localEvents[idx] = {
-              ...localEvents[idx],
+        } else {
+          // CREATE MODE SUBMISSION
+          try {
+            const response = await fetch(`${API_URL}/events`, {
+              method: 'POST',
+              headers: { 'Authorization': `Bearer ${token}` },
+              body: formData
+            });
+
+            const data = await response.json();
+            if (data.success) {
+              msg.innerHTML = "Divine service published and synced successfully!";
+              msg.className = "status-msg success";
+              msg.style.display = "block";
+              document.getElementById('eventForm').reset();
+              document.getElementById("eThumbPreview").style.display = "none";
+
+              loadEvents();
+              logActivity("Event Scheduled", `Scheduled event: "${data.data?.title || 'New Event'}"`, "now");
+            } else {
+              msg.innerHTML = data.message || "Failed to schedule event.";
+              msg.className = "status-msg error";
+              msg.style.display = "block";
+            }
+          } catch (err) {
+            // Fallback local storage bypass
+            const localEvents = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
+            const newEvent = {
+              id: Date.now(),
               tag: tag,
               title: title,
               date_text: date_text,
@@ -1584,80 +1680,28 @@
               location: location,
               blessing: blessing,
               short_desc: short_desc,
-              long_desc: long_desc
+              long_desc: long_desc,
+              mockThumb: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"
             };
 
-            if (thumbFile.files[0]) {
-              localEvents[idx].mockThumb = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80";
-            }
-
+            localEvents.unshift(newEvent);
             localStorage.setItem('wdigc_events', JSON.stringify(localEvents));
 
-            msg.innerHTML = "Offline Demo Mode: Event updated locally in console simulation.";
+            msg.innerHTML = "Offline Demo Mode: New event saved locally to console simulation.";
             msg.className = "status-msg success";
             msg.style.display = "block";
 
-            cancelEditEvent();
-            loadEvents();
-            logActivity("Event Updated Locally", `Updated event "${title}" locally in Offline bypass.`, "now");
-          } else {
-            msg.innerHTML = "Error: Event to update not found in simulation cache.";
-            msg.className = "status-msg error";
-            msg.style.display = "block";
-          }
-        }
-      } else {
-        // CREATE MODE SUBMISSION
-        try {
-          const response = await fetch(`${API_URL}/events`, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}` },
-            body: formData
-          });
-
-          const data = await response.json();
-          if (data.success) {
-            msg.innerHTML = "Divine service published and synced successfully!";
-            msg.className = "status-msg success";
-            msg.style.display = "block";
             document.getElementById('eventForm').reset();
             document.getElementById("eThumbPreview").style.display = "none";
 
             loadEvents();
-            logActivity("Event Scheduled", `Scheduled event: "${data.data?.title || 'New Event'}"`, "now");
-          } else {
-            msg.innerHTML = data.message || "Failed to schedule event.";
-            msg.className = "status-msg error";
-            msg.style.display = "block";
+            logActivity("Event Scheduled Locally", "Divine service added locally in Offline bypass.", "now");
           }
-        } catch (err) {
-          // Fallback local storage bypass
-          const localEvents = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
-          const newEvent = {
-            id: Date.now(),
-            tag: tag,
-            title: title,
-            date_text: date_text,
-            time_text: time_text,
-            location: location,
-            blessing: blessing,
-            short_desc: short_desc,
-            long_desc: long_desc,
-            mockThumb: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"
-          };
-
-          localEvents.unshift(newEvent);
-          localStorage.setItem('wdigc_events', JSON.stringify(localEvents));
-
-          msg.innerHTML = "Offline Demo Mode: New event saved locally to console simulation.";
-          msg.className = "status-msg success";
-          msg.style.display = "block";
-
-          document.getElementById('eventForm').reset();
-          document.getElementById("eThumbPreview").style.display = "none";
-
-          loadEvents();
-          logActivity("Event Scheduled Locally", "Divine service added locally in Offline bypass.", "now");
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
         }
       }
 
@@ -1911,6 +1955,13 @@
 
       const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
 
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : "Register Testimony";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Registering Testimony...";
+      }
+
       try {
         const response = await fetch(`${API_URL}/testimonies`, {
           method: 'POST',
@@ -1971,6 +2022,11 @@
         logActivity("Testimony Recorded Locally", `Registered testimony for: "${name}" in Offline bypass.`, "now");
 
         setTimeout(() => { msg.style.display = "none"; }, 3000);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
       }
     }
 

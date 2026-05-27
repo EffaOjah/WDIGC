@@ -443,7 +443,7 @@
           wdigcEvents = data.data.map(e => {
             let imageUrl = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80";
             if (e.image_path) {
-              imageUrl = e.image_path.startsWith("http") ? e.image_path : `https://api.worddietgospel.org/${e.image_path}`;
+              imageUrl = e.image_path.startsWith("http") ? e.image_path : `https://api.worddietgospel.org/${e.image_path.replace(/\\/g, '/')}`;
             }
 
             return {

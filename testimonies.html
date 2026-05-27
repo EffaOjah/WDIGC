@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -526,6 +526,13 @@
     async function submitTestimony(event) {
       event.preventDefault();
 
+      const submitBtn = event.target.querySelector('.submit-btn');
+      const originalText = submitBtn ? submitBtn.textContent : "Submit Testimony to WDIGC";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Publishing Miracle...";
+      }
+
       const name = document.getElementById("tName").value;
       const location = document.getElementById("tLocation").value;
       const category = document.getElementById("tCategory").value;
@@ -583,6 +590,11 @@
         filterCategory("all");
 
         alert("[Offline presentation mode] Your miracle testimony was saved in your local session! Thank you for sharing!");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
       }
     }
 

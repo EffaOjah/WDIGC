@@ -356,12 +356,12 @@
 
             let imageUrl = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80";
             if (s.thumbnail_path) {
-              imageUrl = s.thumbnail_path.startsWith("http") ? s.thumbnail_path : `https://api.worddietgospel.org/${s.thumbnail_path}`;
+              imageUrl = s.thumbnail_path.startsWith("http") ? s.thumbnail_path : `https://api.worddietgospel.org/${s.thumbnail_path.replace(/\\/g, '/')}`;
             }
 
             let audioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
             if (s.audio_path) {
-              audioUrl = s.audio_path.startsWith("http") ? s.audio_path : `https://api.worddietgospel.org/${s.audio_path}`;
+              audioUrl = s.audio_path.startsWith("http") ? s.audio_path : `https://api.worddietgospel.org/${s.audio_path.replace(/\\/g, '/')}`;
             }
 
             return {

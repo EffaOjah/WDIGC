@@ -346,9 +346,10 @@
     async function fetchSermons() {
       try {
         const response = await fetch('http://api.worddietgospel.org/api/sermons');
+        console.log(response);
+
         const data = await response.json();
 
-        console.log(data);
         if (data.success && data.data && data.data.length > 0) {
           sermons = data.data.map(s => {
             const youtubeId = extractYouTubeId((s.video_id || '').trim() || (s.link || '').trim());

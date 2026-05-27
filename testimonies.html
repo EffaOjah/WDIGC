@@ -358,6 +358,8 @@
     async function fetchTestimonies() {
       try {
         const response = await fetch('http://api.worddietgospel.org/api/testimonies/approved');
+        console.log(response);
+
         const data = await response.json();
 
         if (data.success && data.data && data.data.length > 0) {
@@ -551,6 +553,7 @@
           })
         });
 
+        console.log(response);
         const data = await response.json();
         if (data.success) {
           // Clear Form and close modal

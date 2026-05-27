@@ -834,6 +834,7 @@
             password: document.getElementById('password').value
           })
         });
+        console.log(response);
 
         const data = await response.json();
         if (data.success) {
@@ -1101,6 +1102,8 @@
 
       try {
         const response = await fetch(`${API_URL}/sermons`);
+        console.log(response);
+
         const data = await response.json();
 
         if (data.data && data.data.length > 0) {
@@ -1272,6 +1275,7 @@
             headers: { 'Authorization': `Bearer ${token}` },
             body: formData
           });
+          console.log(response);
 
           const data = await response.json();
           if (data.success) {
@@ -1304,6 +1308,7 @@
             headers: { 'Authorization': `Bearer ${token}` },
             body: formData
           });
+          console.log(response);
 
           const data = await response.json();
           if (data.success) {

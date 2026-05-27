@@ -12,7 +12,8 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="css/global.css" />
@@ -721,11 +722,12 @@
             details
           })
         });
+        console.log(response);
 
         const data = await response.json();
         if (data.success) {
           renderTicket(data.data.id);
-          
+
           // Also save in local storage mock cache if it exists, to keep console synchronized
           const localForms = JSON.parse(localStorage.getItem('wdigc_forms') || '[]');
           localForms.unshift({
@@ -745,7 +747,7 @@
       } catch (err) {
         console.warn("Backend server offline, falling back to simulated ticket generation.");
         renderTicket(regCode);
-        
+
         // Save in local storage mock cache
         const localForms = JSON.parse(localStorage.getItem('wdigc_forms') || '[]');
         localForms.unshift({

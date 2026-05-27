@@ -124,6 +124,10 @@ body {
   margin-bottom: 40px;
 }
 
+.mobile-sidebar-close {
+  display: none;
+}
+
 .sidebar-logo {
   width: 36px;
   height: auto;
@@ -990,6 +994,28 @@ textarea {
   }
   .admin-sidebar.mobile-open {
     left: 0;
+  }
+  .mobile-sidebar-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(107, 99, 89, 0.05);
+    color: var(--admin-ink);
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: auto;
+    transition: all 200ms ease;
+    outline: none;
+  }
+  .mobile-sidebar-close:hover {
+    background: #fef2f2;
+    color: #ef4444;
+    transform: rotate(90deg);
   }
   .admin-header-bar {
     padding: 16px 24px;

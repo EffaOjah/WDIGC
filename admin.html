@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WDIGC Admin Portal | Kingdom Governance Console</title>
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="img/WDIGCPNG.png" />
-  
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
   <!-- Rebranded Light CSS Stylesheet -->
   <link rel="stylesheet" href="css/admin.css" />
 </head>
+
 <body>
 
   <!-- ==========================================================================
@@ -26,7 +30,7 @@
       <img src="img/WDIGCPNG.png" alt="WDIGC logo" class="login-logo" />
       <h1>Governance Console</h1>
       <p>Word Diet International Gospel Church | Admin Portal</p>
-      
+
       <form id="loginForm">
         <div class="form-group">
           <label for="username">Administrator Username</label>
@@ -49,28 +53,31 @@
        ========================================================================== -->
   <section id="adminDashboard">
     <div class="admin-layout-wrapper">
-      
+
       <!-- Persistent Left Sidebar Navigation -->
       <aside class="admin-sidebar" id="adminSidebar">
         <div class="sidebar-header">
           <img src="img/WDIGCPNG.png" alt="WDIGC logo" class="sidebar-logo" />
           <span class="sidebar-brand-name">WDIGC Admin</span>
+          <button class="mobile-sidebar-close" onclick="toggleMobileSidebar()" aria-label="Close sidebar">
+            &times;
+          </button>
         </div>
-        
+
         <!-- Admin Profile Badge -->
         <div class="admin-profile-badge">
           <div class="admin-avatar">AD</div>
           <div class="admin-meta">
             <span class="admin-name" id="adminProfileName">WDIGC Admin</span>
-            <span class="admin-role">Presbytery Registrar</span>
           </div>
         </div>
-        
+
         <!-- Navigation Menu Links -->
         <nav class="sidebar-nav">
           <a class="nav-item active" onclick="switchSPAPage('dashboard')">
             <span class="nav-item-left">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="7" height="9"></rect>
                 <rect x="14" y="3" width="7" height="5"></rect>
                 <rect x="14" y="12" width="7" height="9"></rect>
@@ -80,20 +87,22 @@
             </span>
             <span class="nav-item-chevron">&rsaquo;</span>
           </a>
-          
+
           <a class="nav-item" onclick="switchSPAPage('sermons')">
             <span class="nav-item-left">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
               </svg>
               <span>Sermons</span>
             </span>
             <span class="nav-item-chevron">&rsaquo;</span>
           </a>
-          
+
           <a class="nav-item" onclick="switchSPAPage('events')">
             <span class="nav-item-left">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                 <line x1="16" y1="2" x2="16" y2="6"></line>
                 <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -103,10 +112,11 @@
             </span>
             <span class="nav-item-chevron">&rsaquo;</span>
           </a>
-          
+
           <a class="nav-item" onclick="switchSPAPage('testimonies')">
             <span class="nav-item-left">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
                 <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -117,10 +127,11 @@
             </span>
             <span class="nav-item-chevron">&rsaquo;</span>
           </a>
-          
+
           <a class="nav-item" onclick="switchSPAPage('forms')">
             <span class="nav-item-left">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                 <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
               </svg>
@@ -129,11 +140,12 @@
             <span class="nav-item-chevron">&rsaquo;</span>
           </a>
         </nav>
-        
+
         <!-- Logout Action link -->
         <div class="logout-btn-wrap">
           <div class="logout-link" onclick="logout()">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
               <polyline points="16 17 21 12 16 7"></polyline>
               <line x1="21" y1="12" x2="9" y2="12"></line>
@@ -142,19 +154,20 @@
           </div>
         </div>
       </aside>
-      
+
       <!-- Main Content Page Display Area -->
       <div class="admin-main-panel">
-        
+
         <!-- Top Sticky Header -->
         <header class="admin-header-bar">
           <div class="header-title-wrap">
-            <h1 id="spaActivePageTitle">Governance Dashboard</h1>
+            <h1 id="spaActivePageTitle">Admin Dashboard</h1>
             <p id="spaActivePageSub">Supervising spiritual records &amp; administrative channels.</p>
           </div>
           <div class="header-actions">
             <!-- Mobile Toggle Menu Button -->
-            <button class="btn btn-outline" id="mobileSidebarToggle" onclick="toggleMobileSidebar()" style="display: none; padding: 10px 14px;">
+            <button class="btn btn-outline" id="mobileSidebarToggle" onclick="toggleMobileSidebar()"
+              style="display: none; padding: 10px 14px;">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -167,21 +180,24 @@
             </div>
           </div>
         </header>
-        
+
         <!-- Main dynamic content viewport -->
         <div class="admin-content-viewport">
-          
+
           <!-- ==========================================================================
                A. TAB: DASHBOARD VIEW
                ========================================================================== -->
           <div class="spa-page-tab active" id="page-dashboard">
-            
+
             <!-- Warm Welcome Banner for Non-Tech Admin -->
-            <div class="card" style="background: linear-gradient(135deg, var(--admin-sidebar), #FAF9F6); border-left: 5px solid var(--admin-accent); padding: 24px;">
+            <div class="card"
+              style="background: linear-gradient(135deg, var(--admin-sidebar), #FAF9F6); border-left: 5px solid var(--admin-accent); padding: 24px;">
               <h2 style="font-size: 1.4rem; margin-bottom: 8px;">Welcome to the WDIGC Admin Dashboard! 👋</h2>
               <p style="color: var(--admin-muted); font-size: 0.95rem; line-height: 1.6;">
-                This system is built specifically for church administrators. You do not need any technical skills to use it!
-                Simply check the summary boxes below to see total items, or click on any of the big actions to update the website.
+                This system is built specifically for church administrators. You do not need any technical skills to use
+                it!
+                Simply check the summary boxes below to see total items, or click on any of the big actions to update
+                the website.
               </p>
             </div>
 
@@ -198,7 +214,7 @@
                   </svg>
                 </div>
               </div>
-              
+
               <div class="stat-card events">
                 <div class="stat-card-left">
                   <span>Active Events</span>
@@ -213,7 +229,7 @@
                   </svg>
                 </div>
               </div>
-              
+
               <div class="stat-card testimonies">
                 <div class="stat-card-left">
                   <span>Pending Testimonies</span>
@@ -226,7 +242,7 @@
                   </svg>
                 </div>
               </div>
-              
+
               <div class="stat-card forms">
                 <div class="stat-card-left">
                   <span>Forms Submissions</span>
@@ -240,7 +256,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Dashboard Main Double Columns -->
             <div class="admin-dashboard-columns">
               <!-- Left Side: Clean Action Desks -->
@@ -253,19 +269,23 @@
                   <div class="quick-action-list">
                     <a class="quick-action-link" onclick="switchSPAPage('sermons')">
                       <span>📺 Publish a New Sermon Video/Audio</span>
-                      <span style="font-size: 0.8rem; font-weight: normal; color: var(--admin-accent);">Open &rarr;</span>
+                      <span style="font-size: 0.8rem; font-weight: normal; color: var(--admin-accent);">Open
+                        &rarr;</span>
                     </a>
                     <a class="quick-action-link" onclick="switchSPAPage('events')">
                       <span>📅 Schedule a Church Event / Service</span>
-                      <span style="font-size: 0.8rem; font-weight: normal; color: var(--admin-accent);">Open &rarr;</span>
+                      <span style="font-size: 0.8rem; font-weight: normal; color: var(--admin-accent);">Open
+                        &rarr;</span>
                     </a>
                     <a class="quick-action-link" onclick="switchSPAPage('testimonies')">
                       <span>✍️ Moderate Miracle Testimonies</span>
-                      <span style="font-size: 0.8rem; font-weight: normal; color: var(--admin-accent);">Open &rarr;</span>
+                      <span style="font-size: 0.8rem; font-weight: normal; color: var(--admin-accent);">Open
+                        &rarr;</span>
                     </a>
                     <a class="quick-action-link" onclick="switchSPAPage('forms')">
                       <span>📥 View Form Bookings &amp; Applications</span>
-                      <span style="font-size: 0.8rem; font-weight: normal; color: var(--admin-accent);">Open &rarr;</span>
+                      <span style="font-size: 0.8rem; font-weight: normal; color: var(--admin-accent);">Open
+                        &rarr;</span>
                     </a>
                   </div>
                 </div>
@@ -284,7 +304,7 @@
                 </div>
               </div>
             </div>
-            
+
           </div>
 
           <!-- ==========================================================================
@@ -296,29 +316,30 @@
               <p style="font-size: 0.85rem; color: var(--admin-muted); margin-bottom: 24px;">
                 Inputs here directly update the online database dynamically.
               </p>
-              
+
               <form id="sermonForm">
                 <div class="form-grid">
                   <div class="form-group col-span-2">
                     <label for="sermonTitle">Sermon Message Title</label>
-                    <input type="text" id="sermonTitle" placeholder="e.g. Dismantling Ancestral Foundations & Household Limits" required />
+                    <input type="text" id="sermonTitle"
+                      placeholder="e.g. Dismantling Ancestral Foundations & Household Limits" required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="sermonSpeaker">Preaching Minister / Speaker</label>
                     <input type="text" id="sermonSpeaker" value="Apostle Omotosho Tope Joseph" required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="sermonDate">Release Date</label>
                     <input type="date" id="sermonDate" required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="sermonScripture">Primary Scripture Reference (e.g. Luke 13:16; Galatians 3:13)</label>
                     <input type="text" id="sermonScripture" placeholder="e.g. Luke 13:16; Galatians 3:13" required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="sermonCategory">Sermon Spiritual Category</label>
                     <select id="sermonCategory" required>
@@ -330,64 +351,79 @@
                       <option value="Wisdom">Divine Wisdom &amp; Successful Living</option>
                     </select>
                   </div>
-                  
+
                   <div class="form-group col-span-2">
                     <label for="sermonLink">YouTube Video Link</label>
-                    <input type="text" id="sermonLink" placeholder="e.g. https://www.youtube.com/watch?v=xqPBN9cRx1t" required />
+                    <input type="text" id="sermonLink" placeholder="e.g. https://www.youtube.com/watch?v=xqPBN9cRx1t"
+                      required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label>Sermon Graphic Thumbnail (Banner File)</label>
                     <div class="file-upload-dragbox" style="padding: 16px;">
-                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="margin: 0 auto 4px;">
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="margin: 0 auto 4px;">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                         <circle cx="8.5" cy="8.5" r="1.5"></circle>
                         <polyline points="21 15 16 10 5 21"></polyline>
                       </svg>
                       <p style="font-size:0.75rem;">Poster banner graphic</p>
                       <input type="file" id="sermonThumb" onchange="previewSermonFile(this, 'sThumbPreview')" />
-                      <div class="file-upload-preview" id="sThumbPreview" style="font-size:0.7rem; color:var(--admin-accent);">No file selected</div>
+                      <div class="file-upload-preview" id="sThumbPreview"
+                        style="font-size:0.7rem; color:var(--admin-accent);">No file selected</div>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label>Sermon MP3 Audio File</label>
                     <div class="file-upload-dragbox" style="padding: 16px;">
-                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="margin: 0 auto 4px;">
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="margin: 0 auto 4px;">
                         <path d="M9 18V5l12-2v13"></path>
                         <circle cx="6" cy="18" r="3"></circle>
                         <circle cx="18" cy="16" r="3"></circle>
                       </svg>
                       <p style="font-size:0.75rem;">Audio MP3 file</p>
                       <input type="file" id="sermonAudio" onchange="previewSermonFile(this, 'sAudioPreview')" />
-                      <div class="file-upload-preview" id="sAudioPreview" style="font-size:0.7rem; color:var(--admin-accent);">No file selected</div>
+                      <div class="file-upload-preview" id="sAudioPreview"
+                        style="font-size:0.7rem; color:var(--admin-accent);">No file selected</div>
                     </div>
                   </div>
-                  
+
                   <div class="form-group col-span-2" style="margin-bottom: 10px;">
                     <label for="sermonExcerpt">Short Message Excerpt (Summary)</label>
-                    <textarea id="sermonExcerpt" placeholder="A brief warfare or prophetic summary describing this sermon..." required style="min-height: 80px;"></textarea>
+                    <textarea id="sermonExcerpt"
+                      placeholder="A brief warfare or prophetic summary describing this sermon..." required
+                      style="min-height: 80px;"></textarea>
                   </div>
-                  
+
                   <div class="form-group col-span-2" style="margin-bottom: 10px;">
                     <label for="sermonTranscript">Full Study Transcript (Read modal text)</label>
-                    <textarea id="sermonTranscript" placeholder="Enter the complete spiritual transcript for bible study members to read..." required></textarea>
+                    <textarea id="sermonTranscript"
+                      placeholder="Enter the complete spiritual transcript for bible study members to read..."
+                      required></textarea>
                   </div>
                 </div>
-                
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
-                  Publish Sermon Message
-                </button>
+
+                <div style="margin-top: 15px; display: flex; gap: 12px; align-items: center;">
+                  <button type="submit" id="sermonSubmitBtn" class="btn btn-primary">
+                    Publish Sermon Message
+                  </button>
+                  <button type="button" id="sermonCancelEditBtn" class="btn btn-outline" style="display: none;"
+                    onclick="cancelEditSermon()">
+                    Cancel Edit
+                  </button>
+                </div>
               </form>
               <div id="sermonMsg" class="status-msg"></div>
             </div>
-            
+
             <div class="card">
               <h2>Sermon Registry</h2>
               <p style="font-size: 0.85rem; color: var(--admin-muted); margin-bottom: 24px;">
                 Review and delete sermons currently rendered live on the frontend portal.
               </p>
-              
+
               <div class="table-responsive">
                 <table class="admin-data-table">
                   <thead>
@@ -413,18 +449,18 @@
                ========================================================================== -->
           <div class="spa-page-tab" id="page-events">
             <div class="card">
-              <h2>Schedule a Divine Event / Service</h2>
+              <h2>Schedule an Event / Service</h2>
               <p style="font-size: 0.85rem; color: var(--admin-muted); margin-bottom: 24px;">
                 Schedule public events, midweek communions, or prophetic revival fire services.
               </p>
-              
+
               <form id="eventForm">
                 <div class="form-grid">
                   <div class="form-group col-span-2">
                     <label for="eventTitle">Event/Service Name</label>
                     <input type="text" id="eventTitle" placeholder="e.g. Prophetic Overflow Conference 2026" required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="eventTag">Category/Tag Type</label>
                     <select id="eventTag" required>
@@ -434,59 +470,72 @@
                       <option value="celebration">Special Celebrations</option>
                     </select>
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="eventDateText">Scheduled Date Text Description</label>
-                    <input type="text" id="eventDateText" placeholder="e.g. September 15 - September 20, 2026" required />
+                    <input type="text" id="eventDateText" placeholder="e.g. September 15 - September 20, 2026"
+                      required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="eventTimeText">Scheduled Time Text Description</label>
                     <input type="text" id="eventTimeText" placeholder="e.g. 5:00 PM Daily" required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="eventLocation">Worship Site / Location Venue</label>
                     <input type="text" id="eventLocation" placeholder="e.g. Calabar HQ &amp; Online Streams" required />
                   </div>
-                  
+
                   <div class="form-group col-span-2">
                     <label for="eventBlessing">Prophetic Blessing Scripture Reference</label>
-                    <input type="text" id="eventBlessing" placeholder="e.g. Isaiah 44:3 - 'For I will pour water on him who is thirsty...'" required />
+                    <input type="text" id="eventBlessing"
+                      placeholder="e.g. Isaiah 44:3 - 'For I will pour water on him who is thirsty...'" required />
                   </div>
-                  
+
                   <div class="form-group col-span-2">
                     <label for="eventShortDesc">Short Excerpt (Grid Card Summary)</label>
-                    <input type="text" id="eventShortDesc" placeholder="A brief description for display on the grid cards..." required />
+                    <input type="text" id="eventShortDesc"
+                      placeholder="A brief description for display on the grid cards..." required />
                   </div>
-                  
+
                   <div class="form-group col-span-2">
                     <label for="eventLongDesc">Full Detail Description (Interactive Details Modal)</label>
-                    <textarea id="eventLongDesc" placeholder="Describe the spiritual goal and detail plan of this program..." required style="min-height: 80px;"></textarea>
+                    <textarea id="eventLongDesc"
+                      placeholder="Describe the spiritual goal and detail plan of this program..." required
+                      style="min-height: 80px;"></textarea>
                   </div>
-                  
+
                   <div class="form-group col-span-2">
                     <label>Event Poster Graphic Banner File (Optional)</label>
                     <div class="file-upload-dragbox" style="padding: 16px;">
-                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" style="margin: 0 auto 4px;">
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="margin: 0 auto 4px;">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                         <circle cx="8.5" cy="8.5" r="1.5"></circle>
                         <polyline points="21 15 16 10 5 21"></polyline>
                       </svg>
                       <p style="font-size:0.75rem;">Upload event graphic banner image</p>
                       <input type="file" id="eventThumb" onchange="previewSermonFile(this, 'eThumbPreview')" />
-                      <div class="file-upload-preview" id="eThumbPreview" style="font-size:0.7rem; color:var(--admin-accent); display:none;">No file selected</div>
+                      <div class="file-upload-preview" id="eThumbPreview"
+                        style="font-size:0.7rem; color:var(--admin-accent); display:none;">No file selected</div>
                     </div>
                   </div>
                 </div>
-                
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
-                  Schedule Divine Event
-                </button>
+
+                <div style="margin-top: 15px; display: flex; gap: 12px; align-items: center;">
+                  <button type="submit" id="eventSubmitBtn" class="btn btn-primary">
+                    Schedule Event
+                  </button>
+                  <button type="button" id="eventCancelEditBtn" class="btn btn-outline" style="display: none;"
+                    onclick="cancelEditEvent()">
+                    Cancel Edit
+                  </button>
+                </div>
               </form>
               <div id="eventMsg" class="status-msg"></div>
             </div>
-            
+
             <div class="card">
               <h2>Scheduled Registry</h2>
               <div class="table-responsive">
@@ -513,25 +562,25 @@
                D. TAB: TESTIMONIES MODERATION (LOCAL MODERATION LAYER)
                ========================================================================== -->
           <div class="spa-page-tab" id="page-testimonies">
-            
+
             <div class="card">
               <h2>Record a Member Testimony</h2>
               <p style="font-size: 0.85rem; color: var(--admin-muted); margin-bottom: 24px;">
                 Directly register a miracle testimony received via letters or direct calls.
               </p>
-              
+
               <form id="testimonyForm" onsubmit="handleTestimonyRecord(event)">
                 <div class="form-grid">
                   <div class="form-group">
                     <label for="testName">Congregant's Full Name</label>
                     <input type="text" id="testName" placeholder="Sister Evelyn Henshaw" required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="testLocation">Sowing Location / City</label>
                     <input type="text" id="testLocation" placeholder="Calabar, Cross River" required />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="testCategory">Domain/Field</label>
                     <select id="testCategory">
@@ -541,25 +590,26 @@
                       <option value="deliverance">Family Deliverance</option>
                     </select>
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="testDate">Date Window</label>
                     <input type="text" id="testDate" placeholder="e.g. 2 weeks ago" required />
                   </div>
-                  
+
                   <div class="form-group col-span-2">
                     <label for="testContent">Covenant Testimony Content</label>
-                    <textarea id="testContent" placeholder="Describe the divine miracle in details..." required></textarea>
+                    <textarea id="testContent" placeholder="Describe the divine miracle in details..."
+                      required></textarea>
                   </div>
                 </div>
-                
+
                 <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
                   Register Testimony
                 </button>
               </form>
               <div id="testMsg" class="status-msg"></div>
             </div>
-            
+
             <div class="card">
               <div class="card-title-row" style="margin-bottom: 12px;">
                 <h2>Testimony Moderation Desk</h2>
@@ -567,11 +617,12 @@
               <p style="font-size: 0.85rem; color: var(--admin-muted); margin-bottom: 24px;">
                 Toggle testimony approval statuses to moderate live rendering on WDIGC's testifier page.
               </p>
-              
+
               <!-- Search filter panel -->
               <div class="filter-search-desk">
                 <div class="filter-pills">
-                  <button class="filter-pill-btn active" onclick="filterTestimonies('all', this)">All Submissions</button>
+                  <button class="filter-pill-btn active" onclick="filterTestimonies('all', this)">All
+                    Submissions</button>
                   <button class="filter-pill-btn" onclick="filterTestimonies('approved', this)">Approved</button>
                   <button class="filter-pill-btn" onclick="filterTestimonies('pending', this)">Pending Review</button>
                 </div>
@@ -580,10 +631,11 @@
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
-                  <input type="text" class="desk-search-input" placeholder="Search by name or content..." oninput="searchTestimonies(this.value)" />
+                  <input type="text" class="desk-search-input" placeholder="Search by name or content..."
+                    oninput="searchTestimonies(this.value)" />
                 </div>
               </div>
-              
+
               <div class="table-responsive">
                 <table class="admin-data-table">
                   <thead>
@@ -616,13 +668,14 @@
               <p style="font-size: 0.85rem; color: var(--admin-muted); margin-bottom: 24px;">
                 Review submitted requests for water baptisms, prophetic counsel, baby dedications, and volunteering.
               </p>
-              
+
               <!-- Search filter panel for Forms -->
               <div class="filter-search-desk">
                 <div class="filter-pills">
                   <button class="filter-pill-btn active" onclick="filterForms('all', this)">All Forms</button>
                   <button class="filter-pill-btn" onclick="filterForms('counseling', this)">Counseling Bookings</button>
-                  <button class="filter-pill-btn" onclick="filterForms('volunteer', this)">Volunteer Applications</button>
+                  <button class="filter-pill-btn" onclick="filterForms('volunteer', this)">Volunteer
+                    Applications</button>
                   <button class="filter-pill-btn" onclick="filterForms('baptism', this)">Baptism Entries</button>
                   <button class="filter-pill-btn" onclick="filterForms('baby', this)">Baby Dedication</button>
                 </div>
@@ -631,10 +684,11 @@
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
-                  <input type="text" class="desk-search-input" placeholder="Search by parent/member name..." oninput="searchForms(this.value)" />
+                  <input type="text" class="desk-search-input" placeholder="Search by parent/member name..."
+                    oninput="searchForms(this.value)" />
                 </div>
               </div>
-              
+
               <div class="table-responsive">
                 <table class="admin-data-table">
                   <thead>
@@ -656,7 +710,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -685,7 +739,45 @@
        ========================================================================== -->
   <script>
     const API_URL = 'http://api.worddietgospel.org/api';
+    // const API_URL = 'http://localhost:5000/api';
     let token = localStorage.getItem('wdigc_token');
+
+    // Global fetch interceptor to handle session expiration / unauthorized state
+    const originalFetch = window.fetch;
+    window.fetch = async function (...args) {
+      try {
+        const response = await originalFetch(...args);
+        if (response.status === 401) {
+          handleUnauthorized();
+        }
+        return response;
+      } catch (error) {
+        throw error;
+      }
+    };
+
+    function handleUnauthorized() {
+      localStorage.removeItem('wdigc_token');
+      token = null;
+      document.getElementById('loginSection').style.display = 'flex';
+      document.getElementById('adminDashboard').style.display = 'none';
+      const loginMsg = document.getElementById('loginMsg');
+      if (loginMsg) {
+        loginMsg.innerHTML = "Authentication required or session expired. Please log in.";
+        loginMsg.className = "status-msg error";
+        loginMsg.style.display = "block";
+      }
+    }
+
+    // Event editing global states
+    let isEditingEvent = false;
+    let editEventId = null;
+    let eventsRawData = []; // Cache for loaded events
+
+    // Sermon editing global states
+    let isEditingSermon = false;
+    let editSermonId = null;
+    let sermonsRawData = []; // Cache for loaded sermons
 
     // Date display initialization
     document.getElementById("currentDateBadge").textContent = new Date().toLocaleDateString("en-US", {
@@ -702,16 +794,16 @@
         document.getElementById('loginSection').style.display = 'flex';
         document.getElementById('adminDashboard').style.display = 'none';
       }
-      
+
       // Auto pre-populate mock datasets in localStorage if they don't exist
       initializeMockLocalStorage();
-      
+
       // Prefill today's date in sermonDate input
       const dateInput = document.getElementById("sermonDate");
       if (dateInput) {
         dateInput.value = new Date().toISOString().split('T')[0];
       }
-      
+
       // Render components
       loadEvents();
       loadTestimonies();
@@ -732,7 +824,7 @@
       const loginMsg = document.getElementById('loginMsg');
       loginMsg.className = "status-msg";
       loginMsg.style.display = "none";
-      
+
       try {
         const response = await fetch(`${API_URL}/auth/login`, {
           method: 'POST',
@@ -748,7 +840,7 @@
           localStorage.setItem('wdigc_token', data.token);
           token = data.token;
           showDashboardShell();
-          
+
           // Log active authentication activity
           logActivity("Console Authentication", "Admin successfully logged into the Governance SPA Console.", "now");
         } else {
@@ -758,7 +850,7 @@
       } catch (err) {
         loginMsg.innerHTML = "Backend server is offline. Real sermon publishing disabled, dashboard rendering locally.";
         loginMsg.className = "status-msg error";
-        
+
         // Dynamic simulated login bypass for presentation offline sandbox!
         if (document.getElementById('username').value === 'WDIGC_admin' && document.getElementById('password').value === 'admin123') {
           setTimeout(() => {
@@ -774,13 +866,13 @@
     function showDashboardShell() {
       document.getElementById('loginSection').style.display = 'none';
       document.getElementById('adminDashboard').style.display = 'block';
-      
+
       // Set responsive hamburger trigger based on viewport
       const toggle = document.getElementById("mobileSidebarToggle");
       if (window.innerWidth <= 980) {
         toggle.style.display = "inline-flex";
       }
-      
+
       // Pull active sermons, events, testimonies & forms from database
       loadSermons();
       loadEvents();
@@ -805,20 +897,20 @@
           item.classList.remove("active");
         }
       });
-      
+
       // Toggle Active view panels
       const pages = document.querySelectorAll(".spa-page-tab");
       pages.forEach(p => p.classList.remove("active"));
-      
+
       const targetPage = document.getElementById(`page-${pageId}`);
       if (targetPage) {
         targetPage.classList.add("active");
       }
-      
+
       // Update Title & Subtitle in Header
       const headerTitle = document.getElementById("spaActivePageTitle");
       const headerSub = document.getElementById("spaActivePageSub");
-      
+
       const titles = {
         dashboard: ["Governance Dashboard", "Supervising spiritual records & administrative channels."],
         sermons: ["Sermon Management Portal", "Create, review, or delete dynamic sermons loaded directly via REST SQL database APIs."],
@@ -826,12 +918,12 @@
         testimonies: ["Congregation Miracles & Moderation Desk", "Toggle testimony approvals to showcase supernatural interventions live."],
         forms: ["Registrar Form Submissions Desk", "Review baby dedications, water baptisms, counseling requests, and volunteer applications."]
       };
-      
+
       if (titles[pageId]) {
         headerTitle.textContent = titles[pageId][0];
         headerSub.textContent = titles[pageId][1];
       }
-      
+
       // Close mobile drawer if open
       document.getElementById("adminSidebar").classList.remove("mobile-open");
     }
@@ -1006,14 +1098,15 @@
     async function loadSermons() {
       const sermonList = document.getElementById('sermonList');
       sermonList.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--admin-muted);">Synchronizing with REST API backend database...</td></tr>`;
-      
+
       try {
         const response = await fetch(`${API_URL}/sermons`);
         const data = await response.json();
-        
+
         if (data.data && data.data.length > 0) {
+          sermonsRawData = data.data; // Store in cache!
           document.getElementById("statTotalSermons").textContent = data.data.length;
-          
+
           sermonList.innerHTML = data.data.map(s => {
             const thumbPath = s.thumbnail_path ? (s.thumbnail_path.startsWith('http') ? s.thumbnail_path : `${API_URL.replace('/api', '')}/${s.thumbnail_path}`) : 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80';
             const audioPath = s.audio_path ? (s.audio_path.startsWith('http') ? s.audio_path : `${API_URL.replace('/api', '')}/${s.audio_path}`) : '';
@@ -1038,9 +1131,14 @@
                   ${s.excerpt || 'No description summary.'}
                 </td>
                 <td>
-                  <button class="btn btn-danger" onclick="deleteSermon(${s.id})">
-                    Delete
-                  </button>
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.75rem;" onclick="editSermon('${s.id}')">
+                      Edit
+                    </button>
+                    <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.75rem;" onclick="deleteSermon('${s.id}')">
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             `;
@@ -1050,6 +1148,20 @@
           document.getElementById("statTotalSermons").textContent = 0;
         }
       } catch (err) {
+        // Safe offline bypass layer
+        sermonsRawData = [{
+          id: 'fallback_sermon_1',
+          title: "The Reality of Spoken Word & Prophetic Manifestation",
+          speaker: "Apostle Omotosho Tope Joseph",
+          sermon_date: "2026-05-17",
+          scripture: "Luke 2:34",
+          category: "Prophetic",
+          video_id: "xqPBN9cRx1t",
+          link: "https://www.youtube.com/watch?v=xqPBN9cRx1t",
+          excerpt: "Dismantling limitations and standing in the authority of Christ...",
+          transcript: "Dismantling limitations and standing in the authority of Christ..."
+        }];
+
         sermonList.innerHTML = `
           <tr>
             <td colspan="6" style="text-align: center; color: #ef4444; font-weight: bold;">
@@ -1075,12 +1187,18 @@
             <td style="font-size: 0.82rem; color: var(--admin-muted); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
               Dismantling limitations and standing in the authority of Christ...
             </td>
-            <td><button class="btn btn-danger" onclick="alert('Demo Mode: Cannot delete hardcoded fallback sermons!')">Delete</button></td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.75rem;" onclick="editSermon('fallback_sermon_1')">Edit</button>
+                <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.75rem;" onclick="alert('Demo Mode: Cannot delete hardcoded fallback sermons!')">Delete</button>
+              </div>
+            </td>
           </tr>
         `;
         document.getElementById("statTotalSermons").textContent = 1;
       }
     }
+
 
     // Create Sermon Submit
     document.getElementById('sermonForm').addEventListener('submit', async (e) => {
@@ -1088,7 +1206,7 @@
       const sermonMsg = document.getElementById('sermonMsg');
       sermonMsg.className = "status-msg";
       sermonMsg.style.display = "none";
-      
+
       const youtubeLink = document.getElementById('sermonLink').value.trim();
       let videoId = "";
       if (youtubeLink) {
@@ -1117,70 +1235,187 @@
         return; // Halt form submission
       }
 
+      const title = document.getElementById('sermonTitle').value;
+      const speaker = document.getElementById('sermonSpeaker').value;
+      const sermon_date = document.getElementById('sermonDate').value;
+      const scripture = document.getElementById('sermonScripture').value;
+      const category = document.getElementById('sermonCategory').value;
+      const excerpt = document.getElementById('sermonExcerpt').value;
+      const transcript = document.getElementById('sermonTranscript').value;
+
       const formData = new FormData();
-      formData.append('title', document.getElementById('sermonTitle').value);
-      formData.append('speaker', document.getElementById('sermonSpeaker').value);
-      formData.append('sermon_date', document.getElementById('sermonDate').value);
-      formData.append('scripture', document.getElementById('sermonScripture').value);
-      formData.append('category', document.getElementById('sermonCategory').value);
+      formData.append('title', title);
+      formData.append('speaker', speaker);
+      formData.append('sermon_date', sermon_date);
+      formData.append('scripture', scripture);
+      formData.append('category', category);
       formData.append('video_id', videoId);
       formData.append('link', youtubeLink);
-      formData.append('excerpt', document.getElementById('sermonExcerpt').value);
-      formData.append('transcript', document.getElementById('sermonTranscript').value);
-      
+      formData.append('excerpt', excerpt);
+      formData.append('transcript', transcript);
+
       const thumbFile = document.getElementById('sermonThumb');
       if (thumbFile.files[0]) {
         formData.append('thumbnail', thumbFile.files[0]);
       }
-      
+
       const audioFile = document.getElementById('sermonAudio');
       if (audioFile.files[0]) {
         formData.append('audio', audioFile.files[0]);
       }
 
-      try {
-        const response = await fetch(`${API_URL}/sermons`, {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${token}` },
-          body: formData
-        });
+      if (isEditingSermon) {
+        // EDIT MODE SUBMISSION
+        try {
+          const response = await fetch(`${API_URL}/sermons/${editSermonId}`, {
+            method: 'PUT',
+            headers: { 'Authorization': `Bearer ${token}` },
+            body: formData
+          });
 
-        const data = await response.json();
-        if (data.success) {
-          sermonMsg.innerHTML = "Apostolic sermon successfully published live!";
+          const data = await response.json();
+          if (data.success) {
+            sermonMsg.innerHTML = "Apostolic sermon successfully updated live!";
+            sermonMsg.className = "status-msg success";
+            sermonMsg.style.display = "block";
+
+            cancelEditSermon();
+            loadSermons();
+            logActivity("Sermon Updated", `Updated message: "${title}"`, "now");
+          } else {
+            sermonMsg.innerHTML = data.message || "Failed to update sermon.";
+            sermonMsg.className = "status-msg error";
+            sermonMsg.style.display = "block";
+          }
+        } catch (err) {
+          // Fallback offline simulated update
+          sermonMsg.innerHTML = "Offline Demo Mode: Sermon updated locally in console simulation.";
           sermonMsg.className = "status-msg success";
+          sermonMsg.style.display = "block";
+
+          cancelEditSermon();
+          logActivity("Sermon Updated Locally", `Updated sermon "${title}" locally in Offline bypass.`, "now");
+        }
+      } else {
+        // CREATE MODE SUBMISSION
+        try {
+          const response = await fetch(`${API_URL}/sermons`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` },
+            body: formData
+          });
+
+          const data = await response.json();
+          if (data.success) {
+            sermonMsg.innerHTML = "Apostolic sermon successfully published live!";
+            sermonMsg.className = "status-msg success";
+            sermonMsg.style.display = "block";
+            document.getElementById('sermonForm').reset();
+            document.getElementById("sThumbPreview").style.display = "none";
+            document.getElementById("sAudioPreview").style.display = "none";
+
+            // Refill date automatically
+            const dateInput = document.getElementById("sermonDate");
+            if (dateInput) {
+              dateInput.value = new Date().toISOString().split('T')[0];
+            }
+
+            loadSermons();
+            logActivity("Sermon Published", `Published message: "${data.data?.title || 'New Message'}"`, "now");
+          } else {
+            sermonMsg.innerHTML = data.message || "Failed to publish sermon.";
+            sermonMsg.className = "status-msg error";
+            sermonMsg.style.display = "block";
+          }
+        } catch (err) {
+          sermonMsg.innerHTML = "Offline Demo Mode: New sermon saved locally to console simulation.";
+          sermonMsg.className = "status-msg success";
+          sermonMsg.style.display = "block";
           document.getElementById('sermonForm').reset();
           document.getElementById("sThumbPreview").style.display = "none";
           document.getElementById("sAudioPreview").style.display = "none";
-          
+
           // Refill date automatically
           const dateInput = document.getElementById("sermonDate");
           if (dateInput) {
             dateInput.value = new Date().toISOString().split('T')[0];
           }
-          
-          loadSermons();
-          logActivity("Sermon Published", `Published message: "${data.data?.title || 'New Message'}"`, "now");
-        } else {
-          sermonMsg.innerHTML = data.message || "Failed to publish sermon.";
-          sermonMsg.className = "status-msg error";
+
+          logActivity("Sermon Published Locally", "Apostolic sermon added locally in Offline bypass.", "now");
         }
-      } catch (err) {
-        sermonMsg.innerHTML = "Offline Demo Mode: New sermon saved locally to console simulation.";
-        sermonMsg.className = "status-msg success";
-        document.getElementById('sermonForm').reset();
-        document.getElementById("sThumbPreview").style.display = "none";
-        document.getElementById("sAudioPreview").style.display = "none";
-        
-        // Refill date automatically
-        const dateInput = document.getElementById("sermonDate");
-        if (dateInput) {
-          dateInput.value = new Date().toISOString().split('T')[0];
-        }
-        
-        logActivity("Sermon Published Locally", "Apostolic sermon added locally in Offline bypass.", "now");
       }
     });
+
+    // Populate and trigger editing state for sermons
+    async function editSermon(id) {
+      let sermonObj = sermonsRawData.find(s => s.id === Number(id) || s.id === id || String(s.id) === String(id));
+
+      if (!sermonObj) {
+        try {
+          const response = await fetch(`${API_URL}/sermons/${id}`);
+          const data = await response.json();
+          if (data.success && data.data) {
+            sermonObj = data.data;
+          }
+        } catch (err) {
+          // Safe offline bypass layer
+        }
+      }
+
+      if (!sermonObj) {
+        alert("Sermon not found!");
+        return;
+      }
+
+      // Populate form fields
+      document.getElementById('sermonTitle').value = sermonObj.title || '';
+      document.getElementById('sermonSpeaker').value = sermonObj.speaker || 'Apostle Omotosho Tope Joseph';
+      document.getElementById('sermonDate').value = sermonObj.sermon_date || '';
+      document.getElementById('sermonScripture').value = sermonObj.scripture || '';
+      document.getElementById('sermonCategory').value = sermonObj.category || 'Prophetic';
+      document.getElementById('sermonLink').value = sermonObj.link || '';
+      document.getElementById('sermonExcerpt').value = sermonObj.excerpt || '';
+      document.getElementById('sermonTranscript').value = sermonObj.transcript || '';
+
+      const sThumbPreview = document.getElementById("sThumbPreview");
+      if (sThumbPreview) {
+        sThumbPreview.textContent = "Current poster: " + (sermonObj.thumbnail_path || "Default Banner");
+        sThumbPreview.style.display = "block";
+      }
+
+      const sAudioPreview = document.getElementById("sAudioPreview");
+      if (sAudioPreview) {
+        sAudioPreview.textContent = "Current audio: " + (sermonObj.audio_path || "None");
+        sAudioPreview.style.display = "block";
+      }
+
+      // Toggle editing indicators
+      isEditingSermon = true;
+      editSermonId = id;
+      document.getElementById('sermonSubmitBtn').textContent = "Update Sermon Message";
+      document.getElementById('sermonCancelEditBtn').style.display = "inline-block";
+
+      // Scroll form smoothly into view
+      document.getElementById('sermonForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Cancel edit state for sermons
+    function cancelEditSermon() {
+      isEditingSermon = false;
+      editSermonId = null;
+      document.getElementById('sermonForm').reset();
+      document.getElementById("sThumbPreview").style.display = "none";
+      document.getElementById("sAudioPreview").style.display = "none";
+
+      // Refill date automatically
+      const dateInput = document.getElementById("sermonDate");
+      if (dateInput) {
+        dateInput.value = new Date().toISOString().split('T')[0];
+      }
+
+      document.getElementById('sermonSubmitBtn').textContent = "Publish Sermon Message";
+      document.getElementById('sermonCancelEditBtn').style.display = "none";
+    }
 
     // Delete Sermon
     async function deleteSermon(id) {
@@ -1206,14 +1441,17 @@
     async function loadEvents() {
       const container = document.getElementById("eventsListContainer");
       container.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--admin-muted);">Synchronizing with REST API database...</td></tr>`;
-      
+
       try {
         const response = await fetch(`${API_URL}/events`);
         const data = await response.json();
-        
+
+        console.log(data);
+
         if (data.data && data.data.length > 0) {
+          eventsRawData = data.data; // Store in cache!
           document.getElementById("statActiveEvents").textContent = data.data.length;
-          
+
           container.innerHTML = data.data.map(e => {
             const thumbPath = e.image_path ? (e.image_path.startsWith('http') ? e.image_path : `${API_URL.replace('/api', '')}/${e.image_path}`) : 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80';
             const readableTag = e.tag === 'weekly' ? 'Weekly Service' : e.tag === 'conference' ? 'Conference' : e.tag === 'fasting' ? 'Fasting & Prayer' : 'Special Celebration';
@@ -1225,9 +1463,14 @@
                 <td style="font-size: 0.82rem; font-weight: 600; color: var(--admin-muted);">${e.location}</td>
                 <td style="font-size: 0.85rem; font-weight: 600; color: var(--admin-accent);">${e.date_text} <br><small style="color:var(--admin-muted);">${e.time_text}</small></td>
                 <td>
-                  <button class="btn btn-danger" onclick="deleteEvent(${e.id})">
-                    Cancel Event
-                  </button>
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.75rem;" onclick="editEvent('${e.id}')">
+                      Edit
+                    </button>
+                    <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.75rem;" onclick="deleteEvent('${e.id}')">
+                      Cancel
+                    </button>
+                  </div>
                 </td>
               </tr>
             `;
@@ -1239,6 +1482,7 @@
       } catch (err) {
         // Safe offline bypass layer
         const events = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
+        eventsRawData = events; // Store in cache!
         if (events.length > 0) {
           document.getElementById("statActiveEvents").textContent = events.length;
           container.innerHTML = events.map(e => `
@@ -1249,9 +1493,14 @@
               <td style="font-size: 0.82rem; font-weight: 600; color: var(--admin-muted);">${e.location || 'Calabar HQ'}</td>
               <td style="font-size: 0.85rem; font-weight: 600; color: var(--admin-accent);">${e.date_text || e.date} <br><small style="color:var(--admin-muted);">${e.time_text || '5:00 PM'}</small></td>
               <td>
-                <button class="btn btn-danger" onclick="deleteEvent(${e.id})">
-                  Cancel Event
-                </button>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.75rem;" onclick="editEvent('${e.id}')">
+                    Edit
+                  </button>
+                  <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.75rem;" onclick="deleteEvent('${e.id}')">
+                    Cancel
+                  </button>
+                </div>
               </td>
             </tr>
           `).join('');
@@ -1269,90 +1518,215 @@
       msg.className = "status-msg";
       msg.style.display = "none";
 
+      const title = document.getElementById('eventTitle').value;
+      const tag = document.getElementById('eventTag').value;
+      const date_text = document.getElementById('eventDateText').value;
+      const time_text = document.getElementById('eventTimeText').value;
+      const location = document.getElementById('eventLocation').value;
+      const blessing = document.getElementById('eventBlessing').value;
+      const short_desc = document.getElementById('eventShortDesc').value;
+      const long_desc = document.getElementById('eventLongDesc').value;
+
       const formData = new FormData();
-      formData.append('title', document.getElementById('eventTitle').value);
-      formData.append('tag', document.getElementById('eventTag').value);
-      formData.append('date_text', document.getElementById('eventDateText').value);
-      formData.append('time_text', document.getElementById('eventTimeText').value);
-      formData.append('location', document.getElementById('eventLocation').value);
-      formData.append('blessing', document.getElementById('eventBlessing').value);
-      formData.append('short_desc', document.getElementById('eventShortDesc').value);
-      formData.append('long_desc', document.getElementById('eventLongDesc').value);
-      
+      formData.append('title', title);
+      formData.append('tag', tag);
+      formData.append('date_text', date_text);
+      formData.append('time_text', time_text);
+      formData.append('location', location);
+      formData.append('blessing', blessing);
+      formData.append('short_desc', short_desc);
+      formData.append('long_desc', long_desc);
+
       const thumbFile = document.getElementById('eventThumb');
       if (thumbFile.files[0]) {
         formData.append('thumbnail', thumbFile.files[0]);
       }
 
-      try {
-        const response = await fetch(`${API_URL}/events`, {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${token}` },
-          body: formData
-        });
+      if (isEditingEvent) {
+        // EDIT MODE SUBMISSION
+        try {
+          const response = await fetch(`${API_URL}/events/${editEventId}`, {
+            method: 'PUT',
+            headers: { 'Authorization': `Bearer ${token}` },
+            body: formData
+          });
 
-        const data = await response.json();
-        if (data.success) {
-          msg.innerHTML = "Divine service published and synced successfully!";
+          const data = await response.json();
+          if (data.success) {
+            msg.innerHTML = "Divine service updated and synced successfully!";
+            msg.className = "status-msg success";
+            msg.style.display = "block";
+
+            cancelEditEvent();
+            loadEvents();
+            logActivity("Event Updated", `Updated event: "${title}"`, "now");
+          } else {
+            msg.innerHTML = data.message || "Failed to update event.";
+            msg.className = "status-msg error";
+            msg.style.display = "block";
+          }
+        } catch (err) {
+          // Fallback offline simulated local storage edit
+          const localEvents = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
+          const idx = localEvents.findIndex(ev => ev.id === Number(editEventId) || ev.id === editEventId);
+          if (idx !== -1) {
+            localEvents[idx] = {
+              ...localEvents[idx],
+              tag: tag,
+              title: title,
+              date_text: date_text,
+              time_text: time_text,
+              location: location,
+              blessing: blessing,
+              short_desc: short_desc,
+              long_desc: long_desc
+            };
+
+            if (thumbFile.files[0]) {
+              localEvents[idx].mockThumb = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80";
+            }
+
+            localStorage.setItem('wdigc_events', JSON.stringify(localEvents));
+
+            msg.innerHTML = "Offline Demo Mode: Event updated locally in console simulation.";
+            msg.className = "status-msg success";
+            msg.style.display = "block";
+
+            cancelEditEvent();
+            loadEvents();
+            logActivity("Event Updated Locally", `Updated event "${title}" locally in Offline bypass.`, "now");
+          } else {
+            msg.innerHTML = "Error: Event to update not found in simulation cache.";
+            msg.className = "status-msg error";
+            msg.style.display = "block";
+          }
+        }
+      } else {
+        // CREATE MODE SUBMISSION
+        try {
+          const response = await fetch(`${API_URL}/events`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` },
+            body: formData
+          });
+
+          const data = await response.json();
+          if (data.success) {
+            msg.innerHTML = "Divine service published and synced successfully!";
+            msg.className = "status-msg success";
+            msg.style.display = "block";
+            document.getElementById('eventForm').reset();
+            document.getElementById("eThumbPreview").style.display = "none";
+
+            loadEvents();
+            logActivity("Event Scheduled", `Scheduled event: "${data.data?.title || 'New Event'}"`, "now");
+          } else {
+            msg.innerHTML = data.message || "Failed to schedule event.";
+            msg.className = "status-msg error";
+            msg.style.display = "block";
+          }
+        } catch (err) {
+          // Fallback local storage bypass
+          const localEvents = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
+          const newEvent = {
+            id: Date.now(),
+            tag: tag,
+            title: title,
+            date_text: date_text,
+            time_text: time_text,
+            location: location,
+            blessing: blessing,
+            short_desc: short_desc,
+            long_desc: long_desc,
+            mockThumb: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"
+          };
+
+          localEvents.unshift(newEvent);
+          localStorage.setItem('wdigc_events', JSON.stringify(localEvents));
+
+          msg.innerHTML = "Offline Demo Mode: New event saved locally to console simulation.";
           msg.className = "status-msg success";
           msg.style.display = "block";
+
           document.getElementById('eventForm').reset();
           document.getElementById("eThumbPreview").style.display = "none";
-          
+
           loadEvents();
-          logActivity("Event Scheduled", `Scheduled event: "${data.data?.title || 'New Event'}"`, "now");
-        } else {
-          msg.innerHTML = data.message || "Failed to schedule event.";
-          msg.className = "status-msg error";
-          msg.style.display = "block";
+          logActivity("Event Scheduled Locally", "Divine service added locally in Offline bypass.", "now");
         }
-      } catch (err) {
-        // Fallback local storage bypass
-        const title = document.getElementById("eventTitle").value;
-        const tag = document.getElementById("eventTag").value;
-        const date_text = document.getElementById("eventDateText").value;
-        const time_text = document.getElementById("eventTimeText").value;
-        const location = document.getElementById("eventLocation").value;
-        const blessing = document.getElementById("eventBlessing").value;
-        const short_desc = document.getElementById("eventShortDesc").value;
-        const long_desc = document.getElementById("eventLongDesc").value;
-        
-        const localEvents = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
-        const newEvent = {
-          id: Date.now(),
-          tag: tag,
-          title: title,
-          date_text: date_text,
-          time_text: time_text,
-          location: location,
-          blessing: blessing,
-          short_desc: short_desc,
-          long_desc: long_desc,
-          mockThumb: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80"
-        };
-        
-        localEvents.unshift(newEvent);
-        localStorage.setItem('wdigc_events', JSON.stringify(localEvents));
-        
-        msg.innerHTML = "Offline Demo Mode: New event saved locally to console simulation.";
-        msg.className = "status-msg success";
-        msg.style.display = "block";
-        
-        document.getElementById('eventForm').reset();
-        document.getElementById("eThumbPreview").style.display = "none";
-        
-        loadEvents();
-        logActivity("Event Scheduled Locally", "Divine service added locally in Offline bypass.", "now");
       }
-      
+
       setTimeout(() => {
         msg.style.display = "none";
       }, 3000);
     });
 
+    // Populate and trigger editing state
+    async function editEvent(id) {
+      // Find event in memory cache first
+      let eventObj = eventsRawData.find(ev => ev.id === Number(id) || ev.id === id || String(ev.id) === String(id));
+
+      if (!eventObj) {
+        try {
+          const response = await fetch(`${API_URL}/events/${id}`);
+          const data = await response.json();
+          if (data.success && data.data) {
+            eventObj = data.data;
+          }
+        } catch (err) {
+          // Safe offline bypass layer
+        }
+      }
+
+      if (!eventObj) {
+        const localEvents = JSON.parse(localStorage.getItem('wdigc_events') || '[]');
+        eventObj = localEvents.find(ev => ev.id === Number(id) || ev.id === id || String(ev.id) === String(id));
+      }
+
+      if (!eventObj) {
+        alert("Event not found!");
+        return;
+      }
+
+      // Populate form fields
+      document.getElementById('eventTitle').value = eventObj.title || '';
+      document.getElementById('eventTag').value = eventObj.tag || 'weekly';
+      document.getElementById('eventDateText').value = eventObj.date_text || eventObj.date || '';
+      document.getElementById('eventTimeText').value = eventObj.time_text || '';
+      document.getElementById('eventLocation').value = eventObj.location || '';
+      document.getElementById('eventBlessing').value = eventObj.blessing || '';
+      document.getElementById('eventShortDesc').value = eventObj.short_desc || eventObj.desc || '';
+      document.getElementById('eventLongDesc').value = eventObj.long_desc || eventObj.desc || '';
+
+      const preview = document.getElementById("eThumbPreview");
+      if (preview) {
+        preview.textContent = "Current banner: " + (eventObj.mockThumb || eventObj.image_path || "Default Poster");
+        preview.style.display = "block";
+      }
+
+      // Toggle editing indicators
+      isEditingEvent = true;
+      editEventId = id;
+      document.getElementById('eventSubmitBtn').textContent = "Update Scheduled Event";
+      document.getElementById('eventCancelEditBtn').style.display = "inline-block";
+
+      // Scroll event form smoothly to the center/top
+      document.getElementById('eventForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Cancel edit, reset form and toggle submit layouts
+    function cancelEditEvent() {
+      isEditingEvent = false;
+      editEventId = null;
+      document.getElementById('eventForm').reset();
+      document.getElementById("eThumbPreview").style.display = "none";
+      document.getElementById('eventSubmitBtn').textContent = "Schedule Divine Event";
+      document.getElementById('eventCancelEditBtn').style.display = "none";
+    }
+
     async function deleteEvent(id) {
       if (!confirm("Are you sure you want to completely withdraw this scheduled event?")) return;
-      
+
       try {
         const response = await fetch(`${API_URL}/events/${id}`, {
           method: 'DELETE',
@@ -1391,20 +1765,20 @@
     async function loadTestimonies() {
       const container = document.getElementById("testifierListContainer");
       container.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--admin-muted);">Synchronizing with REST API database...</td></tr>`;
-      
+
       try {
         const response = await fetch(`${API_URL}/testimonies`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
-        
+
         if (data.success) {
           testimoniesRawData = data.data;
-          
+
           // Update stats counters
           const pendingCount = testimoniesRawData.filter(t => t.status === 'pending').length;
           document.getElementById("statPendingTestimonies").textContent = pendingCount;
-          
+
           renderTestimoniesTable();
         } else {
           container.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--admin-muted);">Failed to query testimonies from database.</td></tr>`;
@@ -1412,33 +1786,33 @@
       } catch (err) {
         // Safe offline bypass layer
         testimoniesRawData = JSON.parse(localStorage.getItem('wdigc_testimonies') || '[]');
-        
+
         const pendingCount = testimoniesRawData.filter(t => t.status === 'pending').length;
         document.getElementById("statPendingTestimonies").textContent = pendingCount;
-        
+
         renderTestimoniesTable();
       }
     }
 
     function renderTestimoniesTable() {
       const container = document.getElementById("testifierListContainer");
-      
+
       // Filter list
       let filtered = testimoniesRawData;
       if (testimonyFilter !== 'all') {
         filtered = filtered.filter(t => t.status === testimonyFilter);
       }
-      
+
       if (testimonySearch) {
         const query = testimonySearch.toLowerCase();
         filtered = filtered.filter(t => t.name.toLowerCase().includes(query) || t.text.toLowerCase().includes(query));
       }
-      
+
       if (filtered.length === 0) {
         container.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--admin-muted);">No testimonies matched the filter.</td></tr>`;
         return;
       }
-      
+
       container.innerHTML = filtered.map(t => {
         const readableCategory = t.category_text || (t.category ? t.category.charAt(0).toUpperCase() + t.category.slice(1) : 'General');
         return `
@@ -1475,7 +1849,7 @@
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
-        
+
         if (data.success) {
           loadTestimonies();
           logActivity("Testimony Moderated", `Toggled testimony approval status for ID ${id}.`, "now");
@@ -1484,7 +1858,7 @@
         // Fallback local storage bypass
         const localTestimonies = JSON.parse(localStorage.getItem('wdigc_testimonies') || '[]');
         const index = localTestimonies.findIndex(t => t.id === id || t.id == id);
-        
+
         if (index !== -1) {
           localTestimonies[index].status = localTestimonies[index].status === 'approved' ? 'pending' : 'approved';
           localStorage.setItem('wdigc_testimonies', JSON.stringify(localTestimonies));
@@ -1496,14 +1870,14 @@
 
     async function deleteTestimony(id) {
       if (!confirm("Are you sure you want to completely erase this testimony?")) return;
-      
+
       try {
         const response = await fetch(`${API_URL}/testimonies/${id}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
-        
+
         if (data.success) {
           loadTestimonies();
           logActivity("Testimony Deleted", `Withdrew testimony record ID ${id} from database.`, "now");
@@ -1512,7 +1886,7 @@
         // Fallback local storage bypass
         let localTestimonies = JSON.parse(localStorage.getItem('wdigc_testimonies') || '[]');
         const exists = localTestimonies.some(t => t.id === id || t.id == id);
-        
+
         if (exists) {
           localTestimonies = localTestimonies.filter(t => t.id !== id && t.id != id);
           localStorage.setItem('wdigc_testimonies', JSON.stringify(localTestimonies));
@@ -1529,13 +1903,13 @@
       const cat = document.getElementById("testCategory").value;
       const date = document.getElementById("testDate").value;
       const text = document.getElementById("testContent").value;
-      
+
       const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-      
+
       try {
         const response = await fetch(`${API_URL}/testimonies`, {
           method: 'POST',
-          headers: { 
+          headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
@@ -1549,19 +1923,19 @@
             status: "pending"
           })
         });
-        
+
         const data = await response.json();
         if (data.success) {
           const msg = document.getElementById("testMsg");
           msg.innerHTML = "Miracle testimony recorded live as pending review!";
           msg.className = "status-msg success";
           msg.style.display = "block";
-          
+
           document.getElementById("testimonyForm").reset();
-          
+
           loadTestimonies();
           logActivity("Testimony Recorded", `Registered testimony for: "${name}"`, "now");
-          
+
           setTimeout(() => { msg.style.display = "none"; }, 3000);
         }
       } catch (err) {
@@ -1577,20 +1951,20 @@
           status: "pending",
           initials: initials
         };
-        
+
         localTestimonies.unshift(newTest);
         localStorage.setItem('wdigc_testimonies', JSON.stringify(localTestimonies));
-        
+
         const msg = document.getElementById("testMsg");
         msg.innerHTML = "Offline Demo Mode: Miracle testimony recorded locally as pending review!";
         msg.className = "status-msg success";
         msg.style.display = "block";
-        
+
         document.getElementById("testimonyForm").reset();
-        
+
         loadTestimonies();
         logActivity("Testimony Recorded Locally", `Registered testimony for: "${name}" in Offline bypass.`, "now");
-        
+
         setTimeout(() => { msg.style.display = "none"; }, 3000);
       }
     }
@@ -1629,7 +2003,7 @@
 
         if (data.success) {
           formsRawData = data.data;
-          
+
           // Update stats counters
           const pendingForms = formsRawData.filter(f => f.status === 'pending').length;
           const statBadge = document.getElementById("statPendingForms");
@@ -1644,7 +2018,7 @@
       } catch (err) {
         console.warn("Backend server offline, falling back to simulated localStorage forms cache.");
         formsRawData = JSON.parse(localStorage.getItem('wdigc_forms') || '[]');
-        
+
         // Update stats counters
         const pendingForms = formsRawData.filter(f => f.status === 'pending').length;
         const statBadge = document.getElementById("statPendingForms");
@@ -1657,27 +2031,27 @@
     function renderFormsList() {
       const container = document.getElementById("formsListContainer");
       if (!container) return;
-      
+
       // Filter list
       let filtered = formsRawData;
       if (formCategoryFilter !== 'all') {
         filtered = filtered.filter(f => f.category === formCategoryFilter);
       }
-      
+
       if (formSearchQuery) {
         const query = formSearchQuery.toLowerCase();
-        filtered = filtered.filter(f => 
-          f.name.toLowerCase().includes(query) || 
+        filtered = filtered.filter(f =>
+          f.name.toLowerCase().includes(query) ||
           f.id.toLowerCase().includes(query) ||
           (f.type && f.type.toLowerCase().includes(query))
         );
       }
-      
+
       if (filtered.length === 0) {
         container.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--admin-muted);">No form requests match this filter.</td></tr>`;
         return;
       }
-      
+
       container.innerHTML = filtered.map(f => {
         const displayDate = f.date_track !== undefined ? f.date_track : f.dateTrack;
         return `
@@ -1711,10 +2085,10 @@
     function viewFormDetails(regCode) {
       const f = formsRawData.find(x => x.id === regCode);
       if (!f) return;
-      
+
       const modalArea = document.getElementById("modalFormContentArea");
       const footerArea = document.getElementById("modalFormFooterArea");
-      
+
       // Determine readable categories
       const labels = {
         counseling: "Prophetic Counseling Booking Details",
@@ -1722,10 +2096,10 @@
         baptism: "Water Baptism Registration Details",
         baby: "Baby Dedication Ceremony Details"
       };
-      
+
       const displayDate = f.date_track !== undefined ? f.date_track : f.dateTrack;
       const displayDetails = f.details || '';
-      
+
       let specificHtml = "";
       if (f.category === "counseling") {
         specificHtml = `
@@ -1776,7 +2150,7 @@
           </div>
         `;
       }
-      
+
       modalArea.innerHTML = `
         <div style="margin-bottom: 24px; border-bottom: 2px solid var(--admin-line); padding-bottom: 16px;">
           <span style="font-size: 0.72rem; font-weight: 800; color: var(--admin-accent); text-transform: uppercase;">${labels[f.category]}</span>
@@ -1807,14 +2181,14 @@
           <p>Governance Registrar Desk, Calabar HQ</p>
         </div>
       `;
-      
+
       footerArea.innerHTML = `
         <button class="btn btn-outline" onclick="closeFormDetailsModal()">Cancel</button>
         <button class="btn btn-primary" onclick="toggleFormStatus('${f.id}')">
           ${f.status === 'processed' ? 'Set Awaiting Review' : 'Mark as Processed'}
         </button>
       `;
-      
+
       document.getElementById("formDetailsModal").classList.add("open");
       document.body.style.overflow = "hidden";
     }
@@ -1826,7 +2200,7 @@
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
-        
+
         if (data.success) {
           loadForms();
           closeFormDetailsModal();
@@ -1836,14 +2210,14 @@
         // Fallback local storage bypass
         const forms = JSON.parse(localStorage.getItem('wdigc_forms') || '[]');
         const index = forms.findIndex(x => x.id === regCode);
-        
+
         if (index !== -1) {
           forms[index].status = forms[index].status === 'processed' ? 'pending' : 'processed';
           localStorage.setItem('wdigc_forms', JSON.stringify(forms));
-          
+
           formsRawData = forms;
           renderFormsList();
-          
+
           // Update stats counters
           const pendingForms = formsRawData.filter(f => f.status === 'pending').length;
           const statBadge = document.getElementById("statPendingForms");
@@ -1857,14 +2231,14 @@
 
     async function deleteFormSubmission(regCode) {
       if (!confirm("Are you sure you want to permanently erase this registration request?")) return;
-      
+
       try {
         const response = await fetch(`${API_URL}/forms/${regCode}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();
-        
+
         if (data.success) {
           loadForms();
           logActivity("Form Request Erased", `Deleted form record "${regCode}".`, "now");
@@ -1874,10 +2248,10 @@
         let forms = JSON.parse(localStorage.getItem('wdigc_forms') || '[]');
         forms = forms.filter(f => f.id !== regCode);
         localStorage.setItem('wdigc_forms', JSON.stringify(forms));
-        
+
         formsRawData = forms;
         renderFormsList();
-        
+
         // Update stats counters
         const pendingForms = formsRawData.filter(f => f.status === 'pending').length;
         const statBadge = document.getElementById("statPendingForms");
@@ -1921,7 +2295,7 @@
     function renderActivityFeed() {
       const feed = document.getElementById("dashboardActivityFeed");
       const activities = JSON.parse(localStorage.getItem('wdigc_activities') || '[]');
-      
+
       feed.innerHTML = activities.map(act => `
         <div class="activity-item">
           <div class="activity-icon">&check;</div>
@@ -1942,4 +2316,5 @@
     });
   </script>
 </body>
+
 </html>

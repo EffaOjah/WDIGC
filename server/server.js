@@ -8,10 +8,27 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+const allowedOrigins = [
+    'http://api.worddietgospel.org',
+    'https://api.worddietgospel.org',
+    'http://localhost:5000'
+];
+
 app.use(cors({
-    origin: '*',
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps, curl, or local files)
+        if (!origin) return callback(null, true);
+        
+        const cleanOrigin = origin.replace(/\/$/, '');
+        if (allowedOrigins.includes(cleanOrigin) || allowedOrigins.some(o => cleanOrigin.startsWith(o))) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

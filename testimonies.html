@@ -12,7 +12,8 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="css/global.css" />
@@ -358,7 +359,7 @@
       try {
         const response = await fetch('http://api.worddietgospel.org/api/testimonies/approved');
         const data = await response.json();
-        
+
         if (data.success && data.data && data.data.length > 0) {
           testimoniesData = data.data.map(t => ({
             id: t.id,
@@ -555,7 +556,7 @@
           // Clear Form and close modal
           document.getElementById("testimonyForm").reset();
           closeFormModal();
-          
+
           alert("Hallelujah! Your miracle testimony has been successfully submitted live to WDIGC for review and verification. Thank you for declaring the marvels of God!");
         }
       } catch (err) {
@@ -571,13 +572,13 @@
           initials: initials,
           date: "Just now"
         });
-        
+
         testimoniesData = fallbackTestimonies;
-        
+
         document.getElementById("testimonyForm").reset();
         closeFormModal();
         filterCategory("all");
-        
+
         alert("[Offline presentation mode] Your miracle testimony was saved in your local session! Thank you for sharing!");
       }
     }

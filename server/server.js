@@ -10,6 +10,13 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 const allowedOrigins = [
     'https://worddietgospel.org',
+    'https://www.worddietgospel.org',
+    'http://api.worddietgospel.org',
+    'https://api.worddietgospel.org',
+    'http://localhost:5000',
+    'http://localhost:3000',
+    'http://localhost:5500',
+    'http://127.0.0.1:5500',
     'null'
 ];
 
@@ -17,12 +24,16 @@ app.use(cors({
     origin: function (origin, callback) {
         // Allow requests with no origin (like mobile apps, curl, or local files)
         if (!origin) return callback(null, true);
-
+        
         const cleanOrigin = origin.replace(/\/$/, '');
-        if (allowedOrigins.includes(cleanOrigin) || allowedOrigins.some(o => cleanOrigin.startsWith(o))) {
+        const isAllowed = allowedOrigins.includes(cleanOrigin) || 
+                          cleanOrigin.endsWith('worddietgospel.org') || 
+                          allowedOrigins.some(o => cleanOrigin.startsWith(o));
+                          
+        if (isAllowed) {
             callback(null, true);
         } else {
-            callback(new Error('Not allowed by CORS'));
+            callback(null, false); // Fail CORS gracefully without throwing a 500 server crash
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
